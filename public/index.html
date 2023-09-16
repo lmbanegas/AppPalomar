@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/pdf-lib@1.11.0"></script>
+  <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+  <link rel="stylesheet" type="text/css" herf="http.//fonts.googleapis.com/cssfamily=Tangerine">
+
+
+  <style>
+
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+  }
+
+    .input282 {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Formulario baja y reformulación de plan 282 </h2>
+
+  <div class="input282">
+    <label for="fecha">Fecha</label>
+    <input type="text" name="fecha" id="fecha">
+    <br>
+    <label for="nombreyapellido">Nombre y apellido</label>
+    <input type="text" id="nombreyapellido">
+    <br>
+
+    <label for="exp">Número de expediente</label>
+    <input type="text" id="exp">
+    <br>
+
+    <label for="cuil">CUIL</label>
+    <input type="number" name="cuil" id="cuil">
+    <br>
+
+    <label for="plan">Plan</label>
+    <input type="number" name="plan" id="plan">
+    <br>
+
+    <label for="fechaplan">Fecha plan</label>
+    <input type="text" name="fechaplan" id="fechaplan">
+    <br>
+
+    <label for="error">Detalle del error</label>
+    <input type="text" name="error" id="error">
+    <br>
+    <button onclick="fillForm()">Enviar</button>
+  </div>
+</body>
+
+<script>
+  async function fillForm() {
+    const { PDFDocument } = PDFLib;
+
+    // Fetch the PDF with form fields
+    const formUrl = 'http://localhost:3000/pdf/form282.pdf';
+    const formPdfBytes = await fetch(formUrl).then((res) => res.arrayBuffer());
+
+    // Load a PDF with form fields
+    const pdfDoc = await PDFDocument.load(formPdfBytes);
+
+    // Get the form containing all the fields
+    const form = pdfDoc.getForm();
+
+    // Get all fields in the PDF by their names
+    const fechaField = form.getTextField('fecha');
+    const expField = form.getTextField('exp');
+    const nombreyapellidoField = form.getTextField('nombreyapellido');
+    const fechaplanField = form.getTextField('fechaplan');
+    const planField = form.getTextField('plan');
+    const cuilField = form.getTextField('CUIL');
+    const errorField = form.getTextField('error');
+
+    // Fill in the basic info fields (reemplaza con tus valores)
+    fechaField.setText(document.getElementById('fecha').value);
+    fechaplanField.setText(document.getElementById('fechaplan').value);
+    planField.setText(document.getElementById('plan').value);
+    expField.setText(document.getElementById('exp').value);
+    nombreyapellidoField.setText(document.getElementById('nombreyapellido').value);
+    cuilField.setText(document.getElementById('cuil').value);
+    errorField.setText(document.getElementById('error').value);
+
+    // Serialize the PDFDocument to bytes (a Uint8Array)
+    const pdfBytes = await pdfDoc.save();
+
+    // Trigger the browser to download the PDF document
+    download(pdfBytes, 'pdf-lib_form_creation_example.pdf', 'application/pdf');
+  }
+</script>
+
+</html>
