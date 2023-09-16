@@ -60,8 +60,8 @@
   async function fillForm() {
     const { PDFDocument } = PDFLib;
 
-    // Fetch the PDF with form fields
-    const formUrl = 'http://localhost:3000/pdf/form282.pdf';
+    // Fetch the PDF with form fields 
+    const formUrl = '/pdf/form282.pdf';
     const formPdfBytes = await fetch(formUrl).then((res) => res.arrayBuffer());
 
     // Load a PDF with form fields
