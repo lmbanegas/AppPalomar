@@ -64,7 +64,6 @@ app.post('/blog/newarticle', (req, res) => {
   fs.writeFileSync(blog, blogActualizado, 'utf-8');
 
   res.redirect('/blog');
-  res.end('<script>window.location.reload(true);</script>');
 
 });
 
