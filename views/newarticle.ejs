@@ -27,13 +27,13 @@
 
 
     <main>
-        <article>
+        <article>  
             <form action="/blog/newarticle" method="post">
                 <label for="title">Titulo</label>
-                <input name="title" type="text" id="title" a>
+                <input name="title" type="text" id="title" required>
                 <br>
                 <label for="text">Detalles</label>
-                <textarea name="text" rows="10" cols="40" id="text"></textarea>
+                <textarea name="text" rows="10" cols="40" id="text" required></textarea>
                 <br>
                 <input type="submit" value="Enviar" id="button">
             </form>
