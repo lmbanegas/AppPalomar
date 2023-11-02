@@ -126,52 +126,7 @@
 </style>
 
 <script>
-    var blog = JSON.stringify(require('./blog.json'))
-
-    window.addEventListener('load', function () {
-        let button = document.querySelector('#button');
-        let titleInput = document.querySelector('#title');
-        let textInput = document.querySelector('#text');
-        let erTitle = document.querySelector('.erTitle');
-        let erText = document.querySelector('.erText');
-
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            let errors = {};
-
-            if (titleInput.value.length < 1) {
-                errors.title = 'Por favor, escribe un título';
-                titleInput.classList.add('error'); // Agregar la clase 'error'
-            } else {
-                titleInput.classList.remove('error'); // Eliminar la clase 'error'
-            }
-
-            if (textInput.value.length < 1) {
-                errors.text = 'Por favor, proporciona detalles';
-                textInput.classList.add('error'); // Agregar la clase 'error'
-            } else {
-                textInput.classList.remove('error'); // Eliminar la clase 'error'
-            }
-
-            if (errors.title) {
-                erTitle.innerText = errors.title;
-            } else {
-                erTitle.innerText = '';
-            }
-
-            if (errors.text) {
-                erText.innerText = errors.text;
-            } else {
-                erText.innerText = '';
-            }
-
-            if (Object.keys(errors).length === 0) {
-                // Aquí puedes enviar el formulario si no hay errores
-                document.querySelector('form').submit();
-            }
-        });
-    });
+    var blog = JSON.stringify(require('./blog.json'));
 
 </script>
 

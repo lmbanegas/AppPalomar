@@ -39,6 +39,8 @@ app.post('/blog/newarticle', (req, res) => {
   //Pasamos el JSON a JS
   const articulos = JSON.parse(jsonData);
 
+console.log(jsonData)
+
   //Obtener hora y fecha
   const fechaActual = new Date();
   const formattedDate = fechaActual.toISOString().split('T')[0]; // Obtiene la fecha sin la hora
@@ -52,16 +54,21 @@ app.post('/blog/newarticle', (req, res) => {
     date: formattedDate
   };
 
+  console.log(nuevoArticulo)
+
   // Pusheamos
 
   articulos.push(nuevoArticulo);
 
   const blogActualizado = JSON.stringify(articulos);
 
-  
+
+
   //Pasamos JS a JSON
 
   fs.writeFileSync(blog, blogActualizado, 'utf-8');
+
+  console.log(blog)
 
   res.redirect('/blog');
 
