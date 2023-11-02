@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+    
+
+</head>
+<body>
+    <header>
+        <h1>ANSES</h1>
+        <nav>
+            <ul>
+                <li><a href="/blog/newarticle">Nueva entrada</a></li>
+                <li><a href="#">Tabla minimas</a></li>
+                <li><a href="#">Topes RDP</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <ul>
+            <% blog.forEach(function(item) { %>
+                <li class="blog-item">
+                    <h2><%= item.title %></h2>
+                    <p style="color:rgb(48, 48, 48)"><%= item.text %></p>
+                    
+                    <p style="font-size: 12px;"><%= item.date %></p>
+
+                </li>
+            <% }); %>
+        </ul>
+    </main>
+
+    <footer>
+        <p>Derechos de autor © 2023 Tu Nombre</p>
+    </footer>
+</body>
+
+<style>
+body {
+    font-family: 'Encode Sans';
+    color: #393939; /* Texto blanco */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:#37BBED; /* Barra de navegación */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #202020; /* Cambio de color al pasar el ratón */
+}
+
+main {
+    padding: 20px;
+}
+
+article {
+    background-color: #222; /* Fondo de artículo */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+article h2 {
+    color: #ff5733; /* Título del artículo en color llamativo */
+}
+
+article p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #333; /* Fondo del pie de página */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.blog-item {
+            border: 1px solid #ccc; /* Añade un borde alrededor de la "cajita" */
+            border-radius: 10px;
+            padding: 10px; /* Agrega espacio interno alrededor de cada elemento */
+            margin-bottom: 15px; /* Agrega espacio entre cada "cajita" */
+            list-style: none;
+        }
+
+
+</style>
+
+<script>
+    var blog = JSON.stringify(require('./blog.json'))
+</script>
+
+</html>

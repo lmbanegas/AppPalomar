@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+    
+
+</head>
+<body>
+    <header>
+        <h1>Products</h1>
+        <nav>
+            <ul>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="#">Tabla minimas</a></li>
+                <li><a href="#">Topes RDP</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <article>
+            <form action="/blog/newarticle" method="post">
+                <label for="title">Titulo</label>
+                <input name="title" type="text" id="title">
+                <p class="erTitle"></p>
+                <br>
+                <label for="text">Detalles</label>
+                <textarea name="text" rows="10" cols="40" id="text"></textarea>
+                <p class="erText"></p>
+                <br>
+                <input type="submit" value="Enviar" id="button">
+            </form>
+            
+        </article>
+    </main>
+
+    <footer>
+        <p>Derechos de autor © 2023 Tu Nombre</p>
+    </footer>
+</body>
+
+<style>
+
+body {
+    font-family: 'Encode Sans';
+    color: #393939; /* Texto blanco */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:#37BBED; /* Barra de navegación */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #202020; /* Cambio de color al pasar el ratón */
+}
+
+main {
+    padding: 20px;
+}
+
+article {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+article h2 {
+    color: #ff5733; /* Título del artículo en color llamativo */
+}
+
+article p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #333; /* Fondo del pie de página */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+
+}
+
+
+
+</style>
+
+<script>
+    var blog = JSON.stringify(require('./blog.json'))
+
+    window.addEventListener('load', function() {
+        let button = document.querySelector('#button');
+        let titleInput = document.querySelector('#title');
+        let textInput = document.querySelector('#text');
+        let erTitle = document.querySelector('.erTitle');
+        let erText = document.querySelector('.erText');
+
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            let errors = {};
+
+            if (titleInput.value.length < 1) {
+    errors.title = 'Por favor, escribe un título';
+    titleInput.classList.add('error'); // Agregar la clase 'error'
+} else {
+    titleInput.classList.remove('error'); // Eliminar la clase 'error'
+}
+
+if (textInput.value.length < 1) {
+    errors.text = 'Por favor, proporciona detalles';
+    textInput.classList.add('error'); // Agregar la clase 'error'
+} else {
+    textInput.classList.remove('error'); // Eliminar la clase 'error'
+}
+
+            if (errors.title) {
+                erTitle.innerText = errors.title;
+            } else {
+                erTitle.innerText = '';
+            }
+
+            if (errors.text) {
+                erText.innerText = errors.text;
+            } else {
+                erText.innerText = '';
+            }
+
+            if (Object.keys(errors).length === 0) {
+                // Aquí puedes enviar el formulario si no hay errores
+                document.querySelector('form').submit();
+            }
+        });
+    });
+
+</script>
+
+</html>
