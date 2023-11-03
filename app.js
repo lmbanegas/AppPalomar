@@ -44,33 +44,22 @@ console.log(jsonData)
   //Obtener hora y fecha
   const fechaActual = new Date();
   const formattedDate = fechaActual.toISOString().split('T')[0]; // Obtiene la fecha sin la hora
-
-
-
-  //Creamos nuevo articulo
+  
   const nuevoArticulo = {
     title: req.body.title,
     text: req.body.text,
     date: formattedDate
   };
 
-  console.log(nuevoArticulo)
-
-  // Pusheamos
-
-  articulos.push(nuevoArticulo);
-
-  const blogActualizado = JSON.stringify(articulos);
-
-
-
-  //Pasamos JS a JSON
-
-  fs.writeFileSync(blog, blogActualizado, 'utf-8');
-
-  console.log(blog)
-
-  res.redirect('/blog');
+  try {
+    articulos.push(nuevoArticulo);
+    const blogActualizado = JSON.stringify(articulos);
+    fs.writeFileSync(blog, blogActualizado, 'utf-8');
+    res.redirect('/blog');
+  } catch (error) {
+    console.error("Error al escribir el archivo JSON:", error);
+    res.status(500).send("Error al actualizar el archivo JSON");
+  }
 
 });
 
