@@ -1,12 +1,52 @@
 [
     {
         "id": 1,
-        "title": "Remuneraciones ant 1994",
-        "text": "Para las remuneaaiones anteriores a 1994....  "
+        "title": "<link>Union Personal CUIT</link>",
+        "text": "30683032227"
     },
     {
         "id": 2,
-        "title": "Insalubre",
-        "text": "El trabajo riesgoso o insalubre es aquel que se realiza en lugares donde las condiciones, la modalidad o la naturaleza del trabajo afectan a la salud. Las personas que hayan trabajado en estas condiciones tienen requisitos diferentes para acceder a la jubilación, según la actividad realizada.        "
+        "title": "<link>Union Personal (294)</link>",
+        "text": "322-905"
+    },
+    {
+        "id": 3,
+        "title": "<link>IOSFA CUIT</link>",
+        "text": ["30546690519", "30610131200"]
+    },
+    {
+        "id": 4,
+        "title": "<link>IOSFA (294)</link>",
+        "text": ["322-025", "322-016"]
+    },
+    {
+        "id": 5,
+        "title": "<link>ObSBA CUIT</link>",
+        "text": "30999270111"
+    },
+    {
+        "id": 6,
+        "title": "<link>ObSBA (294)</link>",
+        "text": "336-001 descuento 3 Extra - (6-358-006)"
+    },
+    {
+        "id": 7,
+        "title": "<link>CUIT IPS</link>",
+        "text": "33633178009"
+    },
+    {
+        "id": 8,
+        "title": "<link>Bagatela montos</link>",
+        "text": "https://intranetanses.anses.gob.ar/archivos/informacion/855303-principio_de_bagatela_sept_23.pdf"
+    },
+    {
+        "id": 9,
+        "title": "<link>Monotributista en Relacion dep - COD SICA 100</link>",
+        "text": "300x mes - EJ: 27149547121 - 10/2003 al 06/2004"
+    },
+    {
+        "id": 10,
+        "title": "<link>ERROR SUMATORIA RENTAS</link>",
+        "text": "Borrar todo AUT o REL DEP"
     }
 ]
