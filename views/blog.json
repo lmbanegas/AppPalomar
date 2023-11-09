@@ -1,52 +1,47 @@
 [
     {
         "id": 1,
-        "title": "<link>Union Personal CUIT</link>",
+        "title": "Union Personal CUIT",
         "text": "30683032227"
     },
     {
         "id": 2,
-        "title": "<link>Union Personal (294)</link>",
+        "title": "Union Personal (294)",
         "text": "322-905"
     },
     {
         "id": 3,
-        "title": "<link>IOSFA CUIT</link>",
+        "title": "IOSFA CUIT",
         "text": ["30546690519", "30610131200"]
     },
     {
         "id": 4,
-        "title": "<link>IOSFA (294)</link>",
+        "title": "IOSFA (294)",
         "text": ["322-025", "322-016"]
     },
     {
         "id": 5,
-        "title": "<link>ObSBA CUIT</link>",
+        "title": "ObSBA CUIT",
         "text": "30999270111"
     },
     {
         "id": 6,
-        "title": "<link>ObSBA (294)</link>",
+        "title": "ObSBA (294)",
         "text": "336-001 descuento 3 Extra - (6-358-006)"
     },
     {
         "id": 7,
-        "title": "<link>CUIT IPS</link>",
+        "title": "CUIT IPS",
         "text": "33633178009"
     },
     {
         "id": 8,
-        "title": "<link>Bagatela montos</link>",
-        "text": "https://intranetanses.anses.gob.ar/archivos/informacion/855303-principio_de_bagatela_sept_23.pdf"
-    },
-    {
-        "id": 9,
-        "title": "<link>Monotributista en Relacion dep - COD SICA 100</link>",
+        "title": "Monotributista en Relacion dep - COD SICA 100",
         "text": "300x mes - EJ: 27149547121 - 10/2003 al 06/2004"
     },
     {
-        "id": 10,
-        "title": "<link>ERROR SUMATORIA RENTAS</link>",
+        "id": 9,
+        "title": "ERROR SUMATORIA RENTAS",
         "text": "Borrar todo AUT o REL DEP"
     }
 ]
