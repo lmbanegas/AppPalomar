@@ -43,5 +43,11 @@
         "id": 9,
         "title": "ERROR SUMATORIA RENTAS",
         "text": "Borrar todo AUT o REL DEP"
+    },
+    {
+        "id": 10,
+        "title": "Pagos por tesorería",
+        "text": "Incorpora en el sistema LMN la liquidación detallada en el Formulario PF.I.II con los siguientes códigos de conceptos: 108-900, 508-900 y 208-900 a fin de reflejar en el RUB que se realizó el Pago Manual por Tesorería, utilizando el 108-900 con el total de haberes y el 508-900 con el total de descuentos. El código de concepto 208-900 incorpora el importe líquido a percibir y se utiliza a fin de descontar el anticipo del Pago Manual por Tesorería. PREV-17-17 "
     }
+
 ]
