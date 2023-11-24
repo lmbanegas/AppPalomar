@@ -1,43 +1,43 @@
 [
     {
         "id": 1,
-        "title": "Union Personal CUIT",
-        "text": "30683032227"
+        "title": "Obras Sociales - CUIT y otros datos",
+        "text": "Union Personal: 30683032227 - (Código LMN 322-905) IOSFA: 30546690519 o 30610131200) - Código LMN (322-025 o 322-016) ObSBA:  30999270111 - Código LMN 336-001 - 3% Extra 6-358-006 IPS: 33633178009"
     },
     {
         "id": 2,
-        "title": "Union Personal (294)",
-        "text": "322-905"
+        "title": "Verificaciones",
+        "text": "Supermercados DAVI - SU Supermercado: Verificación a CENCOSUD: Paraná 3617 Martinez - CP: 1640 - Ejemplos: 27166710885"
     },
     {
         "id": 3,
-        "title": "IOSFA CUIT",
-        "text": ["30546690519", "30610131200"]
+        "title": "Servicio militar - Brigada (75-0)",
+        "text": "- Si está en documento se toma, se escanea y se acredita con IS  - Si el titular cobra un haber de Brigada 75-0 puede comprar períodos de 974 con autorización. No así de 282.    El monto de la suma de los benef no puede superar el tope de Tabla de Haberes y Suplementos Generales Máximos del    Grado de General de Brigada - Ej: 20126123206"
     },
     {
         "id": 4,
-        "title": "IOSFA (294)",
-        "text": ["322-025", "322-016"]
+        "title": "Ley 27.705 - 282",
+        "text": "Períodos de monotributo no aportante se agregan a SICA si se pisan con períodos de compra de UPDP"
     },
     {
         "id": 5,
-        "title": "ObSBA CUIT",
-        "text": "30999270111"
+        "title": "SDM",
+        "text": "Formularios de pago: 04/2000 y 09/2014: Formulario N° 575/B.  A partir de 10/2014: Formulario N° 575/RT)."
     },
     {
         "id": 6,
-        "title": "ObSBA (294)",
-        "text": "336-001 descuento 3 Extra - (6-358-006)"
+        "title": "Minusvalía",
+        "text": "33% de discapacidad - Ej: 16348767"
     },
     {
         "id": 7,
-        "title": "CUIT IPS",
-        "text": "33633178009"
+        "title": "IPS",
+        "text": "Si tiene mas de 15 años de aportes en IPS debe jubilarse allí. Para iniciar en ANSES se necesita la denegatoria. Ej: 23175508724  - Reco para IPS: Servicios docentes - Cod. SICA: 117. Si se hace verificación y sale OK se cierra 118. Si es para jubilación va a Legales - Ej: 20219259442 "
     },
     {
         "id": 8,
-        "title": "Monotributista en Relacion dep - COD SICA 100",
-        "text": "300x mes - EJ: 27149547121 - 10/2003 al 06/2004"
+        "title": "Monotributo/Autónomo",
+        "text": "- Monotributista en relación de dependencia. Código SICA: 100 - En probatoria: $300 por mes. Ej: 27149547121 (10/2003 al 06/2004) - Pagos para regularidad: Monotributo: mismo mes / Autónomo: mes siguiente"
     },
     {
         "id": 9,
@@ -47,7 +47,64 @@
     {
         "id": 10,
         "title": "Pagos por tesorería",
-        "text": "Incorpora en el sistema LMN la liquidación detallada en el Formulario PF.I.II con los siguientes códigos de conceptos: 108-900, 508-900 y 208-900 a fin de reflejar en el RUB que se realizó el Pago Manual por Tesorería, utilizando el 108-900 con el total de haberes y el 508-900 con el total de descuentos. El código de concepto 208-900 incorpora el importe líquido a percibir y se utiliza a fin de descontar el anticipo del Pago Manual por Tesorería. PREV-17-17 "
+        "text": "Carga LMN para dejar registro:.2-108-900 - Bruto // 2-508-900 - Descuentos // 2-208-900 - Neto // PREV-17-17"
+    },
+        {
+        "id": 11,
+        "title": "Reconocimiento de servicios - 118",
+        "text": "Instrumentador quirurgico. No es insalubre. Ejemplos: 27176024408 y 27171254588"
+    },
+    {
+        "id": 12,
+        "title": "Ley 26.970 - 490",
+        "text": "Expediente 226 para reajuste. Se toma FIP mes posterior al pago."
+    },
+    {
+        "id": 13,
+        "title": "Docente universitario derivada:",
+        "text": "Prev. 11-40 - Ej: 27051077925"    },
+    {
+        "id": 14,
+        "title": "Docentes 137/05",
+        "text": "Presenta reco al 07/2021 y trabaja hasta la actualidad. FIP: Alta mensual - FAD: Cierre de cómputo: 07/2021 - F4: Ult. salario: 07/2021. Ej: 27105753700" },
+    {
+        "id": 15,
+        "title": "Bagatela",
+        "text": " 09/2023 - $ 10.140,17 - 12/2023 - $ 12.256,42"},
+    {
+        "id": 16,
+        "title": "Rehabilitación",
+        "text": "Expediente: 326 - Retro hasta dos años de la solicitud - F. Inicio ANSES desde el primer mes impago (Si está mal la fecha pedir a través de PS08) - Ej: 20118708041-20115985206"},
+    {
+        "id": 17,
+        "title": "Ley 24.476 - 974",
+        "text": "Ejemplo de Plan de moratoria y monotributo cancelado: 27149015383"},
+    {
+        "id": 19,
+        "title": "RTI",
+        "text": "- Directa: Si el SICAM es dentro del año del fallecimiento se toma como FIP el día posterior del fallecimiento - No tomar último mes aportado en SICA. Ej: 27179226303 - Con cese: Día posterior al cese - Sin Cese: "
+    },
+    ,
+    {
+        "id": 20,
+        "title": "",
+        "text": ""
     }
+    ,
+        {
+        "id": 21,
+        "title": "",
+        "text": ""
+    }
+    ,
+        {
+        "id": 22,
+        "title": "",
+        "text": ""
+    }
+    
+    
+    
+    
 
 ]
