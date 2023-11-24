@@ -2,7 +2,10 @@
     {
         "id": 1,
         "title": "Obras Sociales - CUIT y otros datos",
-        "text": "Union Personal: 30683032227 - (Código LMN 322-905) IOSFA: 30546690519 o 30610131200) - Código LMN (322-025 o 322-016) ObSBA:  30999270111 - Código LMN 336-001 - 3% Extra 6-358-006 IPS: 33633178009"
+        "text": "Union Personal: 30683032227(Código LMN 322-905) "
+        "text2":"IOSFA: 30546690519 o 30610131200) - Código LMN (322-025 o 322-016)"
+        "text3": "ObSBA:  30999270111 - Código LMN 336-001 - 3% Extra 6-358-006"
+        "text4": "CUIT IPS: 33633178009"
     },
     {
         "id": 2,
@@ -12,7 +15,8 @@
     {
         "id": 3,
         "title": "Servicio militar - Brigada (75-0)",
-        "text": "- Si está en documento se toma, se escanea y se acredita con IS  - Si el titular cobra un haber de Brigada 75-0 puede comprar períodos de 974 con autorización. No así de 282.    El monto de la suma de los benef no puede superar el tope de Tabla de Haberes y Suplementos Generales Máximos del    Grado de General de Brigada - Ej: 20126123206"
+        "text": "- Si está en documento se toma, se escanea y se acredita con IS"
+        "text2" :" Si el titular cobra un haber de Brigada 75-0 puede comprar períodos de 974 con autorización. No así de 282.    El monto de la suma de los benef no puede superar el tope de Tabla de Haberes y Suplementos Generales Máximos del    Grado de General de Brigada - Ej: 20126123206"
     },
     {
         "id": 4,
@@ -32,17 +36,15 @@
     {
         "id": 7,
         "title": "IPS",
-        "text": "Si tiene mas de 15 años de aportes en IPS debe jubilarse allí. Para iniciar en ANSES se necesita la denegatoria. Ej: 23175508724  - Reco para IPS: Servicios docentes - Cod. SICA: 117. Si se hace verificación y sale OK se cierra 118. Si es para jubilación va a Legales - Ej: 20219259442 "
+        "text": "Si tiene mas de 15 años de aportes en IPS debe jubilarse allí. Para iniciar en ANSES se necesita la denegatoria. Ej: 23175508724"
+        "text2": "Reco para IPS: Servicios docentes - Cod. SICA: 117. Si se hace verificación y sale OK se cierra 118. Si es para jubilación va a Legales - Ej: 20219259442 "
     },
     {
         "id": 8,
         "title": "Monotributo/Autónomo",
-        "text": "- Monotributista en relación de dependencia. Código SICA: 100 - En probatoria: $300 por mes. Ej: 27149547121 (10/2003 al 06/2004) - Pagos para regularidad: Monotributo: mismo mes / Autónomo: mes siguiente"
-    },
-    {
-        "id": 9,
-        "title": "ERROR SUMATORIA RENTAS",
-        "text": "Borrar todo AUT o REL DEP"
+        "text": "Monotributista en relación de dependencia. Código SICA: 100 - En probatoria: $300 por mes. Ej: 27149547121 (10/2003 al 06/2004) "
+        "text2": "Pagos para regularidad: Monotributo: mismo mes / Autónomo: mes siguiente"
+        "text3": "Error sumatoria de rentas: Borrar datos de autonomo o relación de dependencia"
     },
     {
         "id": 10,
