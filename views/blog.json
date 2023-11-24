@@ -49,7 +49,7 @@
     {
         "id": 10,
         "title": "Pagos por tesorería",
-        "text": "Carga LMN para dejar registro:.2-108-900 - Bruto // 2-508-900 - Descuentos // 2-208-900 - Neto // PREV-17-17"
+        "text": "Carga LMN para dejar registro:   2-108-900 - Bruto // 2-508-900 - Descuentos // 2-208-900 - Neto // PREV-17-17"
     },
     {
         "id": 11,
@@ -70,9 +70,9 @@
         "id": 14,
         "title": "RDI - Transformación",
         "text": "1) Alta de concepto: 001-014 (Monto igual al que venía cobrando en 001-004 (*Para dar de alta los conceptos el expediente se debe pasar a 86 y el supervisor a 04)",
-        "text2": "2) Baja de concepto: 001-004"
-        "text3": "3) Modificar beneficio (Opcion 4 LMN) | a) Nro de expediente (Op 2) | b) Fecha (00/00/00) y Causa vto (1) -  (Op 6)"
-        "text4": "4) Resolución"
+        "text2": "2) Baja de concepto: 001-004",
+        "text3": "3) Modificar beneficio (Opcion 4 LMN) | a) Nro de expediente (Op 2) | b) Fecha (00/00/00) y Causa vto (1) -  (Op 6)",
+        "text4": "4) Resolución",
         "text5": "Números de trámite: 082 RDI - 908 RDI docente"
 
     }
