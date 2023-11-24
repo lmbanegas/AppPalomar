@@ -70,10 +70,10 @@
         "id": 14,
         "title": "RDI - Transformación",
         "text": "1) Alta de concepto: 001-014 (Monto igual al que venía cobrando en 001-004 (*Para dar de alta los conceptos el expediente se debe pasar a 86 y el supervisor a 04)",
-        "text1": "2) Baja de concepto: 001-004"
-        "text2": "3) Modificar beneficio (Opcion 4 LMN) | a) Nro de expediente (Op 2) | b) Fecha (00/00/00) y Causa vto (1) -  (Op 6)"
-        "text3": "4) Resolución"
-        "text4": "Números de trámite: 082 RDI - 908 RDI docente"
+        "text2": "2) Baja de concepto: 001-004"
+        "text3": "3) Modificar beneficio (Opcion 4 LMN) | a) Nro de expediente (Op 2) | b) Fecha (00/00/00) y Causa vto (1) -  (Op 6)"
+        "text4": "4) Resolución"
+        "text5": "Números de trámite: 082 RDI - 908 RDI docente"
 
     }
 ]
