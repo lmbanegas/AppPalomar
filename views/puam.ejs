@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+    
+
+</head>
+<body>
+    <header>
+        <h1>ANSES</h1>
+        <nav>
+            <ul>
+                <li><a href="/blog/newarticle">Nueva entrada</a></li>
+                <li><a href="#">Tabla minimas</a></li>
+                <li><a href="#">Topes RDP</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <h2>Ingresar datos:</h2>
+
+        <form action="/puam" method="post">
+
+            <label for="titular">Nombre y apellido</label>
+            <input type="text" id="titular" name="titular">
+            <br>
+            
+            <label for="cuil">CUIL</label>
+            <input type="text" id="cuil" name="cuil">
+            <br>
+
+            <label for="expediente">Número de expediente</label>
+            <input type="text" id="expediente" name="expediente">
+            <br>
+
+            <label for="beneficio">Número de beneficio</label>
+            <input type="text" id="beneficio" name="beneficio">
+            <br>
+
+
+            <label for="dia">Día</label>
+            <input type="number" id="dia" name="dia" value=""required>
+
+            <label for="mes">Mes</label>
+            <input type="number" id="mes" name="mes" value=""required >
+
+            <label for="anio">Año</label>
+            <input type="number" id="anio" name="anio" value="" required>
+
+            <button type="submit">Calcular</button>
+
+
+          </form>
+          <br>
+
+
+          
+
+
+        <h1>Cálculo - Versión para imprimir </h1>
+
+            
+            <table>
+        <tr>
+            <th>Nombre y apellido:</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>CUIL:</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Nro de expediente:</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Nro de beneficio:</th>
+          <td></td>
+        </tr>
+        <tr>
+            <th>Fecha inicial de pago:</th>
+            <td></td>
+          </tr>
+      </table>
+
+
+      <br>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Tiempo</th>
+                <th>Haber</th>
+                <th>OS</th>
+                <th>Devolución OS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (const mes of mesesCortados) { %>
+                <tr>
+                  <td><%= mes.desde.dia %>/<%= mes.desde.mes %>/<%= mes.desde.anio %></td>
+                  <td><%= mes.hasta.dia %>/<%= mes.hasta.mes %>/<%= mes.hasta.anio %></td>
+                  <td><%= mes.proporcionalMeses.toFixed(2) %></td>
+                  <td><%= mes.haber %></td>
+                  <td><%= mes.os %></td>
+                  <td>
+                    <% if (mes.devOs !== undefined) { %>
+                      <%= mes.devOs %>
+                    <% } %>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        
+
+
+    </main>
+
+    <footer>
+        <p>Derechos de autor © 2023 Tu Nombre</p>
+    </footer>
+</body>
+
+<style>
+body {
+    font-family: 'Encode Sans';
+    color: #393939; /* Texto blanco */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:#37BBED; /* Barra de navegación */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #202020; /* Cambio de color al pasar el ratón */
+}
+
+main {
+    padding: 20px;
+}
+
+article {
+    background-color: #222; /* Fondo de artículo */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+article h2 {
+    color: #ff5733; /* Título del artículo en color llamativo */
+}
+
+article p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #37BBED; /* Fondo del pie de página */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 600px;
+}
+
+.blog-item {
+            border: 1px solid #ccc; /* Añade un borde alrededor de la "cajita" */
+            border-radius: 10px;
+            padding: 10px; /* Agrega espacio interno alrededor de cada elemento */
+            margin-bottom: 15px; /* Agrega espacio entre cada "cajita" */
+            list-style: none;
+        }
+
+
+        table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+</style>
+
+<script>
+
+
+</script>
+
+
+
+</html>
