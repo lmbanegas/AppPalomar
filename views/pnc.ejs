@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+
+
+</head>
+
+<body>
+    <header>
+        <h1>ANSES</h1>
+        <nav>
+            <ul>
+                <li><a href="/blog/newarticle">Nueva entrada</a></li>
+                <li><a href="#">Tabla minimas</a></li>
+                <li><a href="#">Topes RDP</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <h2>Ingresar datos:</h2>
+
+        <form action="/puam" method="post">
+
+            <label for="titular">Nombre y apellido</label>
+            <input type="text" id="titular" name="titular">
+            <br>
+
+            <label for="cuil">CUIL</label>
+            <input type="text" id="cuil" name="cuil">
+            <br>
+
+            <label for="expediente">Número de expediente</label>
+            <input type="text" id="expediente" name="expediente">
+            <br>
+
+            <label for="beneficio">Número de beneficio</label>
+            <input type="text" id="beneficio" name="beneficio">
+            <br>
+
+            <div class="fecha">
+                Fecha inicial de pago:
+                <label for="dia"></label>
+                <input type="number" id="dia" name="dia" value="" required min="1" max="31" placeholder="Día">
+
+                <label for="mes"></label>
+                <input type="number" id="mes" name="mes" value="" required min="1" max="12" placeholder="Mes">
+
+                <label for="anio"></label>
+                <input type="number" id="anio" name="anio" value="" required min="2021" max="2023" placeholder="Año">
+
+            </div>
+            <button id="calcularBtn" type="submit">Calcular</button>
+            <br>
+            <br>
+
+        </form>
+        <br>
+
+
+
+
+
+        <h1>Cálculo - Versión para imprimir </h1>
+        <button onclick="imprimirContenido()">Imprimir</button>
+
+        <br>
+        <br>
+        <br>
+
+        <div id="contenidoParaImprimir">
+
+            <table>
+                <tr>
+                    <th>Nombre y apellido:</th>
+                    <td>
+                        <%= datos.nombre%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>CUIL:</th>
+                    <td>
+                        <%= datos.cuil%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nro de expediente:</th>
+                    <td>
+                        <%= datos.expediente%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nro de beneficio:</th>
+                    <td>
+                        <%= datos.beneficio%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fecha inicial de pago:</th>
+                    <td>
+                        <%= datos.fechaInicial %>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="calculoDeMensuales">
+                <br>
+                <br>
+                Cálculo de mensuales y tiempo
+                <br>
+                <br> <br>
+
+            </div>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Tiempo</th>
+                        <th>Haber</th>
+                        <th>OS</th>
+                        <th>Devolución OS</th>
+                        <th style="color:rgb(2, 101, 167)">Retro haber</th>
+                        <th style="color:rgb(2, 101, 167)">Retro OS</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const mes of mesesCortados) { %>
+                        <tr>
+                            <td>
+                                <%= mes.desde.dia %>/<%= mes.desde.mes %>/<%= mes.desde.anio %>
+                            </td>
+                            <td>
+                                <%= mes.hasta.dia %>/<%= mes.hasta.mes %>/<%= mes.hasta.anio %>
+                            </td>
+                            <td>
+                                <%= mes.proporcionalMeses.toFixed(4) %>
+                            </td>
+                            <td>
+                                $ <%= mes.haber %>
+                            </td>
+                            <td>
+                                $ <%= mes.os %>
+                            </td>
+                            <td>
+                                <%= mes.retroHaber.toFixed(2) %>
+                            </td>
+                            <td>
+                                <%= mes.retroOs.toFixed(2) %>
+                            </td>
+
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+
+            <div class="separador">
+                <br>
+                <br>
+                Cálculo de aguinaldo
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Tiempo</th>
+                        <th>Haber </th>
+                        <th>OS </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const mes of nuevosMesesAguinaldo) { %>
+                        <tr>
+                            <td>
+                                <%= mes.desde.dia %>/<%= mes.desde.mes %>/<%= mes.desde.anio %>
+                            </td>
+                            <td>
+                                <%= mes.hasta.dia %>/<%= mes.hasta.mes %>/<%= mes.hasta.anio %>
+                            </td>
+                            <td>
+                                <%= mes.tiempo.toFixed(4) %>
+                            </td>
+                            <td>
+                                $ <%= mes.haber.toFixed(2) %>
+                            </td>
+                            <td>
+                                $ <%= mes.os.toFixed(2) %>
+                            </td>
+
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+            <div class="separador">
+                <br>
+                <br>
+                Datos para la carga
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mensuales</th>
+                        <th>Aguinaldo</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 001-046 : $ <%= retroHaberFinal.toFixed(2) %> <br> 318-008: $ <%= retroOsFinal.toFixed(2) %> <br>   </td>
+                        <td>  002-000 :  $ <%= aguinaldo.toFixed(2) %><br> 518-008: $ <%= aguinaldoOs.toFixed(2) %>  <br> </td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+            <table><td> <b> 501 - Neto a descontar:</b> $ <%= neto.toFixed(2) %> </td> </table>
+            
+
+
+            <!-- Div de imprimit -->
+        </div>
+
+
+    </main>
+
+
+
+    <footer>
+        <p>Derechos de autor © 2023 Tu Nombre</p>
+    </footer>
+</body>
+
+<style>
+    body {
+        font-family: 'Encode Sans';
+        color: #393939;
+        /* Texto blanco */
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #37BBED;
+        /* Barra de navegación */
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #contenidoPara {
+        display: none;
+        /* Ocultar el div al principio */
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #202020;
+        /* Cambio de color al pasar el ratón */
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    article {
+        background-color: #222;
+        /* Fondo de artículo */
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    article h2 {
+        color: #ff5733;
+        /* Título del artículo en color llamativo */
+    }
+
+    article p {
+        line-height: 1.6;
+    }
+
+    footer {
+        background-color: #37BBED;
+        /* Fondo del pie de página */
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        margin-top: 600px;
+    }
+
+    .blog-item {
+        border: 1px solid #ccc;
+        /* Añade un borde alrededor de la "cajita" */
+        border-radius: 10px;
+        padding: 10px;
+        /* Agrega espacio interno alrededor de cada elemento */
+        margin-bottom: 15px;
+        /* Agrega espacio entre cada "cajita" */
+        list-style: none;
+    }
+
+    form input {
+        margin: 4px;
+    }
+
+
+    .fecha input {
+        width: 3%;
+    }
+
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<script>
+
+    var calcularBtn = document.getElementById('calcularBtn');
+    var contenidoParaImpirmir = document.getElementById('contenidoParaImpirmir');
+
+    // Agregar un evento de clic al botón
+    calcularBtn.addEventListener('click', function () {
+        // Cambiar el estilo del div para hacerlo visible
+        contenidoParaImpirmir.style.display = 'block';
+    });
+
+
+
+    function imprimirContenido() {
+        var contenidoParaImprimir = document.getElementById('contenidoParaImprimir').outerHTML;
+        var ventanaImpresion = window.open('', '_blank');
+        ventanaImpresion.document.write('<html><head><title>' + ' </title><style>' + obtenerEstilosCSS() + '</style></head><body>' + contenidoParaImprimir + '</body></html>');
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+        ventanaImpresion.close();
+    }
+
+    function obtenerEstilosCSS() {
+        return `
+        @media print {
+            body {
+                font-family: 'Calibri';
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                background-color: #37BBED;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            nav ul li {
+                display: inline;
+                margin: 0 20px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+
+            nav a:hover {
+                color: #202020;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            article {
+                background-color: #222;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+            }
+
+            article h2 {
+                color: #ff5733;
+            }
+
+            article p {
+                line-height: 1.6;
+            }
+
+            footer {
+                background-color: #37BBED;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                margin-top: 600px;
+            }
+
+            .blog-item {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 15px;
+                list-style: none;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+        }
+    `;
+    }
+
+
+</script>
+
+
+
+</html>
