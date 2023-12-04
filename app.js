@@ -32,12 +32,16 @@ app.get('/blog', (req, res) => {
 });
 
 app.get('/puam', (req, res) => {
-  res.render('puam', { nuevosMesesAguinaldo: [], mesesCortados: []});
+  res.render('puam',  { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal : 0, retroDevOsFinal: 0, aguinaldo: 0, aguinaldoOs: 0, aguinaldoDevOs : 0, neto:0 })
 });
 
 // Ruta para manejar el formulario
 app.post('/puam', (req, res) => {
-  const fipNumber = parseInt(req.body.fip);
+  const datos = { nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio,
+                  fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio}
+
+
+  
 
   // Realiza el cálculo y crea un array con los resultados
   const meses = [
@@ -47,6 +51,9 @@ app.post('/puam', (req, res) => {
         "haber": 15228.24,
         "os": 571.06,
         "devOs": 114.21,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 3, anio: 2021 },
@@ -55,6 +62,9 @@ app.post('/puam', (req, res) => {
         "haber": 16457.16,
         "os": 617.14,
         "devOs": 123.43,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 6, anio: 2021 },
@@ -63,6 +73,9 @@ app.post('/puam', (req, res) => {
         "haber": 18451.76,
         "os": 691.94,
         "devOs": 138.39,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 9, anio: 2021 },
@@ -71,6 +84,9 @@ app.post('/puam', (req, res) => {
         "haber": 20737.94,
         "os": 777.67,
         "devOs": 155.53,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 12, anio: 2021 },
@@ -79,6 +95,9 @@ app.post('/puam', (req, res) => {
         "haber": 23249.30,
         "os": 871.85,
         "devOs": 174.37,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 3, anio: 2022 },
@@ -87,6 +106,9 @@ app.post('/puam', (req, res) => {
         "haber": 26104.32,
         "os": 978.91,
         "devOs": 195.78,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 6, anio: 2022 },
@@ -95,6 +117,9 @@ app.post('/puam', (req, res) => {
         "haber": 30019.96,
         "os": 1125.75,
         "devOs": 225.15,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 9, anio: 2022 },
@@ -103,6 +128,9 @@ app.post('/puam', (req, res) => {
         "haber": 34682.06,
         "os": 1300.58, 
         "devOs": 260.11,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 12, anio: 2022 },
@@ -111,6 +139,9 @@ app.post('/puam', (req, res) => {
         "haber": 40099.40,
         "os": 1503.73,
         "devOs": 300.74,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 3, anio: 2023 },
@@ -119,6 +150,9 @@ app.post('/puam', (req, res) => {
         "haber": 46932.34,
         "os": 1759.96,
         "devOs": 351.99,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 6, anio: 2023 },
@@ -127,6 +161,9 @@ app.post('/puam', (req, res) => {
         "haber": 56750.59,
         "os": 2128.15,
         "devOs": 425.63,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 9, anio: 2023 },
@@ -135,6 +172,9 @@ app.post('/puam', (req, res) => {
         "haber": 69967.81,
         "os": 2623.79,
         "devOs": 524.76,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 12, anio: 2023 },
@@ -143,11 +183,13 @@ app.post('/puam', (req, res) => {
         "haber": 84570.09,
         "os": 3171.38,
         "devOs": 634.28,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
 ]
 
-
-// Acá va un document.getbyID
+// Requiero datos de los inputs iniciales
 
 const dia = parseInt(req.body.dia);
 const mes = parseInt(req.body.mes);
@@ -191,24 +233,28 @@ const contarDias = mesesCortados[0].hasta.mes - mesesCortados[0].desde.mes + ((3
 mesesCortados[0].proporcionalMeses= contarDias;
 
 if (mesesCortados[0].desde.mes === 12) {
-    console.log("mes=12")
     mesesCortados[0].proporcionalMeses = 2 + ((31 - mesesCortados[0].desde.dia) / 30)
 }
 
 //calculo de retro
 //Acumuladores
-let retroHaber = 0;
-let retroOs = 0;
-let retroDevOs = 0;
+let retroHaberFinal = 0;
+let retroOsFinal = 0;
+let retroDevOsFinal = 0;
 
 for (let i = 0; i < mesesCortados.length; i++) {
-
-    retroHaber = mesesCortados[i].haber * mesesCortados[i].proporcionalMeses + retroHaber;
-    retroOs = mesesCortados[i].os * mesesCortados[i].proporcionalMeses + retroOs;
-    retroDevOs = mesesCortados[i].devOs * mesesCortados[i].proporcionalMeses + retroDevOs;
-
-    
+    retroHaberFinal = mesesCortados[i].haber * mesesCortados[i].proporcionalMeses + retroHaberFinal;
+    retroOsFinal = mesesCortados[i].os * mesesCortados[i].proporcionalMeses + retroOsFinal;
+    retroDevOsFinal = mesesCortados[i].devOs * mesesCortados[i].proporcionalMeses + retroDevOsFinal;    
 }
+
+for (let i = 0; i < mesesCortados.length; i++) {
+    mesesCortados[i].retroHaber = mesesCortados[i].proporcionalMeses*mesesCortados[i].haber;
+    mesesCortados[i].retroOs = mesesCortados[i].proporcionalMeses*mesesCortados[i].os;
+    mesesCortados[i].retroDevOs = mesesCortados[i].proporcionalMeses*mesesCortados[i].devOs;
+
+}
+
 
 //mostrar todo
 console.log("Períodos")
@@ -219,9 +265,9 @@ for (let index = 0; index < mesesCortados.length; index++) {
     ));
 }
     console.log("---------------------------------------------------------------------")
-    console.log("Retro haber: $" + retroHaber.toFixed(2)) 
-    console.log("Retro OS: $" + retroOs.toFixed(2))    
-    console.log("Retro Devolucion OS: $" + retroDevOs.toFixed(2))    
+    console.log("Retro haber: $" + retroHaberFinal.toFixed(2)) 
+    console.log("Retro OS: $" + retroOsFinal.toFixed(2))    
+    console.log("Retro Devolucion OS: $" + retroDevOsFinal.toFixed(2))    
 
 // calculo de aguinaldo
 
@@ -232,6 +278,10 @@ const mesesAguinaldo = [
         "tiempo": 0.5,
         "haber": 0,
         "os": 0,
+        "devOs": 0,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 7, anio: 2021 },
@@ -249,7 +299,9 @@ const mesesAguinaldo = [
         "haber": 0,
         "os": 0,
         "devOs": 0,
-
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     },
     {
         "desde": { dia: 1, mes: 7, anio: 2022 },
@@ -258,6 +310,9 @@ const mesesAguinaldo = [
         "haber": 0,
         "os": 0,
         "devOs": 0,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
 
     },
     {
@@ -267,6 +322,9 @@ const mesesAguinaldo = [
         "haber": 0,
         "os": 0,
         "devOs": 0,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
 
     },
     {
@@ -276,6 +334,9 @@ const mesesAguinaldo = [
         "haber": 0,
         "os": 0,
         "devOs": 0,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
     }
 ]
 
@@ -285,7 +346,7 @@ let indice;
 //Calculo de meses aguinaldo
 
 for (let i = 0; i < mesesAguinaldo.length; i++ ) {
-    if (mesesAguinaldo[i].desde.anio == fipDias[0].anio && fip[0].mes >= mesesAguinaldo[i].desde.mes && fip[0].mes<=mesesAguinaldo[i].hasta.mes  ) {
+    if (mesesAguinaldo[i].desde.anio == fipDias[0].anio && fipDias[0].mes >= mesesAguinaldo[i].desde.mes && fipDias[0].mes<=mesesAguinaldo[i].hasta.mes  ) {
         mesesAguinaldo[i].desde.dia = fipDias[0].dia;
         mesesAguinaldo[i].desde.mes = fipDias[0].mes;
         mesesAguinaldo[i].tiempo = ((((mesesAguinaldo[i].hasta.mes - mesesAguinaldo[i].desde.mes)*30) + (31 - mesesAguinaldo[i].desde.dia))/30/12);
@@ -304,6 +365,7 @@ console.log("Calculo de aguinaldo")
 let aguinaldo = 0;
 let aguinaldoOs = 0;
 let aguinaldoDevOs = 0;
+
 
 
 
@@ -326,19 +388,10 @@ for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
 for (let i = 0; i < nuevosMesesAguinaldo.length; i++ ) {
 console.log(JSON.stringify(nuevosMesesAguinaldo[i].desde.dia + "/" + nuevosMesesAguinaldo[i].desde.mes +  "/" +nuevosMesesAguinaldo[i].desde.anio + " al " + nuevosMesesAguinaldo[i].hasta.dia + "/" + nuevosMesesAguinaldo[i].hasta.mes +  "/" + nuevosMesesAguinaldo[i].hasta.anio + ": $" + nuevosMesesAguinaldo[i].haber.toFixed(2) + " - OS: $" + nuevosMesesAguinaldo[i].os.toFixed(2) + " - Dev Os: $" + nuevosMesesAguinaldo[i].devOs.toFixed(2)))}
 
-console.log("---------------------------------------------------------------------")
 
-console.log("Retro haber - Aguinaldo: $" + aguinaldo.toFixed(2) )
-console.log("Retro OS - Aguinaldo: $" + aguinaldoOs.toFixed(2))
-console.log("Retro Devolucion OS - Aguinaldo: $" + aguinaldoDevOs.toFixed(2))
+const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal + retroDevOsFinal + aguinaldoOs + aguinaldoDevOs)
 
-
-
-
-
-
-  // Renderiza la vista con los resultados
-  res.render('puam', { nuevosMesesAguinaldo, mesesCortados});
+  res.render('puam', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal, retroDevOsFinal, aguinaldoOs, aguinaldoDevOs, neto });
 });
 
 
