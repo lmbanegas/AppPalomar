@@ -11,6 +11,15 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+app.set('view engine', 'ejs');
+
+app.set('views', [
+    path.join(__dirname, './views'),
+    path.join(__dirname, './views/partials'),
+
+]);
+
 // Configura el motor de vistas y la ubicación de archivos estáticos
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -22,6 +31,11 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+app.get('/LMN', (req, res) => {
+    res.render('calculosLMN');
+  });
+
 
 app.get('/afip', (req, res) => {
   res.render('afip');
@@ -391,7 +405,7 @@ console.log(JSON.stringify(nuevosMesesAguinaldo[i].desde.dia + "/" + nuevosMeses
 
 const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal + retroDevOsFinal + aguinaldoOs + aguinaldoDevOs)
 
-  res.render('puam', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal, retroDevOsFinal, aguinaldoOs, aguinaldoDevOs, neto });
+  res.render('puamResult', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal, retroDevOsFinal, aguinaldoOs, aguinaldoDevOs, neto });
 });
 
 
@@ -399,13 +413,15 @@ const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal + retroDevOsFinal + a
 
 
 app.get('/pnc', (req, res) => {
-  res.render('pnc',  { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal : 0, aguinaldo: 0, aguinaldoOs: 0, neto:0 })
+
+  res.render('pnc',  { nuevosMesesAguinaldo: [], mesesCortados: [], datos : [], retroHaberFinal: 0, retroOsFinal : 0, aguinaldo: 0, aguinaldoOs: 0, neto:0 })
 });
 
 // Ruta para manejar el formulario
 app.post('/pnc', (req, res) => {
   const datos = { nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio,
-                  fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio}
+                  fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio}    
+
 
 
   
@@ -540,6 +556,8 @@ const anio = parseInt(req.body.anio);
 const fipDias = [{ dia: dia, mes: mes, anio: anio}];
 const fip = [{ dia: dia, mes: mes, anio: anio}];
   
+
+
 
 
 
@@ -719,7 +737,7 @@ console.log(JSON.stringify(nuevosMesesAguinaldo[i].desde.dia + "/" + nuevosMeses
 const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal +  + aguinaldoOs)
 
 
-  res.render('pnc', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal,  aguinaldoOs, neto });
+  res.render('pncResult', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal,  aguinaldoOs, neto });
 });
 
 

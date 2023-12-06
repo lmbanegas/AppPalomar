@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo indebida PUAM</title>
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+    <script src="../scripts/print.js"></script>
+
+    <script> </script>
+</head>
+
+<body>
+    <header><%- include('header') %></header>
+
+
+    <main>
+
+        <div id="contenidoParaImprimir">
+
+            <table>
+                <tr>
+                    <th>Nombre y apellido:</th>
+                    <td>
+                        <%= datos.nombre%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>CUIL:</th>
+                    <td>
+                        <%= datos.cuil%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nro de expediente:</th>
+                    <td>
+                        <%= datos.expediente%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nro de beneficio:</th>
+                    <td>
+                        <%= datos.beneficio%>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fecha inicial de pago:</th>
+                    <td>
+                        <%= datos.fechaInicial %>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="calculoDeMensuales">
+                <br>
+                <br>
+                <p> Cálculo de mensuales y tiempo</p>
+                <br>
+                <br> <br>
+
+            </div>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Tiempo</th>
+                        <th>Haber</th>
+                        <th>OS</th>
+                        <th>Devolución OS</th>
+                        <th style="color:rgb(2, 101, 167)">Retro haber</th>
+                        <th style="color:rgb(2, 101, 167)">Retro OS</th>
+                        <th style="color:rgb(2, 101, 167)">Retro Devolucion</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const mes of mesesCortados) { %>
+                        <tr>
+                            <td>
+                                <%= mes.desde.dia %>/<%= mes.desde.mes %>/<%= mes.desde.anio %>
+                            </td>
+                            <td>
+                                <%= mes.hasta.dia %>/<%= mes.hasta.mes %>/<%= mes.hasta.anio %>
+                            </td>
+                            <td>
+                                <%= mes.proporcionalMeses.toFixed(4) %>
+                            </td>
+                            <td>
+                                $ <%= mes.haber %>
+                            </td>
+                            <td>
+                                $ <%= mes.os %>
+                            </td>
+                            <td>
+                                <% if (mes.devOs !==undefined) { %>
+                                    $ <%= mes.devOs %>
+                                        <% } %>
+                            </td>
+                            <td>
+                                <%= mes.retroHaber.toFixed(2) %>
+                            </td>
+                            <td>
+                                <%= mes.retroOs.toFixed(2) %>
+                            </td>
+                            <td>
+                                <%= mes.retroDevOs.toFixed(2) %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+<br>
+            <div class="separador">
+ 
+               <p> Cálculo de aguinaldo </p>
+            </div>
+
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Tiempo</th>
+                        <th>Haber </th>
+                        <th>OS </th>
+                        <th>Devolución OS </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const mes of nuevosMesesAguinaldo) { %>
+                        <tr>
+                            <td>
+                                <%= mes.desde.dia %>/<%= mes.desde.mes %>/<%= mes.desde.anio %>
+                            </td>
+                            <td>
+                                <%= mes.hasta.dia %>/<%= mes.hasta.mes %>/<%= mes.hasta.anio %>
+                            </td>
+                            <td>
+                                <%= mes.tiempo.toFixed(4) %>
+                            </td>
+                            <td>
+                                $ <%= mes.haber.toFixed(2) %>
+                            </td>
+                            <td>
+                                $ <%= mes.os.toFixed(2) %>
+                            </td>
+                            <td>
+                                <% if (mes.devOs !==undefined) { %>
+                                    $ <%= mes.devOs.toFixed(2) %>
+                                        <% } %>
+                            </td>
+
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+            <div class="separador">
+                <br>
+                <br>
+              <p>Datos para la carga</p>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mensuales</th>
+                        <th>Aguinaldo</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 001-046 : $ <%= retroHaberFinal.toFixed(2) %> <br> 318-008: $ <%= retroOsFinal.toFixed(2) %> <br> 718-046  : $ <%= retroDevOsFinal.toFixed(2) %>  </td>
+                        <td>  002-000 :  $ <%= aguinaldo.toFixed(2) %><br> 518-008: $ <%= aguinaldoOs.toFixed(2) %>  <br> 719-146  : $ <%= aguinaldoDevOs.toFixed(2) %></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+       
+            <p> <table><td> <b> 501 - Neto a descontar:</b> $ <%= neto.toFixed(2) %> </td> </table> </p>
+             
+
+
+            <!-- Div de imprimit -->
+
+        </div>
+        <p>            <button onclick="imprimirContenido()">Imprimir</button></p>
+
+
+    </main>
+
+
+
+    <footer>
+        <p>Derechos de autor © 2023 - Lucas Matías Banegas</p>
+    </footer>
+</body>
+
+
+
+</html>

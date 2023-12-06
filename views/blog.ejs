@@ -5,24 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Oficina Palomar</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+
     <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
 
     
 
 </head>
 <body>
-    <header>
-        <h1>ANSES</h1>
-        <nav>
-            <ul>
-                <li><a href="/blog/newarticle">Nueva entrada</a></li>
-                <li><a href="#">Tabla minimas</a></li>
-                <li><a href="#">Topes RDP</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <header><%- include('header') %></header>
 
 
     <main>
@@ -106,12 +98,6 @@ article p {
     line-height: 1.6;
 }
 
-footer {
-    background-color: #333; /* Fondo del pie de página */
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
 
 .blog-item {
             border: 1px solid #ccc; /* Añade un borde alrededor de la "cajita" */

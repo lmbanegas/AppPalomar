@@ -1,0 +1,184 @@
+    body {
+        font-family: 'Encode Sans';
+        color: #393939;
+        /* Texto blanco */
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #37BBED;
+        /* Barra de navegación */
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #contenidoPara {
+        display: none;
+        /* Ocultar el div al principio */
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #202020;
+        /* Cambio de color al pasar el ratón */
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    button {
+        font-family: 'Encode Sans';
+
+        background-color: #37BBED;
+        border: none;
+        border-radius: 30px;
+        width: 250px;
+        height: 25px;
+        color: white;
+        font-weight: 600;
+        margin-top: 18px;
+    }
+
+    article {
+        background-color: #222;
+        /* Fondo de artículo */
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    article h2 {
+        color: #ff5733;
+        /* Título del artículo en color llamativo */
+    }
+
+    article p {
+        line-height: 1.6;
+    }
+
+    footer {
+        background-color: #37BBED;
+        /* Fondo del pie de página */
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        <hr>
+    }
+
+    .blog-item {
+        border: 1px solid #ccc;
+        /* Añade un borde alrededor de la "cajita" */
+        border-radius: 10px;
+        padding: 10px;
+        /* Agrega espacio interno alrededor de cada elemento */
+        margin-bottom: 15px;
+        /* Agrega espacio entre cada "cajita" */
+        list-style: none;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form input {
+        margin: 4px;
+        width: 26%;
+        padding: 8px;
+        border: 1px solid #ccc; /* Color del borde */
+        border-radius: 4px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total */
+        transition: border-color 0.3s ease; /* Efecto de transición en el color del borde */
+        cursor: text; /* Establecer el cursor como el de texto */
+
+    }
+    
+    /* Cambiar el estilo del borde cuando el input está enfocado */
+    form input:focus {
+        border-color: #3498db; /* Color del borde al enfocar */
+        outline: none; /* Eliminar el contorno predeterminado del navegador */
+        cursor: text; /* Establecer el cursor como el de texto */
+
+    }
+    
+
+
+
+
+    .fip {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .titulos {
+        text-align: center;
+        margin-bottom: 40px;
+        }
+
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .links a{
+            padding: 5px;
+            text-decoration: none;
+        }
+
+        hr {
+            border: 1px solid #ddd; /* Puedes personalizar el color y el estilo de la línea */
+            margin: 20px 0; /* Puedes ajustar el espacio alrededor del separador */
+        }
+
+        p {
+            text-align: center;
+        }
