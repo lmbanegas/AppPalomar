@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+  <title>Formulario de Supervisiones</title>
+
+</head>
+
+<style>
+  body {
+    font-family: 'Encode Sans';
+    color: #393939;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 150px;
+    display: flex;
+  flex-direction: column;
+  text-align: center;
+  }
+
+  header {
+      background-color: #37BBED;
+      color: #fff;
+      text-align: center;
+  }
+
+
+  header h1 {
+      font-size: 2rem;
+  }
+
+  nav ul {
+      list-style: none;
+      padding: 0;
+  }
+
+  nav ul li {
+      display: inline;
+      margin: 0 20px;
+  }
+
+  nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+  }
+
+  nav a:hover {
+      color: #202020;
+      /* Cambio de color al pasar el ratón */
+  }
+
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+      border: 1px solid #ccc; /* Color del borde */
+      border-radius: 4px; /* Bordes redondeados */
+      box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total */
+      transition: border-color 0.3s ease; /* Efecto de transición en el color del borde */
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    
+  }
+</style>
+
+<body>
+    <header>
+        <%- include('header') %>
+    </header>
+
+    
+    <h1>Formulario de Supervisiones</h1>
+        <form action="/supervisiones/guardar" method="post">
+      
+          <label for="operador">Operador:</label>
+          <select name="operador" required>
+            <option value="" disabled selected>Seleccione operador</option>
+            <option value="Agus">Agus</option>
+            <option value="Maru">Maru</option>
+          </select>
+      
+          <label for="tramite">Trámite:</label>
+          <input type="text" name="tramite" required>
+      
+          <label for="turno">Turno:</label>
+          <input type="text" name="turno" required>
+      
+          <label for="edad">Edad:</label>
+          <select name="edad" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Correcto">Correcto</option>
+            <option value="Incorrecto">Incorrecto</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="sicaSolicitud">SICA Solicitud:</label>
+          <select name="sicaSolicitud" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Correcto">Correcto</option>
+            <option value="Incorrecto">Incorrecto</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="sicamFecha">SICAM Fecha:</label>
+          <input type="text" name="sicamFecha" required>
+      
+          <label for="sicamDatos">SICAM Datos:</label>
+          <select name="sicamDatos" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Correcto">Correcto</option>
+            <option value="Incorrecto">Incorrecto</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="otroBeneficio">Otro Beneficio:</label>
+          <select name="otroBeneficio" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="No posee">No posee</option>
+            <option value="Si compatible">Si compatible</option>
+            <option value="Si incompatible">Si incompatible</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="empresasEnRiesgo">Empresas en Riesgo:</label>
+          <select name="empresasEnRiesgo" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Posee">Posee</option>
+            <option value="No posee">No posee</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="aut1">AUT1:</label>
+          <select name="aut1" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Verificado">Verificado</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="desempleo">Desempleo:</label>
+          <select name="desempleo" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Posee">Posee</option>
+            <option value="No posee">No posee</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="programasSociales">Programas Sociales:</label>
+          <select name="programasSociales" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Posee">Posee</option>
+            <option value="No posee">No posee</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="otrosExpedientes">Otros Expedientes:</label>
+          <select name="otrosExpedientes" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Verificados">Verificados</option>
+            <option value="No verificados">No verificados</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="serviciosSICA">Servicios SICA:</label>
+          <select name="serviciosSICA" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Correctos">Correctos</option>
+            <option value="Incorrectos">Incorrectos</option>
+            <option value="No analizado">No analizado</option>
+          </select>
+      
+          <label for="fip">FIP:</label>
+          <select name="fip" required>
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Correcto">Correcto</option>
+            <option value="Error">Error</option>
+          </select>
+      
+          <label for="observaciones">Observaciones:</label>
+          <textarea name="observaciones"></textarea>
+      
+          <label for="estado">Estado:</label>
+          <select name="estado" required>
+            <option value="" disabled selected>Seleccione estado</option>
+            <option value="Cerrado">Cerrado</option>
+            <option value="Devuelto">Devuelto</option>
+            <option value="Pendiente supervisión">Pendiente supervisión</option>
+            <option value="Ok - Para cerrar">Ok - Para cerrar</option>
+          </select>
+      
+          <button type="submit">Guardar</button>
+        </form>
+      </body>
+      </html>

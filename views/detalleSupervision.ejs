@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+  <title>Detalles</title>
+  <style>
+    body {
+      font-family: 'Encode Sans';
+      color: #393939;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      margin-bottom: 150px;
+    }
+
+    header {
+      background-color: #37BBED;
+      color: #fff;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    div {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Detalles</h1>
+  </header>
+
+  <div>
+    <label>Operador:</label>
+    <p><%= supervision.operador %></p>
+
+    <label>Trámite:</label>
+    <p><%= supervision.tramite %></p>
+
+    <label>Turno:</label>
+    <p><%= supervision.turno %></p>
+
+    <label>Edad:</label>
+    <p><%= supervision.edad %></p>
+
+    <label>SICA Solicitud:</label>
+    <p><%= supervision.sica_solicitud %></p>
+
+    <label>SICAM Fecha:</label>
+    <p><%= supervision.sicam_fecha %></p>
+
+    <label>SICAM Datos:</label>
+    <p><%= supervision.sicam_datos %></p>
+
+    <label>Otro Beneficio:</label>
+    <p><%= supervision.otro_beneficio %></p>
+
+    <label>Empresas en Riesgo:</label>
+    <p><%= supervision.empresas_en_riesgo %></p>
+
+    <label>AUT1:</label>
+    <p><%= supervision.aut1 %></p>
+
+    <label>Desempleo:</label>
+    <p><%= supervision.desempleo %></p>
+
+    <label>Programas Sociales:</label>
+    <p><%= supervision.programas_sociales %></p>
+
+    <label>Otros Expedientes:</label>
+    <p><%= supervision.otros_expedientes %></p>
+
+    <label>Servicios SICA:</label>
+    <p><%= supervision.servicios_sica %></p>
+
+    <label>FIP:</label>
+    <p><%= supervision.fip %></p>
+
+    <label>Observaciones:</label>
+    <p><%= supervision.observaciones %></p>
+
+    <label>Estado:</label>
+    <p><%= supervision.estado %></p>
+    <a href="/supervisiones/tabla">
+    <button>   Volver  </button>  </a>
+  </div>
+</body>
+
+</html>

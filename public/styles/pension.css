@@ -1,0 +1,120 @@
+body {
+    font-family: 'Encode Sans';
+    color: #393939;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 200px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    /* Centrar horizontalmente */
+    justify-content: center;
+    /* Centrar verticalmente */
+    min-height: 100vh;
+    /* Asegurar que el cuerpo ocupa al menos la altura completa de la ventana */
+}
+
+
+header {
+    background-color: #37BBED;
+    /* Barra de navegación */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    /* Asegurar que el header ocupa el ancho completo */
+
+}
+
+#contenidoPara {
+    display: none;
+    /* Ocultar el div al principio */
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #202020;
+    /* Cambio de color al pasar el ratón */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.cargaLMN {
+    margin-top: 20px;
+    width: 50%;
+    /* Ancho del 50% de la página */
+    max-width: 600px;
+    /* O ajusta según tus necesidades */
+    text-align: left;
+    /* Alineación del texto a la izquierda */
+    margin: auto;
+    /* Centrar horizontalmente */
+    text-align: center;
+}
+
+.conceptosTipo1 {
+    color: #0099ff;
+}
+
+.conceptosTipo2 {
+    color: #06007d;
+}
+
+.datos {
+    margin-top: 20px;
+    max-width: 800px;
+    /* O ajusta según tus necesidades */
+    text-align: left;
+    /* Alineación del texto a la izquierda */
+    margin: auto;
+    /* Centrar horizontalmente */
+    text-align: center;
+}
+
+.datos th {
+    width: 30%;
+}
+
+
+    footer {
+        width: 100%;
+        background-color: #37BBED;
+        color: #fff;
+        text-align: center;
+        position:static;
+        bottom: 0;
+    }

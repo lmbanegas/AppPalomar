@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+  <title>Tabla de Supervisiones</title>
+  <style>
+    body {
+      font-family: 'Encode Sans';
+      color: #393939;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Esto centrará los elementos horizontalmente */
+      align-items: center;
+      /* Esto centrará los elementos verticalmente */
+    }
+
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      border: 1px solid #ccc;
+      /* Color del borde */
+      border-radius: 4px;
+      /* Bordes redondeados */
+      box-sizing: border-box;
+      /* Incluye el padding y el borde en el ancho y alto total */
+      transition: border-color 0.3s ease;
+      /* Efecto de transición en el color del borde */
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+
+    }
+
+    .table-container {
+      margin: 0 auto;
+      /* Esto centra el contenedor horizontalmente */
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      padding-inline: 45px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tabla de Supervisiones</h1>
+
+  <div class="table-container">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Operador</th>
+          <th>Trámite</th>
+          <th>Observaciones</th>
+          <th>Editar</th>
+          <th>Estado</th>
+          <th>Detalle</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const supervision of supervisions) { %>
+          <tr>
+            <td>
+              <%= supervision.operador %>
+            </td>
+            <td>
+              <%= supervision.tramite %>
+            </td>
+            <td>
+              <%= supervision.observaciones %>
+            </td>
+            <td>
+              <a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+                class="edit-link">»</a>
+            </td>
+            <td>
+              <% if (supervision.estado==='Cerrado' ) { %>
+                <span style="color: green; font-weight: bold;">Cerrado</span>
+                <% } else if (supervision.estado==='Devuelto' ) { %>
+                  <span style="color: #aa0090; font-weight: bold;">Devuelto</span>
+                  <% } else if (supervision.estado==='Pendiente supervisión' ) { %>
+                    <span style="color: orange; font-weight: bold;">Pendiente supervisión</span>
+                    <% } else if (supervision.estado==='Ok - Para cerrar' ) { %>
+                      <span style="color: blue; font-weight: bold;">Ok - Para cerrar</span>
+                      <% } else { %>
+                        <span style="color: otro_color; font-weight: bold;">
+                          <%= supervision.estado %>
+                        </span>
+                        <% } %>
+            </td>
+            <td>
+              <a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+                class="edit-link">»</a>
+            </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+    </article>
+
+    <a href="/supervisiones/formulario" style="text-decoration: none; color:#393939">
+      <h2>« Ingresar nuevo » </h2>
+    </a>
+
+</body>
+
+</html>

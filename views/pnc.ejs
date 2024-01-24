@@ -24,53 +24,32 @@
 
 
     <main>
-
-
-        <form id ="formularioCalculo" action="/pnc" method="post">
-
+       <form id ="formularioCalculo" action="/pnc" method="post">
             <h2 class="titulos">Ingresar datos:</h2>
-
-
             <label for="titular">Nombre y apellido</label>
             <input type="text" id="titular" name="titular">
             <br>
-
             <label for="cuil">CUIL</label>
             <input type="text" id="cuil" name="cuil">
             <br>
-
             <label for="expediente">Número de expediente</label>
             <input type="text" id="expediente" name="expediente">
             <br>
-
             <label for="beneficio">Número de beneficio</label>
             <input type="text" id="beneficio" name="beneficio">
             <br>
-
             Fecha inicial de pago:
-
                 <div class="fip">
                 <label for="dia"></label>
                 <input type="number" id="dia" name="dia" value="" required min="1" max="31" placeholder="Día">
-
                 <label for="mes"></label>
                 <input type="number" id="mes" name="mes" value="" required min="1" max="12" placeholder="Mes">
-
                 <label for="anio"></label>
                 <input type="number" id="anio" name="anio" value="" required min="2021" max="2023" placeholder="Año">
             </div>  
             <button id="calcularBtn" type="submit">Calcular</button>
             <br>
-
         </form>
-        <br>
-
-
-
-
-
-
-
     </main>
 
 
