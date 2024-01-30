@@ -25,6 +25,12 @@
     h1,
     h2 {
       text-align: center;
+
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 52px;
     }
 
 
@@ -83,6 +89,45 @@
       text-align: center;
 
     }
+
+    .floating-button {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      width: 60px; /* Ancho del botón */
+      height: 60px; /* Alto del botón */
+      line-height: 60px; /* Centra verticalmente el contenido */
+      border: none;
+      border-radius: 50%; /* Hace que el botón sea más redondo */
+      cursor: pointer;
+      text-align: center; /* Centra horizontalmente el contenido */
+      font-size: 24px; /* Aumenta el tamaño del texto */
+      z-index: 999; /* Asegura que esté por encima del contenido */
+    }
+
+    .floating-button2 {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #c3ac00;
+      color: white;
+      width: 60px; /* Ancho del botón */
+      height: 60px; /* Alto del botón */
+      line-height: 60px; /* Centra verticalmente el contenido */
+      border: none;
+      border-radius: 50%; /* Hace que el botón sea más redondo */
+      cursor: pointer;
+      text-align: center; /* Centra horizontalmente el contenido */
+      font-size: 24px; /* Aumenta el tamaño del texto */
+      z-index: 999; /* Asegura que esté por encima del contenido */
+    }
+
+
+    a {
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -90,64 +135,149 @@
 
   <h1>Tabla de Supervisiones</h1>
 
-  <div class="table-container">
 
-    <table>
-      <thead>
+
+  <h2 style="color: #aa0090; font-weight: bold;">Para corregir</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Trámite</th>
+        <th>Observaciones</th>
+        <th>Editar</th>
+        <th>Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% devueltos.forEach((supervision)=> { %>
         <tr>
-          <th>Operador</th>
-          <th>Trámite</th>
-          <th>Observaciones</th>
-          <th>Editar</th>
-          <th>Estado</th>
-          <th>Detalle</th>
-
+          <td>
+            <%= supervision.operador %>
+          </td>
+          <td>
+            <%= supervision.tramite %>
+          </td>
+          <td>
+            <%= supervision.observaciones %>
+          </td>
+          <td><a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+          <td><a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
         </tr>
-      </thead>
-      <tbody>
-        <% for (const supervision of supervisions) { %>
-          <tr>
-            <td>
-              <%= supervision.operador %>
-            </td>
-            <td>
-              <%= supervision.tramite %>
-            </td>
-            <td>
-              <%= supervision.observaciones %>
-            </td>
-            <td>
-              <a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
-                class="edit-link">»</a>
-            </td>
-            <td>
-              <% if (supervision.estado==='Cerrado' ) { %>
-                <span style="color: green; font-weight: bold;">Cerrado</span>
-                <% } else if (supervision.estado==='Devuelto' ) { %>
-                  <span style="color: #aa0090; font-weight: bold;">Devuelto</span>
-                  <% } else if (supervision.estado==='Pendiente supervisión' ) { %>
-                    <span style="color: orange; font-weight: bold;">Pendiente supervisión</span>
-                    <% } else if (supervision.estado==='Ok - Para cerrar' ) { %>
-                      <span style="color: blue; font-weight: bold;">Ok - Para cerrar</span>
-                      <% } else { %>
-                        <span style="color: otro_color; font-weight: bold;">
-                          <%= supervision.estado %>
-                        </span>
-                        <% } %>
-            </td>
-            <td>
-              <a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
-                class="edit-link">»</a>
-            </td>
-          </tr>
-          <% } %>
-      </tbody>
-    </table>
-    </article>
+        <% }); %>
+    </tbody>
+  </table>
 
-    <a href="/supervisiones/formulario" style="text-decoration: none; color:#393939">
-      <h2>« Ingresar nuevo » </h2>
-    </a>
+  <h2 style="color: rgb(0, 38, 188); font-weight: bold;">Ok - Para Cerrar</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Trámite</th>
+        <th>Observaciones</th>
+        <th>Editar</th>
+        <th>Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% paraCerrar.forEach((supervision)=> { %>
+        <tr>
+          <td>
+            <%= supervision.operador %>
+          </td>
+          <td>
+            <%= supervision.tramite %>
+          </td>
+          <td>
+            <%= supervision.observaciones %>
+          </td>
+          <td><a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+          <td><a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+  <h2 style="color: rgba(219, 126, 19, 0.916); font-weight: bold;">Pendiente Supervisión</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Trámite</th>
+        <th>Observaciones</th>
+        <th>Editar</th>
+        <th>Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pendienteSupervision.forEach((supervision)=> { %>
+        <tr>
+          <td>
+            <%= supervision.operador %>
+          </td>
+          <td>
+            <%= supervision.tramite %>
+          </td>
+          <td>
+            <%= supervision.observaciones %>
+          </td>
+          <td><a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+          <td><a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+  <!-- Tabla para supervisores Cerrados -->
+  <h2 style="color: green; font-weight: bold;">Cerrados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Trámite</th>
+        <th>Observaciones</th>
+        <th>Editar</th>
+        <th>Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cerrado.forEach((supervision)=> { %>
+        <tr>
+          <td>
+            <%= supervision.operador %>
+          </td>
+          <td>
+            <%= supervision.tramite %>
+          </td>
+          <td>
+            <%= supervision.observaciones %>
+          </td>
+          <td><a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+          <td><a href="/supervisiones/detalle/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+  </article>
+
+  <a href="/supervisiones/formulario" class="floating-button">+</a>
+
+  <a href="/supervisiones/formularioRapido" class="floating-button2" title="Adición rápida">+++</a>
+
+
+  <a href="/supervisiones/cerradosDiaAnterior">
+    <h3>Cerrados ayer</h3></a>
+
+
+
 
 </body>
 

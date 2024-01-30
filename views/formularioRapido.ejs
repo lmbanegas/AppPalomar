@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+  <title>Formulario de Supervisiones</title>
+
+</head>
+
+<style>
+  body {
+    font-family: 'Encode Sans';
+    color: #393939;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header {
+    background-color: #37BBED;
+    color: #fff;
+    text-align: center;
+  }
+
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: inline;
+    margin: 0 20px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #202020;
+    /* Cambio de color al pasar el ratón */
+  }
+
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #ccc;
+    /* Color del borde */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    box-sizing: border-box;
+    /* Incluye el padding y el borde en el ancho y alto total */
+    transition: border-color 0.3s ease;
+    /* Efecto de transición en el color del borde */
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+
+  .red {
+    color: red;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+  <header>
+    <%- include('header') %>
+  </header>
+
+
+  <h1>Formulario de Supervisiones</h1>
+  <form action="/supervisiones/guardar" method="post">
+
+    <label for="tramite">Nombre - CUIL - TTR:</label>
+    <input type="text" name="tramite" required>
+
+    <label for="observaciones">Observaciones:</label>
+    <textarea name="observaciones"></textarea>
+
+    <label for="estado">Estado:</label>
+    <select name="estado" required>
+      <option value="Cerrado">Cerrado</option>
+      <option value="Devuelto">Devuelto</option>
+      <option value="Pendiente supervisión" selected >Pendiente supervisión</option>
+      <option value="Ok - Para cerrar">Ok - Para cerrar</option>
+    </select>
+
+    <button type="submit">Guardar</button>
+  </form>
+</body>
+
+</html>

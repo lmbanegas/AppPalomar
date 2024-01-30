@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+  <title>Tabla de Supervisiones</title>
+  <style>
+    body {
+      font-family: 'Encode Sans';
+      color: #393939;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Esto centrará los elementos horizontalmente */
+      align-items: center;
+      /* Esto centrará los elementos verticalmente */
+    }
+
+
+    h1,
+    h2 {
+      text-align: center;
+
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 52px;
+    }
+
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      border: 1px solid #ccc;
+      /* Color del borde */
+      border-radius: 4px;
+      /* Bordes redondeados */
+      box-sizing: border-box;
+      /* Incluye el padding y el borde en el ancho y alto total */
+      transition: border-color 0.3s ease;
+      /* Efecto de transición en el color del borde */
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+
+    }
+
+    .table-container {
+      margin: 0 auto;
+      /* Esto centra el contenedor horizontalmente */
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      padding-inline: 45px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+
+    }
+
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      width: 60px; /* Ancho del botón */
+      height: 60px; /* Alto del botón */
+      line-height: 60px; /* Centra verticalmente el contenido */
+      border: none;
+      border-radius: 50%; /* Hace que el botón sea más redondo */
+      cursor: pointer;
+      text-align: center; /* Centra horizontalmente el contenido */
+      font-size: 24px; /* Aumenta el tamaño del texto */
+      z-index: 999; /* Asegura que esté por encima del contenido */
+    }
+
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tabla de Supervisiones</h1>
+
+  <h1>Supervisiones del día anterior</h1>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Trámite</th>
+        <th>Fecha de SO</th>
+        <th>Estado</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% supervisions.forEach((supervision)=> { %>
+        <tr>
+
+          <td>
+            <%= supervision.tramite %>
+          </td>
+          <td>
+            <%= supervision.turno %>
+          </td>
+          <td style="color:#4caf50" >
+            <%= supervision.estado %>
+          </td>
+          <td><a href="/supervisiones/editar/<%= supervision.id %>" style="text-decoration: none; font-size: 25px;"
+              class="edit-link">»</a></td>
+
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+
+</body>
+
+</html>

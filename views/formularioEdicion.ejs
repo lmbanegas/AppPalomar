@@ -105,106 +105,100 @@
   <form action="/supervisiones/actualizar/<%= supervision.id %>" method="post">
     <label for="operador">Operador:</label>
     <select name="operador" required>
-      <option value="" disabled>Seleccione operador</option>
+      <option value="" disabled>Seleccionar</option>
       <option value="Agus" <%= supervision.operador === 'Agus' ? 'selected' : '' %>>Agus</option>
       <option value="Maru" <%= supervision.operador === 'Maru' ? 'selected' : '' %>>Maru</option>
     </select>
 
-    <label for="tramite">Número de Trámite:</label>
+    <label for="tramite">Nombre - CUIL - TTR:</label>
     <input type="text" name="tramite" value="<%= supervision.tramite %>" required>
 
-    <label for="turno">Turno:</label>
-    <input type="text" name="turno" value="<%= supervision.turno %>" required>
+    <label for="turno">Fecha de SO:</label>
+    <input type="date" name="turno" value="<%= supervision.turno %>" required>
 
-    <label for="edad">Edad:</label>
+    <label for="edad">Verificación turno/edad:</label>
     <select name="edad" required>
-      <option value="" disabled>Seleccione opción</option>
-      <option  value="Correcto" <%= supervision.edad === 'Correcto' ? 'selected' : '' %>>Correcto</option>
-      <option value="Incorrecto" <%= supervision.edad === 'Incorrecto' ? 'selected' : '' %>>Incorrecto</option>
-      <option value="No analizado" <%= supervision.edad === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.edad === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.edad === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="sicaSolicitud">SICA Solicitud:</label>
     <select name="sicaSolicitud" required>
-      <option value="" disabled>Seleccione opción</option>
-      <option value="Correcto" <%= supervision.sica_solicitud ? 'selected' : '' %>>Correcto</option>
-      <option value="Incorrecto" <%= !supervision.sica_solicitud ? 'selected' : '' %>>Incorrecto</option>
-      <option value="No analizado" <%= supervision.sica_solicitud === null ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.sica_solicitud ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= !supervision.sica_solicitud ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="sicamFecha">SICAM Fecha:</label>
-    <input type="text" name="sicamFecha" value="<%= supervision.sicam_fecha %>" required>
+    <select name="sicamFecha" id="" required>
+      <option value="" disabled selected>-</option>
+     <option value="Correcto" <%= supervision.sicam_fecha === 'Correcto' ? 'selected' : '' %>>Ok</option>
+     <option value="Incorrecto" <%= supervision.sicam_fecha === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
+  </select>
+
 
     <label for="sicamDatos">SICAM Datos:</label>
     <select name="sicamDatos" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Correcto" <%= supervision.sicam_datos === 'Correcto' ? 'selected' : '' %>>Correcto</option>
-      <option value="Incorrecto" <%= supervision.sicam_datos === 'Incorrecto' ? 'selected' : '' %>>Incorrecto</option>
-      <option value="No analizado" <%= supervision.sicam_datos === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.sicam_datos === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.sicam_datos === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="otroBeneficio">Otro Beneficio:</label>
     <select name="otroBeneficio" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="No posee" <%= supervision.otro_beneficio === 'No posee' ? 'selected' : '' %>>No posee</option>
-      <option value="Si compatible" <%= supervision.otro_beneficio === 'Si compatible' ? 'selected' : '' %>>Si compatible</option>
-      <option value="Si incompatible" <%= supervision.otro_beneficio === 'Si incompatible' ? 'selected' : '' %>>Si incompatible</option>
-      <option value="No analizado" <%= supervision.otro_beneficio === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.otro_beneficio === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.otro_beneficio === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="empresasEnRiesgo">Empresas en Riesgo:</label>
     <select name="empresasEnRiesgo" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Posee" <%= supervision.empresas_en_riesgo === 'Posee' ? 'selected' : '' %>>Posee</option>
-      <option value="No posee" <%= supervision.empresas_en_riesgo === 'No posee' ? 'selected' : '' %>>No posee</option>
-      <option value="No analizado" <%= supervision.empresas_en_riesgo === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.empresas_en_riesgo === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.empresas_en_riesgo === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="aut1">AUT1:</label>
     <select name="aut1" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Sin datos" <%= supervision.aut1 === 'Sin datos' ? 'selected' : '' %>>Sin datos</option>
-      <option value="Verificado" <%= supervision.aut1 === 'Verificado' ? 'selected' : '' %>>Verificado</option>
-      <option value="No analizado" <%= supervision.aut1 === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.aut1 === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.aut1 === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="desempleo">Desempleo:</label>
     <select name="desempleo" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Posee" <%= supervision.desempleo === 'Posee' ? 'selected' : '' %>>Posee</option>
-      <option value="No posee" <%= supervision.desempleo === 'No posee' ? 'selected' : '' %>>No posee</option>
-      <option value="No analizado" <%= supervision.desempleo === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.desempleo === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.desempleo === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="programasSociales">Programas Sociales:</label>
     <select name="programasSociales" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Posee" <%= supervision.programas_sociales === 'Posee' ? 'selected' : '' %>>Posee</option>
-      <option value="No posee" <%= supervision.programas_sociales === 'No posee' ? 'selected' : '' %>>No posee</option>
-      <option value="No analizado" <%= supervision.programas_sociales === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.programas_sociales === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.programas_sociales === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="otrosExpedientes">Otros Expedientes:</label>
     <select name="otrosExpedientes" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Verificados" <%= supervision.otros_expedientes === 'Verificados' ? 'selected' : '' %>>Verificados</option>
-      <option value="No verificados" <%= supervision.otros_expedientes === 'No verificados' ? 'selected' : '' %>>Verificado con observacion</option>
-      <option value="No analizado" <%= supervision.otros_expedientes === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.otros_expedientes === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.otros_expedientes === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="serviciosSICA">Servicios SICA:</label>
     <select name="serviciosSICA" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Correctos" <%= supervision.servicios_sica=== 'Correctos' ? 'selected' : '' %>>Correctos</option>
-      <option value="Incorrectos" <%= supervision.servicios_sica === 'Incorrectos' ? 'selected' : '' %>>Incorrectos</option>
-      <option value="No analizado" <%= supervision.servicios_sica === 'No analizado' ? 'selected' : '' %>>No analizado</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.servicios_sica === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Incorrecto" <%= supervision.servicios_sica === 'Incorrecto' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="fip">FIP:</label>
     <select name="fip" required>
-      <option value="" disabled selected>Seleccione opción</option>
-      <option value="Correcto" <%= supervision.fip === 'Correcto' ? 'selected' : '' %>>Correcto</option>
-      <option value="Error" <%= supervision.fip === 'Error' ? 'selected' : '' %>>Error</option>
+      <option value="" disabled selected>-</option>
+      <option value="Correcto" <%= supervision.fip === 'Correcto' ? 'selected' : '' %>>Ok</option>
+      <option value="Error" <%= supervision.fip === 'Error' ? 'selected' : '' %>>No analizado</option>
     </select>
 
     <label for="observaciones">Observaciones:</label>
@@ -212,7 +206,7 @@
 
     <label for="estado">Estado:</label>
     <select name="estado" required>
-      <option value="" disabled selected>Seleccione estado</option>
+      <option value="" disabled selected>-</option>
       <option value="Cerrado" <%= supervision.estado === 'Cerrado' ? 'selected' : '' %>>Cerrado</option>
       <option value="Devuelto" <%= supervision.estado === 'Devuelto' ? 'selected' : '' %>>Devuelto</option>
       <option value="Pendiente supervisión" <%= supervision.estado === 'Pendiente supervisión' ? 'selected' : '' %>>Pendiente supervisión</option>
