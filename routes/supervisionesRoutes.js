@@ -11,9 +11,6 @@ router.get('/tabla', supervisionesController.mostrarTablaSupervisiones);
 
 router.get('/cerradosDiaAnterior', supervisionesController.cerradosDiaAnterior);
 
-
-
-
 router.get('/editar/:id', supervisionesController.mostrarFormularioEdicion);
 router.post('/actualizar/:id', supervisionesController.actualizarSupervision);
 router.get('/detalle/:id', supervisionesController.mostrarDetalleSupervision);

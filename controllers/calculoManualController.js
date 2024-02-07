@@ -513,7 +513,29 @@ const calcularPension = (req, res) => {
         'Complemento al minimo': parseFloat(req.body.minimo.replace(',', '.')),
         'Reparación Histórica': parseFloat(req.body.rh.replace(',', '.')),
         'Suplemento Dinerario': parseFloat(req.body.suplementoDinerario.replace(',', '.')), 
+        'OS': parseFloat(req.body.os.replace(',', '.')), 
     };
+
+        const datosFiltradosHaberDevengado = Object.fromEntries(
+            Object.entries(datosHaberDevengado).filter(([key, value]) => value > 0 && key!== 'OS')
+        );
+
+       
+        let  brutoDevengado = 0;
+        let descuentoDevengado = parseFloat(req.body.os.replace(',', '.'))
+
+        for (const key in datosFiltradosHaberDevengado) {
+            brutoDevengado += datosFiltradosHaberDevengado[key];
+        }   
+
+
+
+        brutoDevengado = (brutoDevengado / 30) * dia;
+        descuentoDevengado = (descuentoDevengado / 30) * dia;
+
+
+        console.log(descuentoDevengado)
+
 
 
     // Adquiere datos a través del body
@@ -692,9 +714,8 @@ const calcularPension = (req, res) => {
         aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
     }
 
-    console.log(sumatoriasRetroactivos)
 
-    res.render('pension', {datosIngresados, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
+    res.render('pension', {datosIngresados, brutoDevengado, descuentoDevengado, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
 };
 
 

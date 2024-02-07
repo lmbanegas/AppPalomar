@@ -48,7 +48,7 @@
 
     <h1 id="titulo">Pensiones derivadas</h1>
 
-    <form id="formularioCalculo" action="/pension" method="post">
+    <form id="formularioCalculo" action="/lmn/pension" method="post">
 
         <h2 class="titulos">Datos solicitante:</h2>
         <label for="titular">Nombre y apellido</label>
@@ -161,6 +161,15 @@
                         <td>
                             <label for="suplementoDinerario">
                                 <input type="text" id="suplementoDinerario" name="suplementoDinerario" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Obra Social</td>
+                        <td>
+                            <label for="os">
+                                <input type="text" id="os" name="os" pattern="[0-9,]*">
                             </label>
                         </td>
                     </tr>

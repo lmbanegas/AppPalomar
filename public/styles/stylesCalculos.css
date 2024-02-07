@@ -112,6 +112,7 @@
         box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total */
         transition: border-color 0.3s ease; /* Efecto de transición en el color del borde */
         cursor: text; /* Establecer el cursor como el de texto */
+        width: 50%;
 
     }
     
@@ -176,15 +177,12 @@
             margin: 20px 0; 
         }
 
-        p {
-            text-align: center;
-        }
 
         .datos{
             margin-top: 20px;
-            max-width: 800px; /* O ajusta según tus necesidades */
-            text-align: left; /* Alineación del texto a la izquierda */
-            margin: auto; /* Centrar horizontalmente */
+            max-width: 800px;
+            text-align: left;
+            margin: auto; 
             text-align: center;
         }
     
