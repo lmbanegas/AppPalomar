@@ -64,7 +64,7 @@
                 <tr>
                     <th>Fecha de fallecimiento:</th>
                     <td>
-                        <%= datos.fechaInicial %>
+                        <%= datos.fechaFallecimiento %>
                     </td>
                 </tr>
                 <tr>
@@ -328,14 +328,30 @@
                                                         <tr>
                                                             <td> <b> 2-022-011</b></td>
                                                             <td>
-                                                                $ <%= brutoDevengado.toFixed(2) %>
+                                                                $ <%= brutoCausante.toFixed(2) %>
                                                             </td>
 
                                                         </tr>
 
+
+                                                        <td> <b> 2-516-008</b></td>
+                                                            <td>
+
+                                                                $ <%= descuentoCausante.toFixed(2) %>
+                                                            </td>
+
+                                                        </tr>
+                                                        
                                                         <tr>
-                                                            <td><b>2-516-008</b></td>
-                                                            <td> OS HABER DEV
+                                                            <td style=" border:none">
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td><b>2-501-011</b></td>
+                                                            <td>
+                                                                $ <%= indebidosCausante.toFixed(2) %>
                                                             </td>
                                                         </tr>
 
@@ -347,6 +363,8 @@
                                                             </td>
                                                         </tr>
                                                         <% } %>
+
+
 
         </div>
         </table>

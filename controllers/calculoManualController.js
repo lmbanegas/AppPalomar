@@ -512,29 +512,48 @@ const calcularPension = (req, res) => {
         'PAP': parseFloat(req.body.PAP.replace(',', '.')),
         'Complemento al minimo': parseFloat(req.body.minimo.replace(',', '.')),
         'Reparación Histórica': parseFloat(req.body.rh.replace(',', '.')),
-        'Suplemento Dinerario': parseFloat(req.body.suplementoDinerario.replace(',', '.')), 
-        'OS': parseFloat(req.body.os.replace(',', '.')), 
+        'Suplemento Dinerario': parseFloat(req.body.suplementoDinerario.replace(',', '.')),
+        'OS': parseFloat(req.body.os.replace(',', '.')),
     };
 
-        const datosFiltradosHaberDevengado = Object.fromEntries(
-            Object.entries(datosHaberDevengado).filter(([key, value]) => value > 0 && key!== 'OS')
-        );
+    const datosFiltradosHaberDevengado = Object.fromEntries(
+        Object.entries(datosHaberDevengado).filter(([key, value]) => value > 0 && key !== 'OS')
+    );
 
-       
-        let  brutoDevengado = 0;
-        let descuentoDevengado = parseFloat(req.body.os.replace(',', '.'))
+    //Sumatoria de haber bruto del causante
+    let brutoCausante = 0;
 
-        for (const key in datosFiltradosHaberDevengado) {
-            brutoDevengado += datosFiltradosHaberDevengado[key];
-        }   
-
+    for (const key in datosFiltradosHaberDevengado) {
+        brutoCausante += datosFiltradosHaberDevengado[key];
+    }
 
 
-        brutoDevengado = (brutoDevengado / 30) * dia;
-        descuentoDevengado = (descuentoDevengado / 30) * dia;
+    //Asignación descuentos del haber
+    let descuentoCausante = parseFloat(req.body.os.replace(',', '.'));
 
 
-        console.log(descuentoDevengado)
+    if (req.body.devengados) {
+
+        if (mes == 12) {
+            brutoCausante = (brutoCausante / 30) * (dia - 1) + ((brutoCausante / 360) * (149 + dia));
+
+            descuentoCausante = (descuentoCausante / 30) * (dia - 1)+ (descuentoCausante / 360) * (149 + dia);
+
+        } else {
+            brutoCausante = (brutoCausante / 30) * (dia - 1);
+            descuentoCausante = (descuentoCausante / 30) * (dia - 1);
+        }
+
+    }
+
+    //Indebidos
+
+    let indebidosCausante = 0;
+
+    if (req.body.indebidos) {
+        indebidosCausante = ((brutoCausante - descuentoCausante) / 30) * (31 - dia)
+        console.log(indebidosCausante)
+    }
 
 
 
@@ -715,7 +734,7 @@ const calcularPension = (req, res) => {
     }
 
 
-    res.render('pension', {datosIngresados, brutoDevengado, descuentoDevengado, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
+    res.render('pension', { datosIngresados, brutoCausante, descuentoCausante, indebidosCausante, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
 };
 
 
