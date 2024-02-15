@@ -561,9 +561,32 @@ const calcularPension = (req, res) => {
 
         } else {
 
-            brutoCausante = ((brutoCausante / 30) * (diaF))+(brutoCausante / 360) * (150 + diaF);
+       if (diaF == 8 || diaF == 2) {
+        diaF = diaF + 30;
+       }
 
-            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
+       if (diaF == 9 || diaF == 3) {
+        diaF = diaF + 60;
+       }
+
+       if (diaF == 10 || diaF == 4) {
+        diaF = diaF + 90;
+       }
+   
+       if (diaF == 11 || diaF == 5) {
+        diaF = diaF + 120;
+       }
+
+
+
+
+
+
+
+            
+            brutoCausante = ((brutoCausante / 30) * (diaF))+(brutoCausante / 360) * ( diaF);
+
+            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * ( diaF);
 
         }
 
