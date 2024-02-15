@@ -561,19 +561,19 @@ const calcularPension = (req, res) => {
 
         } else {
 
-       if (diaF == 8 || diaF == 2) {
+       if (mesF == 8 || mesF == 2) {
         diaF = diaF + 30;
        }
 
-       if (diaF == 9 || diaF == 3) {
+       if (mesF == 9 || mesF == 3) {
         diaF = diaF + 60;
        }
 
-       if (diaF == 10 || diaF == 4) {
+       if (mesF == 10 || mesF == 4) {
         diaF = diaF + 90;
        }
    
-       if (diaF == 11 || diaF == 5) {
+       if (mesF == 11 || mesF == 5) {
         diaF = diaF + 120;
        }
 
