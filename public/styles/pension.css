@@ -13,6 +13,7 @@ body {
     /* Centrar verticalmente */
     min-height: 100vh;
     /* Asegurar que el cuerpo ocupa al menos la altura completa de la ventana */
+    max-width: auto;
 }
 
 
@@ -109,12 +110,3 @@ th {
     width: 30%;
 }
 
-
-    footer {
-        width: 100%;
-        background-color: #37BBED;
-        color: #fff;
-        text-align: center;
-        position:static;
-        bottom: 0;
-    }

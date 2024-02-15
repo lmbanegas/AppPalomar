@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
     <link rel="stylesheet" href="../styles/pension.css">
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+
+    <script src="../scripts/print.js"></script>
+
     <title>Resultado del cálculo</title>
 </head>
 
@@ -17,363 +21,487 @@
 
         <h1>Cálculo LMN </h1>
 
+        <div id="contenidoParaImprimir">
+            <div class="datos">
+                <table>
+                    <tr>
+                        <th>Solicitante:</th>
+                        <td>
+                            <%= datos.nombre%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>CUIL:</th>
+                        <td>
+                            <%= datos.cuil%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nro de expediente:</th>
+                        <td>
+                            <%= datos.expediente%>
+                        </td>
+                    </tr>
 
-        <div class="datos">
+                    <tr>
+                        <th>Causante:</th>
+                        <td>
+                            <%= datos.causante %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>CUIL Causante:</th>
+                        <td>
+                            <%= datos.cuilcausante %>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+
+                        <th>Nro de beneficio:</th>
+                        <td>
+                            <%= datos.beneficio%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de fallecimiento:</th>
+                        <td>
+                            <%= datos.fechaFallecimiento %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fecha inicial de pago:</th>
+                        <td>
+                            <%= datos.fechaInicial %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <h2>Mensuales</h2>
             <table>
                 <tr>
-                    <th>Solicitante:</th>
-                    <td>
-                        <%= datos.nombre%>
-                    </td>
-                </tr>
-                <tr>
-                    <th>CUIL:</th>
-                    <td>
-                        <%= datos.cuil%>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Nro de expediente:</th>
-                    <td>
-                        <%= datos.expediente%>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th>Causante:</th>
-                    <td>
-                        <%= datos.causante %>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th>CUIL Causante:</th>
-                    <td>
-                        <%= datos.cuilcausante %>
-                    </td>
-                </tr>
-
-
-                <tr>
-
-                    <th>Nro de beneficio:</th>
-                    <td>
-                        <%= datos.beneficio%>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Fecha de fallecimiento:</th>
-                    <td>
-                        <%= datos.fechaFallecimiento %>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Fecha inicial de pago:</th>
-                    <td>
-                        <%= datos.fechaInicial %>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-
-        <h2>Mensuales</h2>
-        <table>
-            <tr>
-                <th> Desde</th>
-                <th>Hasta</th>
-                <th>Meses</th>
-                <% for (const key in mesesCortados[0]) { %>
-                    <% if (key !=='desde' && key !=='hasta' && key !=='proporcionalMeses' && key !=='minima' && key
-                        !=='os' && key !=='haberBrutoRetro' && key !=='haberBruto' ) { %>
-                        <th>
-                            <% if (key==='PBU' ) { %>
-                                <p class="conceptosTipo1">PBU</p>
-                                <% } else if (key==='PBU/Sentencia' ) { %>
-                                    <p class="conceptosTipo1">PBU/Sentencia</p>
-                                    <% } else if (key==='PC' ) { %>
-                                        <p class="conceptosTipo1">PC</p>
-                                        <% } else if (key==='PAP' ) { %>
-                                            <p class="conceptosTipo1">PAP</p>
-                                            <% } else if (key==='complementoAlMinimo' || key==='Complemento al minimo' )
-                                                { %>
-                                                <p class="conceptosTipo1">Comp. Minimo</p>
-                                                <% } else if (key==='ObraSocial' ) { %>
-                                                    <p class="conceptosTipo1">OS</p>
-                                                    <% } else if (key==='PBURetro' ) { %>
-                                                        <p class="conceptosTipo2">PBU-Retro</p>
-                                                        <% } else if (key==='PCRetro' ) { %>
-                                                            <p class="conceptosTipo2">PC-Retro </p>
-                                                            <% } else if (key==='PAPRetro' ) { %>
-                                                                <p class="conceptosTipo2"> PAP-Retro </p>
-                                                                <% } else if (key==='PBU/SentenciaRetro' ) { %>
-                                                                    <p class="conceptosTipo2">PBU/S-Retro </p>
-                                                                    <% } else if (key==='complementoAlMinimoRetro' ) {
-                                                                        %>
-                                                                        <p class="conceptosTipo2"> Comp. Minimo - Retro
-                                                                        </p>
-                                                                        <% } else if (key==='ObraSocialRetro' ) { %>
-                                                                            <p class="conceptosTipo2"> OS-Retro </p>
-                                                                            <% } else { %>
-                                                                                <%= key %>
-                                                                                    <% } %>
-                        </th>
-                        <% } %>
-                            <% } %>
-
-            </tr>
-
-            <% for (let i=0; i < mesesCortados.length; i++) { %>
-                <tr>
-                    <td>
-                        <%= mesesCortados[i].desde.dia %>/<%= mesesCortados[i].desde.mes %>/<%=
-                                    mesesCortados[i].desde.anio %>
-                    </td>
-                    <td>
-                        <%= mesesCortados[i].hasta.dia %>/<%= mesesCortados[i].hasta.mes %>/<%=
-                                    mesesCortados[i].hasta.anio %>
-                    </td>
-                    <td>
-                        <%= mesesCortados[i].proporcionalMeses.toFixed(4) %>
-                    </td>
-                    <% for (const key in mesesCortados[i]) { %>
+                    <th> Desde</th>
+                    <th>Hasta</th>
+                    <th>Meses</th>
+                    <% for (const key in mesesCortados[0]) { %>
                         <% if (key !=='desde' && key !=='hasta' && key !=='proporcionalMeses' && key !=='minima' && key
-                            !=='os' && key !=='haberBrutoRetro' && key !=='haberBruto' ) { %>
-                            <td>
-                                <% if (typeof mesesCortados[i][key]==='number' ) { %>
-                                    $<%= mesesCortados[i][key].toFixed(2) %>
-                                        <% } else { %>
-                                            <%= mesesCortados[i][key] %>
-                                                <% } %>
-                            </td>
+                            !=='os' && key !=='haberBrutoRetro' && key !=='haberBruto'  ) { %>
+                            <th>
+                                <% if (key==='PBU' ) { %>
+                                    <p class="conceptosTipo1">PBU</p>
+                                    <% } else if (key==='PBUSentencia' ) { %>
+                                        <p class="conceptosTipo1">PBU/Sentencia</p>
+                                        <% } else if (key==='PC' ) { %>
+                                            <p class="conceptosTipo1">PC</p>
+                                            <% } else if (key==='PAP' ) { %>
+                                                <p class="conceptosTipo1">PAP</p>
+                                                <% } else if (key==='complementoAlMinimo' ||
+                                                    key==='Complemento al minimo' ) { %>
+                                                    <p class="conceptosTipo1">Comp. Minimo</p>
+                                                    <% } else if (key==='ObraSocial' ) { %>
+                                                        <p class="conceptosTipo1">OS</p>
+                                                        <% } else if (key==='PBURetro' ) { %>
+                                                            <p class="conceptosTipo2">PBU-Retro</p>
+                                                            <% } else if (key==='PCRetro' ) { %>
+                                                                <p class="conceptosTipo2">PC-Retro </p>
+                                                                <% } else if (key==='PAPRetro' ) { %>
+                                                                    <p class="conceptosTipo2"> PAP-Retro </p>
+                                                                    <% } else if (key==='PBU/SentenciaRetro' ) { %>
+                                                                        <p class="conceptosTipo2">PBU/S-Retro </p>
+                                                                        <% } else if (key==='complementoAlMinimoRetro' )
+                                                                            { %>
+                                                                            <p class="conceptosTipo2"> Comp. Minimo -
+                                                                                Retro
+                                                                            </p>
+                                                                            <% } else if (key==='ObraSocialRetro' ) { %>
+                                                                                <p class="conceptosTipo2"> OS-Retro </p>
+                                                                                <% } else { %>
+                                                                                    <%= key %>
+                                                                                        <% } %>
+                            </th>
                             <% } %>
                                 <% } %>
+
                 </tr>
-                <% } %>
 
-
-        </table>
-
-        <h2>Aguinaldo</h2>
-
-        <table>
-            <tr>
-                <th>Fecha Desde</th>
-                <th>Fecha Hasta</th>
-                <th>Meses</th>
-                <th>Haber Bruto</th>
-                <th>Obra Social</th>
-            </tr>
-
-            <% for (let i=0; i < nuevosMesesAguinaldo.length; i++) { %>
-                <tr>
-                    <td>
-                        <%= nuevosMesesAguinaldo[i].desde.dia %>/<%= nuevosMesesAguinaldo[i].desde.mes %>/<%=
-                                    nuevosMesesAguinaldo[i].desde.anio %>
-                    </td>
-                    <td>
-                        <%= nuevosMesesAguinaldo[i].hasta.dia %>/<%= nuevosMesesAguinaldo[i].hasta.mes %>/<%=
-                                    nuevosMesesAguinaldo[i].hasta.anio %>
-                    </td>
-                    <td>
-                        <%= nuevosMesesAguinaldo[i].tiempo.toFixed(4) %>
-                    </td>
-                    <td>$ <%= nuevosMesesAguinaldo[i].haberBruto.toFixed(2) %>
-                    </td></b>
-                    <td>$ <%= nuevosMesesAguinaldo[i].ObraSocial.toFixed(2) %>
-                    </td></b>
-                </tr>
-                <% } %>
-
-                    <tr>
-                        <td colspan="3"><strong>Total</strong></td>
-                        <td>$ <%= aguinaldoTotal.toFixed(2) %>
-                        </td>
-                        <td>$ <%= aguinaldoOsTotal.toFixed(2) %>
-                        </td>
-                    </tr>
-        </table>
-
-
-
-        <h2>Retroactivos</h2>
-        <table>
-            <tr>
-                <th>Concepto</th>
-                <th>Monto</th>
-            </tr>
-            <% for (const tipoPropiedad in sumatoriasRetroactivos) { %>
-                <% if (tipoPropiedad !=='haberBruto' ) { %>
+                <% for (let i=0; i < mesesCortados.length; i++) { %>
                     <tr>
                         <td>
-                            <%= `Retroactivo ${tipoPropiedad}` %>
+                            <%= mesesCortados[i].desde.dia %>/<%= mesesCortados[i].desde.mes %>/<%=
+                                        mesesCortados[i].desde.anio %>
                         </td>
-                        <td>$ <%= sumatoriasRetroactivos[tipoPropiedad].toFixed(2) %>
+                        <td>
+                            <%= mesesCortados[i].hasta.dia %>/<%= mesesCortados[i].hasta.mes %>/<%=
+                                        mesesCortados[i].hasta.anio %>
                         </td>
+                        <td>
+                            <%= mesesCortados[i].proporcionalMeses.toFixed(4) %>
+                        </td>
+                        <% for (const key in mesesCortados[i]) { %>
+                            <% if (key !=='desde' && key !=='hasta' && key !=='proporcionalMeses' && key !=='minima' &&
+                                key !=='os' && key !=='haberBrutoRetro' && key !=='haberBruto' ) { %>
+                                <td>
+                                    <% if (typeof mesesCortados[i][key]==='number' ) { %>
+                                        $<%= mesesCortados[i][key].toFixed(2) %>
+                                            <% } else { %>
+                                                <%= mesesCortados[i][key] %>
+                                                    <% } %>
+                                </td>
+                                <% } %>
+                                    <% } %>
                     </tr>
                     <% } %>
-                        <% } %>
-        </table>
 
-        <h2>Carga de datos en LMN</h2>
 
-        <div class="cargaLMN">
+            </table>
+
+            <h2>Aguinaldo</h2>
+
+            <table>
+                <tr>
+                    <th>Fecha Desde</th>
+                    <th>Fecha Hasta</th>
+                    <th>Meses</th>
+                    <th>Haber Bruto</th>
+                    <th>Obra Social</th>
+                </tr>
+
+                <% for (let i=0; i < nuevosMesesAguinaldo.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= nuevosMesesAguinaldo[i].desde.dia %>/<%= nuevosMesesAguinaldo[i].desde.mes %>/<%=
+                                        nuevosMesesAguinaldo[i].desde.anio %>
+                        </td>
+                        <td>
+                            <%= nuevosMesesAguinaldo[i].hasta.dia %>/<%= nuevosMesesAguinaldo[i].hasta.mes %>/<%=
+                                        nuevosMesesAguinaldo[i].hasta.anio %>
+                        </td>
+                        <td>
+                            <%= nuevosMesesAguinaldo[i].tiempo.toFixed(4) %>
+                        </td>
+                        <td>$ <%= nuevosMesesAguinaldo[i].haberBruto.toFixed(2) %>
+                        </td></b>
+                        <td>$ <%= nuevosMesesAguinaldo[i].ObraSocial.toFixed(2) %>
+                        </td></b>
+                    </tr>
+                    <% } %>
+
+                        <tr>
+                            <td colspan="3"><strong>Total</strong></td>
+                            <td>$ <%= aguinaldoTotal.toFixed(2) %>
+                            </td>
+                            <td>$ <%= aguinaldoOsTotal.toFixed(2) %>
+                            </td>
+                        </tr>
+            </table>
+
+
+
+            <h2>Retroactivos</h2>
             <table>
                 <tr>
                     <th>Concepto</th>
                     <th>Monto</th>
                 </tr>
+                <% for (const tipoPropiedad in sumatoriasRetroactivos) { %>
+                    <% if (tipoPropiedad !=='haberBruto' ) { %>
+                        <tr>
+                            <td>
+                                <%= `Retroactivo ${tipoPropiedad}` %>
+                            </td>
+                            <td>$ <%= sumatoriasRetroactivos[tipoPropiedad].toFixed(2) %>
+                            </td>
+                        </tr>
+                        <% } %>
+                            <% } %>
+            </table>
 
-                <% if (mesesCortados.length> 0) { %>
-                    <% const ultimoMesCortado=mesesCortados[mesesCortados.length - 1]; %>
-                        <% for (const key in ultimoMesCortado) { %>
-                            <% if (key !=='desde' && key !=='hasta' && key !=='proporcionalMeses' && key !=='minima' &&
-                                key !=='os' && key !=='haberBruto' && key !=='haberBrutoRetro' && key !=='PBURetro' &&
-                                key !=='PCRetro' && key !=='PAPRetro' && key !=='PBU/SentenciaRetro' && key
-                                !=='complementoAlMinimoRetro' && key !=='ObraSocialRetro' ) { %>
-                                <tr>
-                                    <td>
-                                        <% if (key==='PBU' ) { %>
-                                            <b> 1-001-001 </b>
-                                            <% } else if (key==='PBU/Sentencia' ) { %>
-                                                <b> 1-001-111 </b>
-                                                <% } else if (key==='PC' ) { %>
-                                                    <b> 1-001-002</b>
-                                                    <% } else if (key==='PAP' ) { %>
-                                                        <b> 1-001-003</b>
-                                                        <% } else if (key==='Complemento al minimo' ||
-                                                            key==='complementoAlMinimo' ) { %>
-                                                            <b> 1-088-000</b>
-                                                            <% } else if (key==='ObraSocial' ) { %>
-                                                                <b> 1-318-008</b>
-                                                                <% } else { %>
-                                                                    <%= key %>
-                                                                        <% } %>
-                                    </td>
+            <h2>Carga de datos en LMN</h2>
 
-                                    <td>
-                                        <% if (typeof ultimoMesCortado[key]==='number' ) { %>
-                                            $<%= ultimoMesCortado[key].toFixed(2) %>
-                                                <% } else { %>
-                                                    <%= ultimoMesCortado[key] %>
-                                                        <% } %>
-                                    </td>
-                                </tr>
-                                <% } %>
+            <div class="cargaLMN">
+                <table>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                    </tr>
+
+                    <% if (mesesCortados.length> 0) { %>
+                        <% const ultimoMesCortado=mesesCortados[mesesCortados.length - 1]; %>
+
+
+                            <% for (const key in ultimoMesCortado) { %>
+                                <% if (key !=='desde' && key !=='hasta' && key !=='proporcionalMeses' && key !=='minima'
+                                    && key !=='os' && key !=='haberBruto' && key !=='haberBrutoRetro' && key
+                                    !=='PBURetro' && key !=='PCRetro' && key !=='PAPRetro' && key
+                                    !=='PBUSentenciaRetro' && key !=='complementoAlMinimoRetro' && key
+                                    !=='ObraSocialRetro' ) { %>
+                                    <tr>
+                                        <td>
+                                            <% if (key==='PBU' ) { %>
+                                                <b> 1-001-001 </b>
+                                                <% } else if (key==='PBUSentencia' ) { %>
+                                                    <b> 1-001-111 </b>
+                                                    <% } else if (key==='PC' ) { %>
+                                                        <b> 1-001-002</b>
+                                                        <% } else if (key==='PAP' ) { %>
+                                                            <b> 1-001-003</b>
+                                                            <% } else if (key==='Complemento al minimo' ||
+                                                                key==='complementoAlMinimo' ) { %>
+                                                                <b> 1-088-000</b>
+                                                                <% } else if (key==='ObraSocial' ) { %>
+                                                                    <b> 1-318-008</b>
+                                                                    <% } else { %>
+                                                                        <%= key %>
+                                                                            <% } %>
+                                        </td>
+
+                                        <td>
+                                            <% if (typeof ultimoMesCortado[key]==='number' ) { %>
+                                                $<%= ultimoMesCortado[key].toFixed(2) %>
+                                                    <% } else { %>
+                                                        <%= ultimoMesCortado[key] %>
+                                                            <% } %>
+                                        </td>
+                                    </tr>
                                     <% } %>
+                                        <% } %>
 
 
 
-                                        <tr>
-                                            <td style="border:none">
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td style="border:none">
+                                                </td>
+                                            </tr>
 
 
-                                        <% for (const tipoPropiedad in sumatoriasRetroactivos) { %>
-                                            <% if (tipoPropiedad !=='haberBruto' ) { %>
-                                                <tr>
-                                                    <td>
-                                                        <% if (tipoPropiedad==='PBU' ) { %>
-                                                            2-108-001
-                                                            <% } else if (tipoPropiedad==='PBU/Sentencia' ) { %>
-                                                                2-108-111
-                                                                <% } else if (tipoPropiedad==='PC' ) { %>
-                                                                    2-108-002
-                                                                    <% } else if (tipoPropiedad==='PAP' ) { %>
-                                                                        2-108-003
-                                                                        <% } else if
-                                                                            (tipoPropiedad==='complementoAlMinimo' ) {
-                                                                            %>
-                                                                            2-188-001
-                                                                            <% } else if (tipoPropiedad==='ObraSocial' )
+                                            <% for (const tipoPropiedad in sumatoriasRetroactivos) { %>
+                                                <% if (tipoPropiedad !=='haberBruto' ) { %>
+                                                    <tr>
+                                                        <td>
+                                                            <% if (tipoPropiedad==='PBU' ) { %>
+                                                                2-108-001
+                                                                <% } else if (tipoPropiedad==='PBUSentencia') { %>
+                                                                    2-108-111
+                                                                    <% } else if (tipoPropiedad==='PC' ) { %>
+                                                                        2-108-002
+                                                                        <% } else if (tipoPropiedad==='PAP' ) { %>
+                                                                            2-108-003
+                                                                            <% } else if
+                                                                                (tipoPropiedad==='complementoAlMinimo' )
                                                                                 { %>
-                                                                                2-518-008
-                                                                                <% } else { %>
-                                                                                    <%= tipoPropiedad %>
-                                                                                        <% } %>
-                                                    </td>
-                                                    <td>$ <%= sumatoriasRetroactivos[tipoPropiedad].toFixed(2) %>
-                                                    </td>
-                                                </tr>
-                                                <% } %>
+                                                                                2-188-001
+                                                                                <% } else if
+                                                                                    (tipoPropiedad==='ObraSocial' ) { %>
+                                                                                    2-518-008
+                                                                                    <% } else { %>
+                                                                                        <%= tipoPropiedad %>
+                                                                                            <% } %>
+                                                        </td>
+                                                        <td>$ <%= sumatoriasRetroactivos[tipoPropiedad].toFixed(2) %>
+                                                        </td>
+                                                    </tr>
                                                     <% } %>
-                                                        <br>
-
-                                                        <tr>
-                                                            <td style="border:none">
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td> <b> 2-102-001</b></td>
-                                                            <td>$ <%= aguinaldoTotal.toFixed(2) %>
-                                                            </td>
-
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td><b>2-519-008</b></td>
-                                                            <td>$ <%= aguinaldoOsTotal.toFixed(2) %>
-                                                            </td>
-                                                        </tr>
-
-                                                        <br>
-
-                                                        <tr>
-                                                            <td style="border:none">
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td> <b> 2-022-011</b></td>
-                                                            <td>
-                                                                $ <%= brutoCausante.toFixed(2) %>
-                                                            </td>
-
-                                                        </tr>
-
-
-                                                        <td> <b> 2-516-008</b></td>
-                                                            <td>
-
-                                                                $ <%= descuentoCausante.toFixed(2) %>
-                                                            </td>
-
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td style=" border:none">
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td><b>2-501-011</b></td>
-                                                            <td>
-                                                                $ <%= indebidosCausante.toFixed(2) %>
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <br>
-
-                                                        <tr>
-                                                            <td style="height: 150px; border:none">
-                                                            </td>
-                                                        </tr>
                                                         <% } %>
+                                                            <br>
+
+                                                            <tr>
+                                                                <td style="border:none">
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <b> 2-102-001</b></td>
+                                                                <td>$ <%= aguinaldoTotal.toFixed(2) %>
+                                                                </td>
+
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><b>2-519-008</b></td>
+                                                                <td>$ <%= aguinaldoOsTotal.toFixed(2) %>
+                                                                </td>
+                                                            </tr>
+
+                                                            <br>
+
+                                                            <tr>
+                                                                <td style="border:none">
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <b> 2-022-011</b></td>
+                                                                <td>
+                                                                    <% if ( req.body.devengados==undefined ) { %>
+                                                                        -
+                                                                        <% } else { %>
+                                                                            $ <%= brutoCausante.toFixed(2) %>
+                                                                                <% } %>
+
+                                                                </td>
+
+                                                            </tr>
 
 
+                                                            <td> <b> 2-516-008</b></td>
+                                                            <td>
+                                                                <% if ( req.body.devengados==undefined ) { %>
+                                                                    -
+                                                                    <% } else { %>
+                                                                        $ <%= descuentoCausante.toFixed(2) %>
+                                                                            <% } %>
+
+
+                                                            </td>
+
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td style=" border:none">
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td><b>2-501-011</b></td>
+                                                                <td>
+
+                                                                    <% if ( indebidosCausante==0 ) { %>
+                                                                        -
+                                                                        <% } else { %>
+                                                                            $ <%= indebidosCausante.toFixed(2) %>
+                                                                                <% } %>
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td style=" border:none">
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><b>2-107-000</b></td>
+                                                                <td>
+
+                                                                    <% if ( scf==0 ) { %>
+                                                                        -
+                                                                        <% } else { %>
+                                                                            $ <%= scf.toFixed(2) %>
+                                                                                <% } %>
+                                                                </td>
+                                                            </tr>
+
+                                                            <% } %>
+
+
+
+            </div>
+            </table>
+
+            <h2></h2>
+            <table>
+                <tr>
+                    <th colspan="2">Datos beneficio</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Haber real
+                    </td>
+
+                    <td>
+                        $ <%= haberReal.toFixed(2)%>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        FIP
+                    </td>
+
+                    <td>
+                        <%= datos.fechaInicial %>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Clase de beneficio
+                    </td>
+
+                    <td>
+
+                        <% if (mesesCortados[0].PBUSentencia) { %>
+                            30
+                            <% } else { %>
+                                -
+                                <% } %>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        Ley aplicada
+                    </td>
+
+                    <td>
+                        <% if (mesesCortados[0].PBUSentencia) { %>
+                            PT
+                            <% } else { %>
+                                -
+                                <% } %>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        % Cómputo
+                    </td>
+
+                    <td>70%
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        % Beneficio
+                    </td>
+
+                    <td>100%
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        PMR
+                    </td>
+
+                    <td>
+                        $ <%= pmr.toFixed(2)%>
+                    </td>
+                </tr>
+            </table>
 
         </div>
-        </table>
-
     </main>
 
-    <footer>
-        <p>Derechos de autor © 2024 - Lucas Matías Banegas</p>
-    </footer>
+    <button style="margin-bottom: 60px;" onclick="imprimirContenido()">Imprimir</button>
+
+
+
+
 
 </body>
 

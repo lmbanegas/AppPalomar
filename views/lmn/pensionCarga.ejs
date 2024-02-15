@@ -77,22 +77,22 @@
         Fecha de fallecimiento:
         <div class="fip">
             <label for="diaF"></label>
-            <input type="number" id="diaF" name="diaF" value="10" required min="1" max="31" placeholder="Día">
+            <input type="number" id="diaF" name="diaF" required min="1" max="31" placeholder="Día">
             <label for="mesF"></label>
-            <input type="number" id="mesF" name="mesF" value="10" required min="1" max="12" placeholder="Mes">
+            <input type="number" id="mesF" name="mesF" required min="1" max="12" placeholder="Mes">
             <label for="anioF"></label>
-            <input type="number" id="anioF" name="anioF" value="2022" required min="2021" max="2023" placeholder="Año">
+            <input type="number" id="anioF" name="anioF"required min="2021" max="2023" placeholder="Año">
         </div>
 
         <br>
         Fecha inicial de pago:
         <div class="fip">
             <label for="dia"></label>
-            <input type="number" id="dia" name="dia" value="10" required min="1" max="31" placeholder="Día">
+            <input type="number" id="dia" name="dia"  required min="1" max="31" placeholder="Día">
             <label for="mes"></label>
-            <input type="number" id="mes" name="mes" value="10" required min="1" max="12" placeholder="Mes">
+            <input type="number" id="mes" name="mes"  required min="1" max="12" placeholder="Mes">
             <label for="anio"></label>
-            <input type="number" id="anio" name="anio" value="2022" required min="2021" max="2023" placeholder="Año">
+            <input type="number" id="anio" name="anio"  required min="2021" max="2023" placeholder="Año">
         </div>
 
 
@@ -103,6 +103,8 @@
 
             <div class="opciones" id="opciones">
                 <h2>Haber del causante:</h2>
+                <p style="font-size: 13px;" > *Cargar todos los datos del RUB del mensual</p>
+                <br>
                 <table>
                     <tr>
                         <th>Concepto</th>
@@ -186,13 +188,19 @@
                     <label for="indebidos">Haberes indebidos
                         <input type="checkbox" name="indebidos" id="indebidos">
                     </label>
+
+                    <label for="scf">Subsidio de Contención Familiar
+                        <input type="checkbox" name="scf" id="scf">
+                    </label>
+
+
                 </div>
 
             </div>
 
 
 
-            <button id="calcularBtn" type="submit">Calcular</button>
+            <button id="calcularBtn" type="submit" style="margin-bottom: 150px;">Calcular</button>
 
     </form>
 

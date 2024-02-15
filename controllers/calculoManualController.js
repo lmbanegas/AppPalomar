@@ -450,8 +450,8 @@ const calcularPension = (req, res) => {
         },
         {
             "desde": { dia: 1, mes: 12, anio: 2023 },
-            "hasta": { dia: 28, mes: 02, anio: 2024 },
-            "proporcionalMeses": 3,
+            "hasta": { dia: 31, mes: 03, anio: 2024 },
+            "proporcionalMeses": 4,
             "aumento": 1.2087,
             "minima": 105712.61,
             "os": 3171.38,
@@ -461,6 +461,9 @@ const calcularPension = (req, res) => {
     const dia = parseInt(req.body.dia);
     const mes = parseInt(req.body.mes);
     const anio = parseInt(req.body.anio);
+
+    let diaF = parseInt(req.body.diaF);
+   
 
 
     const fipDias = [{ dia: dia, mes: mes, anio: anio }];
@@ -507,7 +510,7 @@ const calcularPension = (req, res) => {
 
     const datosHaberDevengado = {
         'PBU': parseFloat(req.body.PBU.replace(',', '.')),
-        'PBU/Sentencia': parseFloat(req.body.PBUS.replace(',', '.')),
+        'PBUSentencia': parseFloat(req.body.PBUS.replace(',', '.')),
         'PC': parseFloat(req.body.PC.replace(',', '.')),
         'PAP': parseFloat(req.body.PAP.replace(',', '.')),
         'Complemento al minimo': parseFloat(req.body.minimo.replace(',', '.')),
@@ -525,23 +528,41 @@ const calcularPension = (req, res) => {
 
     for (const key in datosFiltradosHaberDevengado) {
         brutoCausante += datosFiltradosHaberDevengado[key];
+
+    }
+
+    console.log("refresh")
+
+    //Haber real
+    let pmr = 0;
+
+    for (const key in datosFiltradosHaberDevengado) {
+        if (key == 'PBU' ||  key == 'PC'  || key == 'PAP' || key == 'PBUSentencia') {
+            pmr += datosFiltradosHaberDevengado[key];
+        }
     }
 
 
     //Asignación descuentos del haber
     let descuentoCausante = parseFloat(req.body.os.replace(',', '.'));
 
-
+    
     if (req.body.devengados) {
 
-        if (mes == 12) {
-            brutoCausante = (brutoCausante / 30) * (dia - 1) + ((brutoCausante / 360) * (149 + dia));
+        if (req.body.mesF == 12 || req.body.mesF == 6) {
 
-            descuentoCausante = (descuentoCausante / 30) * (dia - 1)+ (descuentoCausante / 360) * (149 + dia);
+        
+            brutoCausante = ((brutoCausante / 30) * (diaF))+(brutoCausante / 360) * (150 + diaF);
+
+            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
+
+            console.log(brutoCausante)
+
 
         } else {
-            brutoCausante = (brutoCausante / 30) * (dia - 1);
-            descuentoCausante = (descuentoCausante / 30) * (dia - 1);
+
+            brutoCausante = ((brutoCausante / 30) * (diaF));
+            descuentoCausante = (descuentoCausante / 30) * (diaF);
         }
 
     }
@@ -551,18 +572,34 @@ const calcularPension = (req, res) => {
     let indebidosCausante = 0;
 
     if (req.body.indebidos) {
-        indebidosCausante = ((brutoCausante - descuentoCausante) / 30) * (31 - dia)
-        console.log(indebidosCausante)
+
+        if (mes == 12 | mes == 6) {
+            indebidosCausante = (((brutoCausante - descuentoCausante) / 30) * (31 - dia)) + ((brutoCausante - descuentoCausante) * ((31 - dia) / 30 / 12))
+
+
+        } else {
+            indebidosCausante = ((brutoCausante - descuentoCausante) / 30) * (31 - dia)
+        }
     }
+
+    // SCF
+
+
+    let scf = 0;
+
+    if (req.body.scf) {
+        scf = 15000;
+    }
+
 
 
 
     // Adquiere datos a través del body
     const datosIngresados = {
-        'PBU': parseFloat(req.body.PBU.replace(',', '.')),
-        'PBU/Sentencia': parseFloat(req.body.PBUS.replace(',', '.')),
-        'PC': parseFloat(req.body.PC.replace(',', '.')),
-        'PAP': parseFloat(req.body.PAP.replace(',', '.')),
+        'PBU': parseFloat(req.body.PBU.replace(',', '.')) * 0.7,
+        'PBUSentencia': parseFloat(req.body.PBUS.replace(',', '.')) * 0.7,
+        'PC': parseFloat(req.body.PC.replace(',', '.')) * 0.7,
+        'PAP': parseFloat(req.body.PAP.replace(',', '.')) * 0.7,
     };
 
     // Se filtran datos mayor a cero
@@ -622,7 +659,7 @@ const calcularPension = (req, res) => {
         };
 
         verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PBU', mesesCortados[i].aumento);
-        verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PBU/Sentencia', mesesCortados[i].aumento);
+        verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PBUSentencia', mesesCortados[i].aumento);
         verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PC', mesesCortados[i].aumento);
         verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PAP', mesesCortados[i].aumento);
         verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'Complemento al minimo', mesesCortados[i].aumento);
@@ -634,6 +671,20 @@ const calcularPension = (req, res) => {
 
         mesesCortados[i] = nuevoValor;
     }
+
+    const ultimoHaber = mesesCortados[mesesCortados.length - 1];
+
+
+    let haberReal = 0;
+
+    for (let key in ultimoHaber) {
+        if (key === 'PBU' || key === 'PC' || key === 'PAP' || key === 'PBUSentencia') {
+            haberReal.toFixed(2) 
+            haberReal += ultimoHaber[key];
+        }
+    }
+
+
 
     // Cálculo de retroactivos  
     for (let i = 0; i < mesesCortados.length; i++) {
@@ -734,7 +785,7 @@ const calcularPension = (req, res) => {
     }
 
 
-    res.render('pension', { datosIngresados, brutoCausante, descuentoCausante, indebidosCausante, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
+    res.render('pension', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
 };
 
 

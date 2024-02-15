@@ -23,7 +23,7 @@ function obtenerEstilosCSS() {
     return `
     @media print {
         body {
-            font-family: 'Calibri';
+            font-family: 'Segoe UI';
             margin: 0;
             padding: 0;
         }
