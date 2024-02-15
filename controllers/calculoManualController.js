@@ -561,32 +561,30 @@ const calcularPension = (req, res) => {
 
         } else {
 
+       let diaFA = 0;
+
        if (req.body.mesF == 8 || req.body.mesF == 2) {
-        diaF = diaF + 30;
+        diaFA = diaF + 30;
        }
 
        if (req.body.mesF == 9 || req.body.mesF == 3) {
-        diaF = diaF + 60;
+        diaFA = diaF + 60;
        }
 
        if (req.body.mesF == 10 || req.body.mesF == 4) {
-        diaF = diaF + 90;
+        diaFA = diaF + 90;
        }
    
        if (req.body.mesF == 11 || req.body.mesF == 5) {
-        diaF = diaF + 120;
+        diaFA = diaF + 120;
        }
 
 
 
+         
+            brutoCausante = ((brutoCausante / 30) * (diaF))+(brutoCausante / 360) * ( diaFA);
 
-
-
-
-            
-            brutoCausante = ((brutoCausante / 30) * (diaF))+(brutoCausante / 360) * ( diaF);
-
-            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * ( diaF);
+            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * ( diaFA);
 
         }
 
