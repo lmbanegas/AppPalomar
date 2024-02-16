@@ -649,8 +649,8 @@ const calcularPension = (req, res) => {
     haberBruto = sumatoria + parseFloat(complementoAlMinimo);
     obraSocial = (((haberBruto * 0.06) - mesesCortados[0].os));
 
-    datosFiltrados.haberBruto = haberBruto
-    datosFiltrados.ObraSocial = obraSocial
+    datosFiltrados.haberBruto = haberBruto;
+    datosFiltrados.ObraSocial = obraSocial.toFixed(2);
 
     // Fx para verificar conceptos
     function verificacionDeConceptos(anterior, actual, propiedad, aumento) {
