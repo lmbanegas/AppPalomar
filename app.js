@@ -10,7 +10,6 @@ const formulariosRoutes = require('./routes/formulariosRoutes');
 const generalRoutes = require('./routes/generalRoutes'); 
 
 
-
 // ------- ***** RENDER ***** ------- /
 
 const pool = new Pool({

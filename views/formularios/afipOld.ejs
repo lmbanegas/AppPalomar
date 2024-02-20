@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -47,12 +46,12 @@
     <label for="empleador">CUIL Empleador</label>
     <input type="text" name="empleador" id="empleador">
     <br>
-    <button onclick="fillFormAndPrint()">Imprimir</button>
+    <button onclick="fillForm()">Enviar</button>
   </div>
 </body>
 
 <script>
-  async function fillFormAndPrint() {
+  async function fillForm() {
     const { PDFDocument } = PDFLib;
 
     // Fetch the PDF with form fields 
@@ -84,24 +83,18 @@
     // Serialize the PDFDocument to bytes (a Uint8Array)
     const pdfBytes = await pdfDoc.save();
 
-    // Create a blob from the PDF data
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    // Obtén el CUIL del trabajador ingresado por el usuario
+    const cuilTrabajador = document.getElementById('trabajador').value;
+    const mes = document.getElementById('mes').value;
+    const anio = document.getElementById('anio').value;
 
-    // Create a URL for the blob
-    const url = URL.createObjectURL(blob);
 
-    // Open the PDF in a new window
-    const newWindow = window.open(url);
+    // Combina el CUIL del trabajador para formar el nombre del archivo de salida
+    const nombreArchivo = `${cuilTrabajador}_${mes}_${anio}.pdf`;
 
-    // Wait for the PDF to finish loading in the new window
-    newWindow.onload = () => {
-      // Print the PDF
-      newWindow.print();
-      // Close the window after printing
-      setTimeout(() => {
-        newWindow.close();
-      }, 500); // Adjust the delay as needed
-    };
+
+    // Trigger the browser to download the PDF document
+    download(pdfBytes, nombreArchivo, 'application/pdf');
   }
 </script>
 

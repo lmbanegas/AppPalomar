@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const calculoController = require('../controllers/calculoManualController');
+const pensionController = require('../controllers/pensionController');
+const puamController = require('../controllers/puamController');
+
+const pensionRetroController = require('../controllers/pensionRetroController');
+
 
 
 const path = require('path');
@@ -10,11 +14,14 @@ router.get('/aplicaciones', function(req, res) {
     res.render('calculosLMN'); //
 });
 
-router.get('/puam', calculoController.inicioPuam);
-router.post('/puam', calculoController.calcularPuam);
+router.get('/puam', puamController.inicioPuam);
+router.post('/puam', puamController.calcularPuam);
 
-router.get('/pension', calculoController.inicioPension);
-router.post('/pension', calculoController.calcularPension);
+router.get('/pension', pensionController.inicioPension);
+router.post('/pension', pensionController.calcularPension);
+
+router.get('/retro', pensionRetroController.inicioPension);
+router.post('/retro', pensionRetroController.calcularPension);
 
 
 
