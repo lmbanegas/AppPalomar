@@ -506,12 +506,12 @@ const calcularPension = (req, res) => {
 
     if (mesesCortados[0].desde.mes === 12) {
         mesesCortados[0].proporcionalMeses = 2 + ((31 - mesesCortados[0].desde.dia) / 30)
-    }
+    };
 
 
-    if (mesesCortados[0].desde.mes === 12 && mesesCortados[0)].desde.anio === 2023 {
+    if (mesesCortados[0].desde.mes === 12 && mesesCortados[0].desde.anio === 2023 {
         mesesCortados[0].proporcionalMeses = 3 + ((31 - mesesCortados[0].desde.dia) / 30)
-    }
+    };
 
     const datosHaberDevengado = {
         'PBU': parseFloat(req.body.PBU.replace(',', '.')),
