@@ -203,17 +203,76 @@ const pensionRetroController = {
             mesesCortados[0].proporcionalMeses = 2 + ((31 - mesesCortados[0].desde.dia) / 30)
         }
 
+        if (mesesCortados[0].desde.mes === 12 && mesesCortados[0].desde.anio === 2023) {
+            mesesCortados[0].proporcionalMeses = 3 + ((31 - mesesCortados[0].desde.dia) / 30)
+        };
 
+
+        console.log(mesesCortados)
         // Fx para cerrar el array a la fecha de alta solicitada. Agregar opciones de alta 10/23, 11/23, 12/23, 01/24, 02/24, 03/24  //
 
 
-        //alta 11/23
-        const alta = [{ mes: 10, anio: 2023 }]
-        const hasta = [{ mes: 10, anio: 2023, proporcionalMeses: 2 }]
+        //alta 10/23 cierro al 9
+
+
+        // const alta = [{ mes: 9, anio: 2023 }]
+        // const hasta = [{ mes: 9, anio: 2023, proporcionalMeses: 2 }]
+
+
+        // alta 11/2023 cierro al 10
+
+        // se compara MesesCortados.desde.mes con 10/2023, no hay 10/2023
+
+        // 09/2023 al 30/11/2023
+
+        //  entonces
+
+        const altaM1 = 11;
+
+        const alta1 = [{ mes: 10, anio: 2023 }]
+        const hasta1 = [{ mes: 10, anio: 2023, proporcionalMeses: 2 }]
+
+
+        const altaM2 = 12;
+
+        const alta2 = [{ mes: 11, anio: 2023 }]
+        const hasta2 = [{ mes: 11, anio: 2023, proporcionalMeses: 2 }]
+
+
+
+        const altaM3 = 7;
+
+        const alta3 = [{ mes: 6, anio: 2023 }]
+        const hasta3 = [{ mes: 6, anio: 2023, proporcionalMeses: 1 }]
+
+
+        
+        const altaM4 = 3;
+
+        const alta4 = [{ mes: 2, anio: 2023 }]
+        const hasta4 = [{ mes: 2, anio: 2023, proporcionalMeses: 1 }]
+
+
+        const altaM = 5;
+
+        const alta = [{ mes: 4, anio: 2023 }]
+        const hasta = [{ mes: 4, anio: 2023, proporcionalMeses: 1 }]
 
         let final = 0;
 
         for (let i = 0; i <= mesesCortados.length - 1; i++) {
+
+            // if (altaM == 11) {
+            //     alta[0].mes = 9;
+            // }
+
+            if (altaM == 5) {
+                alta[0].mes = 3;
+            }
+
+
+
+
             if (mesesCortados[i].desde.mes == alta[0].mes && mesesCortados[i].desde.anio == alta[0].anio) {
                 mesesCortados[i].hasta.mes = hasta[0].mes;
                 mesesCortados[i].hasta.anio = hasta[0].anio;
@@ -222,9 +281,12 @@ const pensionRetroController = {
             }
         }
 
-        console.log(final)
         const mesesCortadosRetro = mesesCortados.slice(0, final + 1)
-        console.log(mesesCortadosRetro)
+
+
+
+
+
 
         const datosHaberDevengado = {
             'PBU': parseFloat(req.body.PBU.replace(',', '.')),
