@@ -142,6 +142,17 @@ const meses = [
         "retroOs": 0,
         "retroDevOs": 0,
     },
+        {
+        "desde": { dia: 1, mes: 3, anio: 2024 },
+        "hasta": { dia: 31, mes: 3, anio: 2024 },
+        "proporcionalMeses": 1,
+        "haber": 107556.24,
+        "os": 4033.36,
+        "devOs": 806.67,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
+    },
 ];
 
 module.exports = meses;
