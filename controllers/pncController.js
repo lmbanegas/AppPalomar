@@ -314,10 +314,9 @@ for (let i = 0; i < nuevosMesesAguinaldo.length; i++ ) {
 const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal +  + aguinaldoOs)
 
 
-  res.render('pncResult', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal,  aguinaldoOs, neto });
+  res.render('pncResult', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal,  aguinaldoOs, neto  });
+    },
 }
-
-},
 
 
 
