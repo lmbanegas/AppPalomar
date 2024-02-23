@@ -3,7 +3,7 @@ const { asPDFName } = require("pdf-lib");
 
 const inicioPNC = (req, res) => {
   res.render('pnc',  { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal : 0, aguinaldo: 0, aguinaldoOs: 0, neto:0 })
-});
+}
 
 const calcularPNC = (req, res) => {
       const datos = {
