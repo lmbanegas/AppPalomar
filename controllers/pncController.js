@@ -2,11 +2,11 @@ const { asPDFName } = require("pdf-lib");
 
 const pncController = {
 
-inicioPNC = (req, res) => {
+inicioPNC: (req, res) => {
   res.render('pnc',  { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal : 0, aguinaldo: 0, aguinaldoOs: 0, neto:0 })
 },
 
-calcularPNC = (req, res) => {
+calcularPNC: (req, res) => {
       const datos = {
         nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio,
         fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio
