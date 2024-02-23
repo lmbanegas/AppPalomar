@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pensionController = require('../controllers/pensionController');
 const puamController = require('../controllers/puamController');
+const pncController = require('../controllers/pncController');
 
 const pensionRetroController = require('../controllers/pensionRetroController');
 
@@ -16,6 +17,9 @@ router.get('/aplicaciones', function(req, res) {
 
 router.get('/puam', puamController.inicioPuam);
 router.post('/puam', puamController.calcularPuam);
+
+router.get('/pcn', pncController.inicioPNC);
+router.post('/pncResult', pncController.calcularPNC);
 
 router.get('/pension', pensionController.inicioPension);
 router.post('/pension', pensionController.calcularPension);
