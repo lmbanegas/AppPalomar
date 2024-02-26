@@ -208,7 +208,6 @@ const pensionRetroController = {
         };
 
 
-        console.log(mesesCortados)
         // Fx para cerrar el array a la fecha de alta solicitada. Agregar opciones de alta 10/23, 11/23, 12/23, 01/24, 02/24, 03/24  //
 
 
@@ -488,11 +487,19 @@ const pensionRetroController = {
                 indice = i;
             }
         }
-        const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
+
+
+        //Esto inicia en el 2 y termina en el 4. Hacer Fx para llegar al nro correspondiente. (PENDIENTE)
+
+        const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice, 4 );
+
+        console.log(nuevosMesesAguinaldo)
+
 
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
+
 
         // Cruzo los dos objetos, aguinaldo con meses, a fin de encontrar el haber que se toma para el cálculo del aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {

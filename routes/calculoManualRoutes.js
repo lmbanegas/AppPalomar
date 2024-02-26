@@ -18,14 +18,16 @@ router.get('/aplicaciones', function(req, res) {
 router.get('/puam', puamController.inicioPuam);
 router.post('/puam', puamController.calcularPuam);
 
-router.get('/pcn', pncController.inicioPNC);
-router.post('/pncResult', pncController.calcularPNC);
+
 
 router.get('/pension', pensionController.inicioPension);
 router.post('/pension', pensionController.calcularPension);
 
 router.get('/retro', pensionRetroController.inicioPension);
 router.post('/retro', pensionRetroController.calcularPension);
+
+router.get('/pnc', pncController.inicioPNC);
+router.post('/pncResult', pncController.calcularPNC);
 
 
 

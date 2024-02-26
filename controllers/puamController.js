@@ -354,7 +354,7 @@ const mesesAguinaldo = [
         }
     }
 
-    const neto = (retroHaberFinal + aguinaldo) - (retroOsFinal + retroDevOsFinal + aguinaldoOs + aguinaldoDevOs)
+    const neto = (retroHaberFinal + aguinaldo + retroDevOsFinal + aguinaldoDevOs) - (retroOsFinal  + aguinaldoOs )
 
     res.render('puamResult', { nuevosMesesAguinaldo, mesesCortados, datos, retroHaberFinal, aguinaldo, retroOsFinal, retroDevOsFinal, aguinaldoOs, aguinaldoDevOs, neto });
 },

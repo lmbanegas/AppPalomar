@@ -127,6 +127,11 @@
                     <br>
                 </div>
 
+                <% if (aguinaldo == 0) { %>
+                   * Aguinaldo no corresponde
+                <% } else { %>
+                
+
                 <table>
                     <thead>
                         <tr>
@@ -162,6 +167,7 @@
                             <% } %>
                     </tbody>
                 </table>
+                <% } %>
 
                 <div class="separador">
                     <br>
@@ -176,16 +182,30 @@
                     <thead>
                         <tr>
                             <th>Mensuales</th>
+                            <% if (aguinaldo == 0) { %>
+                                -
+                                <% } else { %>
+
                             <th>Aguinaldo</th>
+                            <% } %>
 
                         </tr>
                     </thead>
                     <tbody>
+
+                            
+
                         <tr>
                             <td> 001-000 : $ <%= retroHaberFinal.toFixed(2) %> <br> 318-009: $ <%=
                                         retroOsFinal.toFixed(2) %> <br> </td>
+                        <% if (aguinaldo == 0) { %>
+                                
+                        <% } else { %>
+
                             <td> 002-000 : $ <%= aguinaldo.toFixed(2) %><br> 319-009: $ <%= aguinaldoOs.toFixed(2) %>
                                         <br> </td>
+                        <% } %>
+
                         </tr>
                     </tbody>
 
@@ -207,13 +227,13 @@
 
     </main>
 
-    <p>
-        <button onclick="imprimirContenido()">Imprimir</button>
+    <p style="align-items: center;"> 
+        <button  onclick="imprimirContenido()">Imprimir</button>
     </p>
 
 
     <footer>
-        <p>Derechos de autor © 2023 - Lucas Matías Banegas</p>
+        <p>Oficina Palomar - 2024 </p>
     </footer>
 </body>
 
