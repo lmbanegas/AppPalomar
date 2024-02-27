@@ -252,7 +252,7 @@ const pensionRetroController = {
         const hasta4 = [{ mes: 2, anio: 2023, proporcionalMeses: 1 }]
 
 
-        const alta5 = 5;
+        const altaM5 = 5;
       
         const alta5 = [{ mes: 4, anio: 2023 }]
         const hasta5 = [{ mes: 4, anio: 2023, proporcionalMeses: 1 }]
