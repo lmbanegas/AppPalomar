@@ -253,9 +253,17 @@ const pensionRetroController = {
 
 
         const altaM = 5;
-
+      
         const alta = [{ mes: 4, anio: 2023 }]
         const hasta = [{ mes: 4, anio: 2023, proporcionalMeses: 1 }]
+
+        // PARA 02/2024
+
+        const altaM = 2;
+      
+        const alta = [{ mes: 1, anio: 2024 }]
+        const hasta = [{ mes: 1, anio: 2024, proporcionalMeses: 2 }]
+        
 
         let final = 0;
 
@@ -265,8 +273,12 @@ const pensionRetroController = {
             //     alta[0].mes = 9;
             // }
 
-            if (altaM == 5) {
-                alta[0].mes = 3;
+            //if (altaM == 5) {
+            //    alta[0].mes = 3;
+            //}
+
+            if (altaM == 2) {
+                alta[0].mes = 12;
             }
 
 
