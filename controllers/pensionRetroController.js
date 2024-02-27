@@ -501,9 +501,11 @@ const pensionRetroController = {
         }
 
 
-        //Esto inicia en el 2 y termina en el 4. Hacer Fx para llegar al nro correspondiente. (PENDIENTE)
+        // Esto inicia en el 2 y termina en el 4. Hacer Fx para llegar al nro correspondiente. (PENDIENTE)
+        // const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice, 4 );
 
-        const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice, 4 );
+
+        const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
         console.log(nuevosMesesAguinaldo)
 
