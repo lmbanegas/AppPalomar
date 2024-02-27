@@ -296,6 +296,9 @@ const pensionRetroController = {
 
 
 
+    console.log(mesesCortados)
+            console.log("OTROOOOOOOOOO-----")
+    console.log(mesesCortadosRetro)
 
 
 
@@ -507,7 +510,6 @@ const pensionRetroController = {
 
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
-        console.log(nuevosMesesAguinaldo)
 
 
         //Acumuladores
