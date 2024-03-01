@@ -132,8 +132,8 @@ const meses = [
     },
       {
         "desde": { dia: 1, mes: 3, anio: 2024 },
-        "hasta": { dia: 31, mes: 3, anio: 2024 },
-        "proporcionalMeses": 1,
+        "hasta": { dia: 31, mes: 5, anio: 2024 },
+        "proporcionalMeses": 2,
         "haber": 134445.30,
         "os": 4033.36,
         "retroHaber": 0,
