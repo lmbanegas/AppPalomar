@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Bonos</title>
+</head>
+<body>
+    <h1>Lista de Bonos</h1>
+    <form action="/lmn/calcular" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mes</th>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>Circular</th>
+                    <th>Abonar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < bonos.length; i++) { %>
+                    <tr>
+                        <td><%= bonos[i].Mes %></td>
+                        <td><%= bonos[i].Concepto %></td>
+                        <td> $ <%= bonos[i].Monto %></td>
+                        <td><%= bonos[i].Circular %></td>
+
+                        <td> <input name="Bono<%=i%>" type="checkbox" value="<%=i%>">  </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <button type="submit">Calcular Total</button>
+    </form>
+    
+</body>
+</html>
