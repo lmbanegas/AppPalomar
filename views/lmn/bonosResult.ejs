@@ -5,35 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/pension.css">
     <link rel="stylesheet" href="../styles/stylesCalculos.css">
-    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
 
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
 
     <title>Lista de Bonos</title>
 </head>
 <body>
-    <h1>Lista de Bonos</h1>
+    <h1>Bonos / Refuerzos Previsionales - Carga de datos LMN</h1>
+    <br>
     <form action="/lmn/calcular" method="post">
 
-        <label for="titular">Nombre y apellido</label>
-        <input type="text" id="titular" name="titular">
-        <br>
-        <label for="beneficio">Número de beneficio</label>
-        <input type="text" id="beneficio" name="beneficio">
-        <br>
-        <label for="expediente">Número de expediente</label>
-        <input type="text" id="expediente" name="expediente">
-        <br>
-<br><br>
+        <div class="datos">
+            <table>
+                <tr>
+                    <th>Nombre y apellido:</th>
+                    <td>
+                        <%= datos.nombre%>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Nro de expediente:</th>
+                    <td>
+                        <%= datos.expediente%>
+                    </td>
+                </tr>
 
 
+
+
+                <tr>
+
+                    <th>Nro de beneficio:</th>
+                    <td>
+                        <%= datos.beneficio%>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+
+<br><br><br>
         <table>
             <thead>
                 <tr>
                     <th>Mes</th>
                     <th>Concepto</th>
                     <th>Monto</th>
-                    <th>Circular</th>
-                    <th>Abonar</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,15 +61,10 @@
                         <td><%= bonos[i].Mes %></td>
                         <td><%= bonos[i].Concepto %></td>
                         <td> $ <%= bonos[i].Monto %></td>
-                        <td><%= bonos[i].Circular %></td>
-
-                        <td> <input name="Bono<%=i%>" type="checkbox" value="<%=i%>">  </td>
-                    </tr>
+                        </tr>
                 <% } %>
             </tbody>
         </table>
-        <br>
-        <button type="submit">Calcular Total</button>
     </form>
     
 </body>

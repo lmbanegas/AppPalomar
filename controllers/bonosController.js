@@ -32,7 +32,9 @@ const bonosController = {
 
     calcularTotal(req, res) {
 
-
+        const datos = {
+            nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio
+        }
 
         const indiceBonos = []
         for (let i = 0; i < 30; i++) {
@@ -73,15 +75,24 @@ const bonosController = {
 
         for (let i = 0; i < bonos.length - 1; i++) {
             if (bonos[i].Concepto === bonos[i + 1].Concepto) {
+                bonos[i+1].Monto = bonos[i+1].Monto + bonos[i].Monto
                 bonos.splice(i, 1);
             }
         }
-   
+
+        for (let i = 0; i < bonos.length - 1; i++) {
+            if (bonos[i].Concepto === bonos[i + 1].Concepto) {
+                bonos[i+1].Monto = bonos[i+1].Monto + bonos[i].Monto
+                bonos.splice(i, 1);
+            }
+        }
+
+
 
         console.log(bonos)
 
 
-        res.render('bonos', { bonos: bonos });
+        res.render('bonosResult', { bonos: bonos, datos } );
     }
 
 }

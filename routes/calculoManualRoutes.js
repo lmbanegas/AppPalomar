@@ -16,7 +16,7 @@ const path = require('path');
 const fs = require('fs');
 
 router.get('/aplicaciones', function(req, res) {
-    res.render('calculosLMN'); //
+    res.render('calculosLMN');
 });
 
 router.get('/puam', puamController.inicioPuam);
