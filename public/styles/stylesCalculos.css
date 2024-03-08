@@ -111,7 +111,7 @@
         cursor: text;
         /* Establecer el cursor como el de texto */
         width: 50%;
-
+        text-align: center;
     }
 
     form input:focus {
