@@ -302,17 +302,22 @@ const actualizarhaberController = {
         const valoresFiltrados = Object.values(datosFiltrados);
 
         let sumatoria = 0;
+        let complementoAlMinimo = 0;
         let haberBruto = 0;
-        let obraSocial = parseFloat(req.body.os.replace(',', '.'));
+        let obraSocial = 0;
 
         for (let i = 0; i < valoresFiltrados.length; i++) {
             sumatoria += valoresFiltrados[i];
         }
 
         // If Para ver si es menor a la minima, en caso afirmativo la iguala.
+        if (sumatoria < mesesCortados[0].minima) {
+            complementoAlMinimo = mesesCortados[0].minima - sumatoria
+            datosFiltrados.complementoAlMinimo = complementoAlMinimo;
+        }
+        haberBruto = sumatoria + parseFloat(complementoAlMinimo);
+        obraSocial = (((haberBruto * 0.06) - mesesCortados[0].os));
 
-        haberBruto = sumatoria
-        
         datosFiltrados.haberBruto = haberBruto
         datosFiltrados.ObraSocial = obraSocial
 
@@ -428,8 +433,6 @@ const actualizarhaberController = {
 
 
         }
-
-        console.log(mesesCortados)
 
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 

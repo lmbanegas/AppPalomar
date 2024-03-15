@@ -7,6 +7,7 @@ const puamController = require('../controllers/puamController');
 const pncController = require('../controllers/pncController');
 const actualizarhaberController = require('../controllers/actualizarhaberController');
 const bonosController = require('../controllers/bonosController');
+const docenteController = require('../controllers/docenteController');
 
 const pensionRetroController = require('../controllers/pensionRetroController');
 
@@ -49,6 +50,9 @@ router.post('/actualizacionhaber2', actualizarhaberControllerSinMinimo.calcularP
 
 router.get('/bonos', bonosController.mostrarBonos);
 router.post('/calcular', bonosController.calcularTotal);
+
+router.get('/docente', docenteController.inicioPension);
+router.post('/docente', docenteController.calcularPension);
 
 
 

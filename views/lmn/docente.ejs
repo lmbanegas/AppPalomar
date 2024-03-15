@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .opciones {
+            margin: 10px;
+        }
+
+        .opciones label {
+            margin: 10px;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .resultados table,
+        .resultados th,
+        .resultados td {
+            border: none;
+        }
+
+
+
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header><%- include('header') %></header>
+
+    <h1 id="titulo">Docente</h1>
+
+    <form id="formularioCalculo" action="/lmn/docente" method="post">
+
+        <h2 class="titulos">Datos solicitante:</h2>
+        <label for="titular">Nombre y apellido</label>
+        <input type="text" id="titular" name="titular">
+        <br>
+        <label for="cuil">CUIL</label>
+        <input type="text" id="cuil" name="cuil">
+        <br>
+        <label for="expediente">Número de expediente</label>
+        <input type="text" id="expediente" name="expediente">
+        <br>
+
+        <br>
+        Fecha inicial de pago:
+        <div class="fip">
+            <label for="dia"></label>
+            <input type="number" id="dia" name="dia"  required min="1" max="31" placeholder="Día">
+            <label for="mes"></label>
+            <input type="number" id="mes" name="mes"  required min="1" max="12" placeholder="Mes">
+            <label for="anio"></label>
+            <input type="number" id="anio" name="anio"  required min="2021" max="2024" placeholder="Año">
+        </div>
+        <br>
+        Aguinaldo desde: 
+        <p style="font-size: 10px;">Completar en caso de que corresponda otra fecha</p>
+        <div class="fip">
+            <label for="diaSAC"></label>
+            <input type="number" id="diaSAC" name="diaSAC"   min="1" max="31" placeholder="Día">
+            <label for="mesSAC"></label>
+            <input type="number" id="mesSAC" name="mesSAC"   min="1" max="12" placeholder="Mes">
+            <label for="anioSAC"></label>
+            <input type="number" id="anioSAC" name="anioSAC"   min="2021" max="2024" placeholder="Año">
+        </div>
+
+
+
+        <br><br><br>
+        <div id="formulario">
+
+
+            <div class="opciones" id="opciones">
+                <h2>Haber a actualizar:</h2>
+                <p style="font-size: 13px;" > </p>
+                <br>
+                <table>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                    </tr>
+                    <tr>
+                        <td>PBU</td>
+                        <td>
+                            <label for="PBU">
+                                <input type="text" id="PBU" name="PBU" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PBU C/Sentencia</td>
+                        <td>
+                            <label for="PBUS">
+                                <input type="text" id="PBUS" name="PBUS" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PC</td>
+                        <td>
+                            <label for="PC">
+                                <input type="text" id="PC" name="PC" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PAP</td>
+                        <td>
+                            <label for="PAP">
+                                <input type="text" id="PAP" name="PAP" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Complemento haber mínimo</td>
+                        <td>
+                            <label for="minimo">
+                                <input type="text" id="minimo" name="minimo" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reparación histórica</td>
+                        <td>
+                            <label for="rh">
+                                <input type="text" id="rh" name="rh" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Suplemento dinerario</td>
+                        <td>
+                            <label for="suplementoDinerario">
+                                <input type="text" id="suplementoDinerario" name="suplementoDinerario"
+                                    pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Suplemento docente</td>
+                        <td>
+                            <label for="suplementoDocente">
+                                <input type="text" id="suplementoDocente" name="suplementoDocente"
+                                    pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Obra Social</td>
+                        <td>
+                            <label for="os">
+                                <input type="text" id="os" name="os" pattern="[0-9,]*">
+                            </label>
+                        </td>
+                    </tr>
+
+
+                </table>
+
+                <div class="checkbox">
+                    <label for="devengados">Haberes devengados
+                        <input type="checkbox" name="devengados" id="devengados">
+                    </label>
+                
+                    <label for="indebidos">Haberes indebidos
+                        <input type="checkbox" name="indebidos" id="indebidos">
+                    </label>
+
+                    <label for="scf">Subsidio de Contención Familiar
+                        <input type="checkbox" name="scf" id="scf">
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+            <button id="calcularBtn" type="submit" style="margin-bottom: 150px;">Calcular</button>
+
+    </form>
+
+
+
+
+
+
+
+</body>
+
+</html>

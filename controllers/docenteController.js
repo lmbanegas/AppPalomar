@@ -1,8 +1,8 @@
 const { asPDFName } = require("pdf-lib");
 
-const actualizarhaberController = {
+const docenteController = {
     inicioPension: (req, res) => {
-        res.render('actualizarHaber', { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal: 0, retroDevOsFinal: 0, aguinaldo: 0, aguinaldoOs: 0, aguinaldoDevOs: 0, neto: 0 })
+        res.render('docente', { nuevosMesesAguinaldo: [], mesesCortados: [], datos: [], retroHaberFinal: 0, retroOsFinal: 0, retroDevOsFinal: 0, aguinaldo: 0, aguinaldoOs: 0, aguinaldoDevOs: 0, neto: 0 })
     },
     calcularPension: (req, res) => {
 
@@ -11,115 +11,130 @@ const actualizarhaberController = {
                 "desde": { dia: 1, mes: 1, anio: 2021 },
                 "hasta": { dia: 31, mes: 3, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1,
+                "aumento": 1.1037,
                 "minima": 19035.29,
                 "os": 571.06,
+                "Z": 421.81
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2021 },
                 "hasta": { dia: 31, mes: 5, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.0807,
+                "aumento": 1.0000,
                 "minima": 20571.44,
                 "os": 617.14,
+                "Z": -1140.55
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2021 },
                 "hasta": { dia: 31, mes: 8, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1212,
+                "aumento": 1.1906,
                 "minima": 23064.70,
                 "os": 691.94,
+                "Z": 703.75
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2021 },
                 "hasta": { dia: 30, mes: 11, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1239,
+                "aumento": 1.1461,
                 "minima": 25922.42,
                 "os": 777.67,
+                "Z": 296.46
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2021 },
                 "hasta": { dia: 28, mes: 2, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1211,
+                "aumento": 1.0938,
                 "minima": 29061.63,
                 "os": 871.85,
+                "Z": -385.54
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2022 },
                 "hasta": { dia: 31, mes: 5, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1228,
+                "aumento": 1.0000,
                 "minima": 32630.40,
                 "os": 978.91,
+                "Z": -2239.04
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2022 },
                 "hasta": { dia: 31, mes: 8, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.15,
+                "aumento": 1.4005,
                 "minima": 37524.96,
                 "os": 1125.75,
+                "Z": 4209.10
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2022 },
                 "hasta": { dia: 30, mes: 11, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1553,
+                "aumento": 1.2015,
                 "minima": 43352.59,
                 "os": 1300.58,
+                "Z": 898.38
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2022 },
-                "hasta": { dia: 28, mes: 02, anio: 2023 },
+                "hasta": { dia: 28, mes: 2, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1562,
+                "aumento": 1.1869,
                 "minima": 50124.26,
                 "os": 1503.73,
+                "Z": 378.33
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2023 },
                 "hasta": { dia: 31, mes: 5, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1704,
+                "aumento": 1.2733,
                 "minima": 58665.43,
                 "os": 1759.97,
+                "Z": 1720.24
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2023 },
                 "hasta": { dia: 31, mes: 8, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2092,
+                "aumento": 1.2701,
                 "minima": 70938.24,
                 "os": 2128.15,
+                "Z": 1207.18
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2023 },
                 "hasta": { dia: 30, mes: 11, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2329,
+                "aumento": 1.2844,
                 "minima": 87459.76,
                 "os": 2623.80,
+                "Z": 3028.67
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2023 },
-                "hasta": { dia: 28, mes: 02, anio: 2024 },
+                "hasta": { dia: 28, mes: 2, anio: 2024 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2087,
+                "aumento": 1.2757,
                 "minima": 105712.61,
                 "os": 3171.38,
+                "Z": 188.6
             },
             {
-                "desde": { dia: 1, mes: 03, anio: 2024 },
-                "hasta": { dia: 31, mes: 04, anio: 2024 },
+                "desde": { dia: 1, mes: 3, anio: 2024 },
+                "hasta": { dia: 31, mes: 4, anio: 2024 },
                 "proporcionalMeses": 2,
                 "aumento": 1.2718,
                 "minima": 134445.30,
                 "os": 4033.36,
-            },
+                "Z": 188.60,
+            }
         ];
+        
 
         const mesesAguinaldo = [
             {
@@ -224,7 +239,9 @@ const actualizarhaberController = {
             'Complemento al minimo': parseFloat(req.body.minimo.replace(',', '.')),
             'Reparación Histórica': parseFloat(req.body.rh.replace(',', '.')),
             'Suplemento Dinerario': parseFloat(req.body.suplementoDinerario.replace(',', '.')),
+            'SuplementoDocente': parseFloat(req.body.suplementoDocente.replace(',', '.')),
             'OS': parseFloat(req.body.os.replace(',', '.')),
+
         };
 
         const datosFiltradosHaberDevengado = Object.fromEntries(
@@ -243,7 +260,7 @@ const actualizarhaberController = {
         let pmr = 0;
 
         for (const key in datosFiltradosHaberDevengado) {
-            if (key == 'PBU' || key == 'PC' || key == 'PAP' || key == 'PBUSentencia') {
+            if (key == 'PBU' || key == 'PC' || key == 'PAP' || key == 'PBUSentencia' || key == 'SuplementoDocente') {
                 pmr += datosFiltradosHaberDevengado[key];
             }
         }
@@ -292,6 +309,8 @@ const actualizarhaberController = {
             'PBUSentencia': parseFloat(req.body.PBUS.replace(',', '.')),
             'PC': parseFloat(req.body.PC.replace(',', '.')),
             'PAP': parseFloat(req.body.PAP.replace(',', '.')),
+            'SuplementoDocente': parseFloat(req.body.suplementoDocente.replace(',', '.')),
+
         };
 
         // Se filtran datos mayor a cero
@@ -302,17 +321,22 @@ const actualizarhaberController = {
         const valoresFiltrados = Object.values(datosFiltrados);
 
         let sumatoria = 0;
+        let complementoAlMinimo = 0;
         let haberBruto = 0;
-        let obraSocial = parseFloat(req.body.os.replace(',', '.'));
+        let obraSocial = 0;
 
         for (let i = 0; i < valoresFiltrados.length; i++) {
             sumatoria += valoresFiltrados[i];
         }
 
         // If Para ver si es menor a la minima, en caso afirmativo la iguala.
+        if (sumatoria < mesesCortados[0].minima) {
+            complementoAlMinimo = mesesCortados[0].minima - sumatoria
+            datosFiltrados.complementoAlMinimo = complementoAlMinimo;
+        }
+        haberBruto = sumatoria + parseFloat(complementoAlMinimo);
+        obraSocial = (((haberBruto * 0.06) - mesesCortados[0].os));
 
-        haberBruto = sumatoria
-        
         datosFiltrados.haberBruto = haberBruto
         datosFiltrados.ObraSocial = obraSocial
 
@@ -320,6 +344,11 @@ const actualizarhaberController = {
         function verificacionDeConceptos(anterior, actual, propiedad, aumento) {
             if (propiedad in anterior && anterior[propiedad] > 0) {
                 actual[propiedad] = (anterior[propiedad] * aumento);
+        
+                // Añadir aumento de Z después de SuplementoDocente
+                if (propiedad == 'SuplementoDocente' && 'Z' in actual) {
+                    actual['SuplementoDocente'] += actual['Z'];
+                }
             }
         }
 
@@ -347,6 +376,8 @@ const actualizarhaberController = {
 
             verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PBU', mesesCortados[i].aumento);
             verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PBUSentencia', mesesCortados[i].aumento);
+            verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'SuplementoDocente', mesesCortados[i].aumento);
+
             verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PC', mesesCortados[i].aumento);
             verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'PAP', mesesCortados[i].aumento);
             verificacionDeConceptos(mesesCortados[i - 1], nuevoValor, 'Complemento al minimo', mesesCortados[i].aumento);
@@ -363,7 +394,7 @@ const actualizarhaberController = {
         let haberReal = 0;
 
         for (let key in ultimoHaber) {
-            if (key === 'PBU' || key === 'PC' || key === 'PAP' || key === 'PBUSentencia') {
+            if (key === 'PBU' || key === 'PC' || key === 'PAP' || key === 'PBUSentencia' || key === 'SuplementoDocente') {
                 haberReal.toFixed(2)
                 haberReal += ultimoHaber[key];
             }
@@ -398,6 +429,8 @@ const actualizarhaberController = {
             }
         }
 
+        console.log(mesesCortados)
+
         //Calculo de meses aguinaldo
         let indice;
 
@@ -429,8 +462,6 @@ const actualizarhaberController = {
 
         }
 
-        console.log(mesesCortados)
-
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
         //Acumuladores
@@ -447,6 +478,8 @@ const actualizarhaberController = {
             }
         }
 
+
+
         //Cálculo totales de aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             aguinaldoTotal = (aguinaldoTotal + nuevosMesesAguinaldo[i].haberBruto)
@@ -458,4 +491,4 @@ const actualizarhaberController = {
 }
 
 
-module.exports = actualizarhaberController;
+module.exports = docenteController;
