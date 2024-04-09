@@ -250,6 +250,10 @@ const pensionController = {
         //Asignación descuentos del haber
         let descuentoCausante = parseFloat(req.body.os.replace(',', '.'));
 
+        //Devengados
+
+        let diaFA = 0;
+
         if (req.body.devengados) {
 
             if (req.body.mesF == 12 || req.body.mesF == 6) {
@@ -259,26 +263,22 @@ const pensionController = {
 
             } else {
 
-            if (req.body.mesF == 1 || req.body.mesF == 7) {
-                diaF = 0;
-            };
-
             if (req.body.mesF == 2 || req.body.mesF == 8) {
-                diaF = 30;
+                diaFA = 30;
             };
             if (req.body.mesF == 3 || req.body.mesF == 9) {
-                diaF = 60;
+                diaFA = 60;
             };
             if (req.body.mesF == 4 || req.body.mesF == 10) {
-                diaF = 90;
+                diaFA = 90;
             };
 
             if (req.body.mesF == 5 || req.body.mesF == 11) {
-                diaF = 120;
+                diaFA = 120;
             };
                 
-                brutoCausante = ((brutoCausante / 30) * (diaF));
-                descuentoCausante = (descuentoCausante / 30) * (diaF);
+                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * (diaFA/30/12))
+                descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuetoCausante * (diaFA/30/12));
             }
 
         }
