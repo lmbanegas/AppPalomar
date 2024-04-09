@@ -277,7 +277,7 @@ const pensionController = {
                 diaFA = 120;
             };
                 
-                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * (diaFA/30/12))
+                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * ((diaFA+diaF)/30/12))
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA/30/12));
             }
 
