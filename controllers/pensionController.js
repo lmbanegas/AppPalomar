@@ -259,6 +259,24 @@ const pensionController = {
 
             } else {
 
+            if (req.body.mesF == 1 || req.body.mesF == 7) {
+                diaF = 0;
+            };
+
+            if (req.body.mesF == 2 || req.body.mesF == 8) {
+                diaF = 30;
+            };
+            if (req.body.mesF == 3 || req.body.mesF == 9) {
+                diaF = 60;
+            };
+            if (req.body.mesF == 4 || req.body.mesF == 10) {
+                diaF = 90;
+            };
+
+            if (req.body.mesF == 5 || req.body.mesF == 11) {
+                diaF = 120;
+            };
+                
                 brutoCausante = ((brutoCausante / 30) * (diaF));
                 descuentoCausante = (descuentoCausante / 30) * (diaF);
             }
