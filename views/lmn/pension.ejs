@@ -170,6 +170,8 @@
                     <th>Obra Social</th>
                 </tr>
 
+<% if (mesesCortados[0].desde.anio == 2024)) { %>
+
                 <% for (let i=0; i < nuevosMesesAguinaldo.length; i++) { %>
                     <tr>
                         <td>
@@ -189,6 +191,7 @@
                         </td></b>
                     </tr>
                     <% } %>
+<% } %>
 
                         <tr>
                             <td colspan="3"><strong>Total</strong></td>
