@@ -446,7 +446,8 @@ const pensionController = {
                     nuevosMesesAguinaldo[i].haberBruto = (mesesCortados[t].haberBruto * nuevosMesesAguinaldo[i].tiempo);
                     nuevosMesesAguinaldo[i].ObraSocial = (mesesCortados[t].ObraSocial * nuevosMesesAguinaldo[i].tiempo)
                 } else {
-                    nuevosMesesAguinaldo = null;
+                    nuevosMesesAguinaldo[i] = 0;
+
             }
                 }
         }
