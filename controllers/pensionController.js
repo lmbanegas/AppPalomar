@@ -433,24 +433,27 @@ const pensionController = {
         }
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
-        console.log(mesesCortados);
+        
 
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
 
         // Cruzo los dos objetos, aguinaldo con meses, a fin de encontrar el haber que se toma para el cálculo del aguinaldo
-        for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
+
+        if (mesesCortados[0].desde.anio == 2024 {
+            nuevosMesesAguinaldo[i] = 0;
+            } else { 
+            for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             for (let t = 0; t < mesesCortados.length; t++) {
                 if (nuevosMesesAguinaldo[i].hasta.mes == mesesCortados[t].desde.mes && nuevosMesesAguinaldo[i].hasta.anio == mesesCortados[t].desde.anio) {
                     nuevosMesesAguinaldo[i].haberBruto = (mesesCortados[t].haberBruto * nuevosMesesAguinaldo[i].tiempo);
                     nuevosMesesAguinaldo[i].ObraSocial = (mesesCortados[t].ObraSocial * nuevosMesesAguinaldo[i].tiempo)
-                } else {
-                    nuevosMesesAguinaldo[i] = 0;
-
-            }
+                } 
                 }
-        }
+}
+        
+}
 
         //Cálculo totales de aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
