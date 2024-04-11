@@ -438,12 +438,11 @@ const pensionController = {
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
+        let aguinaldo2024 = 0;
 
         // Cruzo los dos objetos, aguinaldo con meses, a fin de encontrar el haber que se toma para el cálculo del aguinaldo
 
-        if (mesesCortados[0].desde.anio == 2024) {
-            nuevosMesesAguinaldo = [0];
-            } else { 
+        if (mesesCortados[0].desde.anio != 2024) {
             for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             for (let t = 0; t < mesesCortados.length; t++) {
                 if (nuevosMesesAguinaldo[i].hasta.mes == mesesCortados[t].desde.mes && nuevosMesesAguinaldo[i].hasta.anio == mesesCortados[t].desde.anio) {
@@ -451,8 +450,7 @@ const pensionController = {
                     nuevosMesesAguinaldo[i].ObraSocial = (mesesCortados[t].ObraSocial * nuevosMesesAguinaldo[i].tiempo)
                 } 
                 }
-}
-        
+        }        
 }
 
         //Cálculo totales de aguinaldo
