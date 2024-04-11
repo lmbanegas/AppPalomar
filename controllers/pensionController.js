@@ -433,6 +433,8 @@ const pensionController = {
         }
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
+        console.log(nuevosMesesAguinaldo);
+
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
@@ -452,6 +454,14 @@ const pensionController = {
             aguinaldoTotal = (aguinaldoTotal + nuevosMesesAguinaldo[i].haberBruto)
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
+
+              console.log("CAMBIOOO-------------------");
+
+        
+      console.log(nuevosMesesAguinaldo);
+
+
+        
 
         res.render('pension', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
     },
