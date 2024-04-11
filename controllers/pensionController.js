@@ -442,7 +442,7 @@ const pensionController = {
         // Cruzo los dos objetos, aguinaldo con meses, a fin de encontrar el haber que se toma para el cálculo del aguinaldo
 
         if (mesesCortados[0].desde.anio == 2024) {
-            nuevosMesesAguinaldo[i] = 0;
+            nuevosMesesAguinaldo = 0;
             } else { 
             for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             for (let t = 0; t < mesesCortados.length; t++) {
