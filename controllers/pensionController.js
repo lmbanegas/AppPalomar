@@ -433,7 +433,7 @@ const pensionController = {
         }
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
-        console.log(nuevosMesesAguinaldo);
+        console.log(mesesCortados);
 
         //Acumuladores
         let aguinaldoTotal = 0;
