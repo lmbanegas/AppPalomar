@@ -445,8 +445,10 @@ const pensionController = {
                 if (nuevosMesesAguinaldo[i].hasta.mes == mesesCortados[t].desde.mes && nuevosMesesAguinaldo[i].hasta.anio == mesesCortados[t].desde.anio) {
                     nuevosMesesAguinaldo[i].haberBruto = (mesesCortados[t].haberBruto * nuevosMesesAguinaldo[i].tiempo);
                     nuevosMesesAguinaldo[i].ObraSocial = (mesesCortados[t].ObraSocial * nuevosMesesAguinaldo[i].tiempo)
-                }
+                } else {
+                    nuevosMesesAguinaldo = null;
             }
+                }
         }
 
         //Cálculo totales de aguinaldo
