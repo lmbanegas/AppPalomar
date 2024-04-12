@@ -114,7 +114,7 @@ const pensionController = {
             {
                 "desde": { dia: 1, mes: 03, anio: 2024 },
                 "hasta": { dia: 31, mes: 03, anio: 2024 },
-                "proporcionalMeses": 2,
+                "proporcionalMeses": 1,
                 "aumento": 1.2718,
                 "minima":134445.30,
                 "os": 4033.36,
