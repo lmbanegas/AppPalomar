@@ -285,6 +285,9 @@ const pensionController = {
             if (req.body.mesF == 5 || req.body.mesF == 11) {
       diaFA = 120;
     }
+
+                console.log(brutoCausante);
+
                 
                 brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * ((diaFA+diaF)/30/12))
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA+diaF)/30/12)
