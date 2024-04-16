@@ -271,7 +271,7 @@ const pensionController = {
                 brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
 
-            } else {
+            } else if{
 
             console.log("entro al else de devengados");
 
