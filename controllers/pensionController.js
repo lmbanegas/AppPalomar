@@ -291,7 +291,24 @@ const pensionController = {
         
         //Devengados mensuales
         
-        console.log(req.body.devengados)
+        if (req.body.devengados == undefined) 
+            
+            if (req.body.mesF == 2 || req.body.mesF == 8) {
+              diaFA = 30;
+            } if (req.body.mesF == 3 || req.body.mesF == 9) {
+              diaFA = 60;
+            } 
+             if (req.body.mesF == 4 || req.body.mesF == 10) {
+              diaFA = 90;
+            } 
+                    if (req.body.mesF == 5 || req.body.mesF == 11) {
+              diaFA = 120;
+            }
+        
+            brutoCausante = (brutoCausante * ((diaFA+diaF)/30/12))
+            descuentoCausante = (descuentoCausante * (diaFA+diaF)/30/12)
+            
+        }
 
         
         
