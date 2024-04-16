@@ -288,7 +288,8 @@ const pensionController = {
                 
                 brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * ((diaFA+diaF)/30/12))
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA+diaF)/30/12)
-            
+
+        console.log(brutoCausante);
 
 
         //Indebidos
@@ -467,10 +468,6 @@ const pensionController = {
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
 
-              console.log("CAMBIOOO-------------------");
-
-        
-      console.log(nuevosMesesAguinaldo);
 
 
         
