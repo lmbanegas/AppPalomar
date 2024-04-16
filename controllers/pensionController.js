@@ -291,7 +291,7 @@ const pensionController = {
         
         //Devengados mensuales
         
-        if (req.body.devengados == undefined) 
+        if (req.body.devengados == undefined) {
             
             if (req.body.mesF == 2 || req.body.mesF == 8) {
               diaFA = 30;
