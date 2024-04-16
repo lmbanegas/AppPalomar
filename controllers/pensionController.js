@@ -274,14 +274,18 @@ const pensionController = {
              if (req.body.mesF == 4 || req.body.mesF == 10) {
               diaFA = 90;
             } 
-                    if (req.body.mesF == 5 || req.body.mesF == 11) {
+             if (req.body.mesF == 5 || req.body.mesF == 11) {
               diaFA = 120;
             }
+
+        console.log(brutoCausante)
         
             brutoCausante = (brutoCausante * ((diaFA+diaF)/30/12))
             descuentoCausante = (descuentoCausante * (diaFA+diaF)/30/12)
-
         
+
+                console.log(brutoCausante)
+
         //Devengados con aguinaldo
 
         if (req.body.devengados) {
