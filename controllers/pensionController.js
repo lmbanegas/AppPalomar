@@ -273,6 +273,8 @@ const pensionController = {
 
             } else {
 
+            console.log("entro al else de devengados");
+
             if (req.body.mesF == 2 || req.body.mesF == 8) {
                 diaFA = 30;
             };
