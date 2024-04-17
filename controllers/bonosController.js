@@ -65,10 +65,10 @@ const bonosController = {
             { Mes: "sep-23", Concepto: "2-735-372", Monto: 37000, Circular: "DP N º 54/23", Abonar: false },
             { Mes: "oct-23", Concepto: "2-735-372", Monto: 37000, Circular: "DP N º 54/23", Abonar: false },
             { Mes: "nov-23", Concepto: "2-735-372", Monto: 37000, Circular: "DP N º 54/23", Abonar: false },
-            { Mes: "dic-23", Concepto: "2-135-374", Monto: 55000, Circular: "DP Nº 71/23", Abonar: false },
-            { Mes: "ene-24", Concepto: "2-135-376", Monto: 55000, Circular: "DP N° 01/24", Abonar: false },
-            { Mes: "feb-24", Concepto: "2-135-377", Monto: 55000, Circular: "DP N° 03/24", Abonar: false },
-            { Mes: "mar-24", Concepto: "2-135-378", Monto: 70000, Circular: "DP N° 13/24", Abonar: false },
+            { Mes: "dic-23", Concepto: "2-735-374", Monto: 55000, Circular: "DP Nº 71/23", Abonar: false },
+            { Mes: "ene-24", Concepto: "2-735-376", Monto: 55000, Circular: "DP N° 01/24", Abonar: false },
+            { Mes: "feb-24", Concepto: "2-735-377", Monto: 55000, Circular: "DP N° 03/24", Abonar: false },
+            { Mes: "mar-24", Concepto: "2-735-378", Monto: 70000, Circular: "DP N° 13/24", Abonar: false },
             { Mes: "abr-24", Concepto: "2-735-379", Monto: 70000, Circular: "DP N° 23/24", Abonar: false }
 
         ];
