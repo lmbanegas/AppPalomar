@@ -341,11 +341,7 @@
                                                             <tr>
                                                                 <td> <b> 2-022-011</b></td>
                                                                 <td>
-                                                                    <% if ( req.body.devengados==undefined ) { %>
-                                                                        -
-                                                                        <% } else { %>
-                                                                            $ <%= brutoCausante.toFixed(2) %>
-                                                                                <% } %>
+                                                                    <% <%= brutoCausante.toFixed(2) %>
 
                                                                 </td>
 
@@ -354,11 +350,8 @@
 
                                                             <td> <b> 2-516-008</b></td>
                                                             <td>
-                                                                <% if ( req.body.devengados==undefined ) { %>
-                                                                    -
-                                                                    <% } else { %>
-                                                                        $ <%= descuentoCausante.toFixed(2) %>
-                                                                            <% } %>
+                                                                <% $ <%= descuentoCausante.toFixed(2) %>
+                                                      
 
 
                                                             </td>
