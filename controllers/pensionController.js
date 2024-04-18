@@ -263,30 +263,9 @@ const pensionController = {
 
         let diaFA = 0;
 
-        //Devengados mensuales
-        
-            
-            if (req.body.mesF == 2 || req.body.mesF == 8) {
-              diaFA = 30;
-            } if (req.body.mesF == 3 || req.body.mesF == 9) {
-              diaFA = 60;
-            } 
-             if (req.body.mesF == 4 || req.body.mesF == 10) {
-              diaFA = 90;
-            } 
-             if (req.body.mesF == 5 || req.body.mesF == 11) {
-              diaFA = 120;
-            }
 
-        console.log(brutoCausante)
         
-            brutoCausante = (brutoCausante * ((diaF)/30))
-            descuentoCausante = (descuentoCausante * (diaF)/30)
-        
-
-                console.log(brutoCausante)
-
-        //Devengados con aguinaldo
+        //Devengados
 
         if (req.body.devengados) {
 
@@ -294,7 +273,9 @@ const pensionController = {
 
                 brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
-        } else { 
+        } 
+            
+        if (req.body.devengados) {
             
             if (req.body.mesF == 2 || req.body.mesF == 8) {
               diaFA = 30;
