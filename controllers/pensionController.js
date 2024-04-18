@@ -280,8 +280,8 @@ const pensionController = {
 
         console.log(brutoCausante)
         
-            brutoCausante = (brutoCausante * ((diaFA+diaF)/30/12))
-            descuentoCausante = (descuentoCausante * (diaFA+diaF)/30/12)
+            brutoCausante = (brutoCausante * ((diaF)/30))
+            descuentoCausante = (descuentoCausante * (diaF)/30)
         
 
                 console.log(brutoCausante)
