@@ -298,6 +298,9 @@ const pensionController = {
         } else {
         brutoCausante = 10000;
         descuentoCausante = 9900;
+
+        console.log(brutoCausante);
+            
         }
         
 
