@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+  <title>Inicio - Oficina El Palomar</title>
+</head>
+
+<body>
+
+  <header><%- include('header') %></header>
+
+  <h2>Accesos directos</h2>
+
+  
+  <div class="apps">
+
+  <div class="container">
+    <div class="box">
+
+      <div class="titulo"> <span class="material-symbols-outlined">
+          calculate</span>
+        <a href="/aplicaciones/">LMN</a>
+      </div>
+
+    </div>
+    <div class="box">
+      <div>
+        <div class="titulo"> <span class="material-symbols-outlined">
+            article_shortcut
+          </span><a href="">Blog</a> </div>
+
+      </div>
+    </div>
+    <div class="box">
+      <div class="titulo">
+        <span class="material-symbols-outlined">
+          contract
+        </span><a href="">Formularios</a>
+      </div>
+    </div>
+    <div class="box">
+
+      <div class="titulo">
+        <span class="material-symbols-outlined">
+          table
+        </span>
+        <a href="">SDM - Remun.</a>
+      </div>
+
+    </div>
+    <div class="box">
+      <div class="titulo">
+        <span class="material-symbols-outlined">
+          apartment
+        </span>
+        <a href="">SIPA - Base Imponible</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo">
+        <span class="material-symbols-outlined">
+          heap_snapshot_multiple
+        </span>
+        <a href="">Tabla de aumentos</a>
+      </div>
+    </div>
+
+    <div class="box">
+
+      <div class="titulo">
+        <span class="material-symbols-outlined"> payments </span>
+
+        <a href="">Bonos / Refuerzos</a>
+      </div>
+    </div>
+
+
+    <div class="box">
+      <div class="titulo">
+        <span class="material-symbols-outlined">
+          account_balance
+        </span>
+        <a href="">Bancos</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo"> 
+        <span class="material-symbols-outlined"> engineering </span>          
+          <a href="">SMVM </a> </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo"> <span class="material-symbols-outlined">
+          signature
+        </span>
+        <a href="">Funcionarios certificantes</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <h2>Accesos Apps Intranet</h2>
+
+  <div class="container">
+
+    <div class="box">
+      <div class="titulo"> <a href="https://appintra.anses.gob.ar/ADPWeb/RDP_Buscar.aspx">ADP</a> </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo"> <a href="https://appintra.anses.gov.ar/aplicaciones/anmeweb">ANME</a> </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo"> <a href="https://intranetanses.anses.gov.ar">Intranet</a> </div>
+    </div>
+
+    <div class="box">
+      <div class="titulo"> <a href="https://appintra.anses.gov.ar/aplicaciones/login.aspx?system=sicam">SICAM</a> </div>
+    </div>
+    <div class="box">
+      <div class="titulo"> <a href="https://appintra.anses.gov.ar/DU-SIDU">SIDU</a> </div>
+    </div>
+    <div class="box">
+      <div class="titulo"> <a href="https://appintra.anses.gov.ar/aplicaciones/login.aspx?system=sieel">SIEEL</a> </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+</body>
+
+<style>
+    h1 {
+    color:rgb(247, 247, 247);
+  }
+  * {
+    /* Fallback for browsers without Open Sans */
+    color: #1B1C1E;
+    text-align: center;
+    box-sizing: border-box;
+    
+
+  }
+
+
+
+
+
+  span {
+    color: rgb(247, 247, 247);
+    width: 500px;
+  }
+
+  .apps {
+    font-size: 20x;
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 150px;
+
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    text-align: center;
+  }
+
+  .box {
+    width: calc(25% - 20px); /* Adjust for margins */
+    margin: 10px;
+  }
+
+  .titulo {
+    background-color: rgb(61, 182, 238);
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .titulo:hover {
+    background-color: rgb(55, 161, 211);
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(247, 247, 247);
+  }
+</style>
+
+</html>

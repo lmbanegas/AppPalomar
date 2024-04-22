@@ -4,6 +4,11 @@ const path = require('path');
 const fs = require('fs');
 
 
+router.get('/home', function (req, res) {
+    res.render('home'); 
+});
+
+
 
 router.get('/blog', function (req, res) {
     const filePath = path.join(__dirname, '../views/otros/blog.json'); // Ruta al archivo JSON

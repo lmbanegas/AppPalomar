@@ -3,6 +3,7 @@ const path = require('path');
 const blog = require('./views/otros/blog.json'); 
 const fs = require('fs');
 const { Pool } = require('pg');
+const startRoutes = require('./routes/startRoutes'); 
 const supervisionesRoutes = require('./routes/supervisionesRoutes');
 const calculoManualRoutes = require('./routes/calculoManualRoutes'); 
 const resolucionesRoutes = require('./routes/resolucionesRoutes'); 
@@ -62,6 +63,7 @@ app.use('/supervisiones', supervisionesRoutes);
 app.use('/resoluciones', resolucionesRoutes);
 app.use('/formularios', formulariosRoutes);
 app.use('/general', generalRoutes);
+app.use('/home', startRoutes);
 
 
 
