@@ -20,13 +20,15 @@
     <th>Capital</th>
     <th>Interes</th>
   </tr>
+  <% let counter = 1; %>
   <% for (const item of sdm) { %>
     <tr>
-      <td id="<%=item%>"> <%= item.Mes %></td>
-      <td><%= item.Año %></td>
-      <td><%= item.Capital %></td>
-      <td><%= item.Interes %></td>
+      <td id="<%= counter %>"> <%= item.Mes %></td>
+      <td id="<%= counter %>"><%= item.Año %></td>
+      <td id="<%= counter %>"><%= item.Capital %></td>
+      <td id="<%= counter %>"><%= item.Interes %></td>
     </tr>
+    <% counter++; %>
   <% } %>
 </table>
 
