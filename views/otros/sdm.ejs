@@ -13,22 +13,22 @@
 </head>
 <body>
 
-    <table>
-        <tr>
-          <th>Mes</th>
-          <th>Año</th>
-          <th>Capital</th>
-          <th>Interes</th>
-        </tr>
-        <% for (var i = 0; i < result.length; i++) { %>
-          <tr>
-            <td><%= result[i].Mes %></td>
-            <td><%= result[i].Año %></td>
-            <td><%= result[i].Capital %></td>
-            <td><%= result[i].Interes %></td>
-          </tr>
-        <% }; %>
-      </table>
+<table>
+  <tr>
+    <th>Mes</th>
+    <th>Año</th>
+    <th>Capital</th>
+    <th>Interes</th>
+  </tr>
+  <% for (const item of sdm) { %>
+    <tr>
+      <td><%= item.Mes %></td>
+      <td><%= item.Año %></td>
+      <td><%= item.Capital %></td>
+      <td><%= item.Interes %></td>
+    </tr>
+  <% } %>
+</table>
 
 
 
