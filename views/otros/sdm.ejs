@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Oficina Palomar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/stylesCalculos.css">
+    <link href='https://fonts.googleapis.com/css?family=Encode Sans' rel='stylesheet'>
+
+    
+
+</head>
+<body>
+
+    <table>
+        <tr>
+          <th>Mes</th>
+          <th>Año</th>
+          <th>Capital</th>
+          <th>Interes</th>
+        </tr>
+        <% for (var i = 0; i < result.length; i++) { %>
+          <tr>
+            <td><%= result[i].Mes %></td>
+            <td><%= result[i].Año %></td>
+            <td><%= result[i].Capital %></td>
+            <td><%= result[i].Interes %></td>
+          </tr>
+        <% }; %>
+      </table>
+
+
+
+</body>
+
+
+
+
+<style>
+
+    table, th, td {
+        border-collapse: collapse;
+        border: 1px solid black;
+        padding: 10px
+    }
+    
+</style>
+
+<script>
+    var blog = JSON.stringify(require('./sdm.json'))
+</script>
+
+
+
+
+
+
+</html>
