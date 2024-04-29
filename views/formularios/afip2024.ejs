@@ -2,113 +2,127 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <script src="https://unpkg.com/pdf-lib@1.11.0"></script>
-  <script src="https://unpkg.com/downloadjs@1.4.7"></script>
-  <script src="https://unpkg.com/xlsx@0.18.0/dist/xlsx.full.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+ <meta charset="utf-8" />
+ <script src="https://unpkg.com/pdf-lib@1.11.0"></script>
+ <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+ <link rel="stylesheet" type="text/css" href="http.//fonts.googleapis.com/css?family=Tangerine">
 
-  <style>
-    body {
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+ <style>
+  body {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
 
-    .input282 {
-      display: flex;
-      flex-direction: column;
-      width: 30%;
-    }
-  </style>
+  .input282 {
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+  }
+ </style>
 </head>
 
 <body>
-  <h2>Generar PDF de datos</h2>
+ <h2>Formulario creación formulario 575RT </h2>
 
-  <input type="file" id="xlsFile" accept=".xlsx">
-  <button onclick="fillFormsAndDownloadPDF()">Generar PDF</button>
+ <div class="input282">
+  <label for="trabajador">CUIL trabajador</label>
+  <input type="text" id="trabajador">
+  <br>
 
-  <script>
-    const formDataArray = [];
-  </script>
+  <div class="fecha">
+   <label for="mes">Mes </label>
+   <input type="text" id="mes">
 
-  <script>
-    async function fillFormsAndDownloadPDF() {
-      const { PDFDocument } = PDFLib;
+   <label for="anio">Año</label>
+   <input type="text" name="anio" id="anio">
+  </div>
+  <br>
 
-      // Get the selected XLSX file
-      const fileInput = document.getElementById('xlsFile');
-      const file = fileInput.files[0];
+  <label for="importe">Importe</label>
+  <input type="text" name="importe" id="importe">
+  <br>
 
-      // Read the XLSX file using the `xlsx` library
-      const workbook = XLSX.read(file, { type: 'file' });
+  <label for="empleador">CUIL Empleador</label>
+  <input type="text" name="empleador" id="empleador">
+  <br>
+  <button onclick="fillFormsAndPrint()">Imprimir</button>
+ </div>
 
-      // Get the first worksheet
-      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-
-      // Convert worksheet data to an array of objects
-      const rows = XLSX.utils.sheet_to_json(worksheet);
-
-      // Fetch the PDF with form fields
-      const formUrl = '/pdf/form575.pdf';
-      const formPdfBytes = await fetch(formUrl).then((res) => res.arrayBuffer());
-
-      for (const data of rows) {
-        // Load a PDF with form fields for each data entry
-        const pdfDoc = await PDFDocument.load(formPdfBytes);
-
-        // Get the form containing all the fields
-        const form = pdfDoc.getForm();
-
-        // Get all fields in the PDF by their names
-        const trabajadorField = form.getTextField('trabajador');
-        const mesField = form.getTextField('mes');
-        const anioField = form.getTextField('anio');
-        const importeField = form.getTextField('importe');
-        const empleadorField = form.getTextField('empleador');
-
-        // Fill in the basic info fields from data
-        trabajadorField.setText(data.trabajador);
-        mesField.setText(data.mes);
-        anioField.setText(data.anio);
-        importeField.setText(data.importe);
-        empleadorField.setText(data.empleador);
-
-        // Serialize the PDFDocument for this data entry
-        const pdfBytes = await pdfDoc.save();
-
-        // Add the filled PDF data to the array
-        formDataArray.push(pdfBytes);
-      }
-
-      // Create a new combined PDF document
-      const combinedPdfDoc = await PDFDocument.create();
-
-      // Add a page for each filled PDF data entry
-      formDataArray.forEach(() => {
-        combinedPdfDoc.addPage();
-      });
-
-      // Loop through filled PDF data and merge into combined document
-      let pageIndex = 0;
-      formDataArray.forEach((pdfData) => {
-        const copiedPages = await combinedPdfDoc.copyPages(
-          combinedPdfDoc.getPage(pageIndex), // Where to insert
-          { doc: await PDFDocument.load(pdfData) } // Source PDF
-        );
-        pageIndex++;
-      });
-
-      // Serialize the combined PDF document
-      const combinedPdfBytes = await combinedPdfDoc.save();
-
-      // Create a blob and a URL for the combined PDF
-      const blob = new Blob([combinedPdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-
-      // Download the combined PDF
-      download(url, 'data.pdf', 'application/pdf'); // Using download.js
+<script>
+ async function fillFormsAndPrint() {
+  const { PDFDocument } = PDFLib;
+  const jsonData = [
+    {
+      "trabajador": "Juan Pérez",
+      "mes": "Enero",
+      "anio": 2024,
+      "importe": 15000,
+      "CUIT_empleador": "30-70891234-9"
+    },
+    {
+      "trabajador": "María González",
+      "mes": "Febrero",
+      "anio": 2024,
+      "importe": 18000,
+      "CUIT_empleador": "27-36452312-5"
+    },
+    {
+      "trabajador": "Pedro López",
+      "mes": "Marzo",
+      "anio": 2024,
+      "importe": 22000,
+      "CUIT_empleador": "20-45678901-3"
     }
-  </script>
-</body>
+  ];
 
+  for (const data of jsonData) {
+    // Fetch the PDF with form fields 
+    const formUrl = '/pdf/form575.pdf';
+    const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer());
+
+    // Load a PDF with form fields
+    const pdfDoc = await PDFDocument.load(formPdfBytes);
+
+    // Get the form containing all the fields
+    const form = pdfDoc.getForm();
+
+    // Get all fields in the PDF by their names
+    const trabajadorField = form.getTextField('trabajador');
+    const mesField = form.getTextField('mes');
+    const anioField = form.getTextField('anio');
+    const importeField = form.getTextField('importe');
+    const empleadorField = form.getTextField('empleador');
+
+    // Fill in the form fields with data from the JSON
+    trabajadorField.setText(data.trabajador);
+    mesField.setText(data.mes);
+    anioField.setText(data.anio.toString());
+    importeField.setText(data.importe.toString());
+    empleadorField.setText(data.CUIT_empleador);
+
+    // Serialize the PDFDocument to bytes (a Uint8Array)
+    const pdfBytes = await pdfDoc.save();
+
+    // Create a blob from the PDF data
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+    // Create a URL for the blob
+    const url = URL.createObjectURL(blob);
+
+    // Open the PDF in a new window
+    const newWindow = window.open(url);
+
+    // Wait for the PDF to finish loading in the new window
+    newWindow.onload = () => {
+      // Print the PDF
+      newWindow.print();
+      // Close the window after printing
+      setTimeout(() => {
+        newWindow.close();
+      }, 500); // Adjust the delay as needed
+    };
+  }
+}
+</script>
+
+</body>
 </html>
