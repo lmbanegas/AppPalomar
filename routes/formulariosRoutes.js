@@ -9,6 +9,10 @@ router.get('/afip', function (req, res) {
     res.render('afip')
 });
 
+router.get('/afip2024', function (req, res) {
+    res.render('afip2024')
+});
+
 
 
 
