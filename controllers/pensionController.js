@@ -273,8 +273,7 @@ const pensionController = {
 
                 brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
                 descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
-            }
-            
+            } else {           
                     
             if (req.body.mesF == 2 || req.body.mesF == 8) {
               diaFA = 30;
@@ -295,38 +294,7 @@ const pensionController = {
             brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * ((diaFA+diaF)/30/12))
             descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA+diaF)/30/12)
             
-        } else {
-
-
-            if (req.body.mesF == 12 || req.body.mesF == 6) {
-                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
-                descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
-            } 
-
-            else {
-            
-            if (req.body.mesF == 2 || req.body.mesF == 8) {
-              diaFA = 30;
-            } 
-            
-            if (req.body.mesF == 3 || req.body.mesF == 9) {
-              diaFA = 60;
-            } 
-            
-             if (req.body.mesF == 4 || req.body.mesF == 10) {
-              diaFA = 90;
-            } 
-            
-            if (req.body.mesF == 5 || req.body.mesF == 11) {
-              diaFA = 120;
             }
-             
-        
-            brutoCausante =  (brutoCausante * ((diaFA+diaF)/30/12))
-            descuentoCausante = (descuentoCausante * (diaFA+diaF)/30/12)
-            }
-            
-        }
         
 
     
