@@ -121,8 +121,8 @@ const pensionController = {
             },
             {
                 "desde": { dia: 1, mes: 04, anio: 2024 },
-                "hasta": { dia: 30, mes: 04, anio: 2024 },
-                "proporcionalMeses": 1,
+                "hasta": { dia: 31, mes: 05, anio: 2024 },
+                "proporcionalMeses": 2,
                 "aumento": 1.2740,
                 "minima":171283.31,
                 "os": 5138.50,
@@ -296,6 +296,13 @@ const pensionController = {
             descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA+diaF)/30/12)
             
         } else {
+
+
+            if (req.body.mesF == 12 || req.body.mesF == 6) {
+                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
+                descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
+                break;
+            }
             
             if (req.body.mesF == 2 || req.body.mesF == 8) {
               diaFA = 30;
@@ -312,6 +319,7 @@ const pensionController = {
             if (req.body.mesF == 5 || req.body.mesF == 11) {
               diaFA = 120;
             }
+
         
             brutoCausante =  (brutoCausante * ((diaFA+diaF)/30/12))
             descuentoCausante = (descuentoCausante * (diaFA+diaF)/30/12)
