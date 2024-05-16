@@ -451,7 +451,6 @@ const actualizarhaberController = {
 
         }
 
-        console.log(mesesCortados)
 
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
@@ -474,6 +473,9 @@ const actualizarhaberController = {
             aguinaldoTotal = (aguinaldoTotal + nuevosMesesAguinaldo[i].haberBruto)
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
+
+         console.log(nuevosMesesAguinaldo);
+
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
     },
