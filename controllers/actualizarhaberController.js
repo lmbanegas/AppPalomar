@@ -130,7 +130,7 @@ const actualizarhaberController = {
             {
                 "desde": { dia: 1, mes: 05, anio: 2024 },
                 "hasta": { dia: 31, mes: 05, anio: 2024 },
-                "proporcionalMeses": 2,
+                "proporcionalMeses": 1,
                 "aumento": 1.1101,
                 "minima": 190141.60,
                 "os": 5704.25,
