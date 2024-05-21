@@ -475,6 +475,8 @@ const actualizarhaberController = {
         }
 
          console.log(nuevosMesesAguinaldo);
+        console.log(mesesCortados);
+
 
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
