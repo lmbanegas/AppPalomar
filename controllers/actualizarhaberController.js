@@ -197,6 +197,12 @@ const actualizarhaberController = {
 
         //Formulas para crear nuevo array que comience desde la Fecha Inicial de Pago
         const indiceInicio = meses.findIndex(mes => {
+
+            if (fip[0].mes < 6 && fip[0].anio == 2024 ) 
+            
+            {
+
+            
             if (fip[0].mes === 5 || fip[0].mes === 4) {
                 fip[0].mes = 3;
             }
@@ -214,6 +220,7 @@ const actualizarhaberController = {
                 fip[0].anio = fip[0].anio - 1
             }
 
+            }    
             return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
         });
 
