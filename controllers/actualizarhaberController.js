@@ -231,7 +231,7 @@ const actualizarhaberController = {
         // Cortar el array desde el índice encontrado
         const mesesCortados = indiceInicio !== -1 ? meses.slice(indiceInicio) : [];
 
-
+        console.log(mesesCortados);
 
         mesesCortados[0].desde.dia = fipDias[0].dia;
         mesesCortados[0].desde.mes = fipDias[0].mes;
