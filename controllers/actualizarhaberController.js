@@ -226,24 +226,11 @@ const indiceInicio = meses.findIndex(mes => {
 });
 
 
-
-
-
         // Cortar el array desde el índice encontrado
         const mesesCortados = indiceInicio !== -1 ? meses.slice(indiceInicio) : [];
-
-                console.log(mesesCortados);
-
-
-
         mesesCortados[0].desde.dia = fipDias[0].dia;
         mesesCortados[0].desde.mes = fipDias[0].mes;
         mesesCortados[0].desde.anio = fipDias[0].anio;
-
-
-                console.log(mesesCortados);
-
-        
 
         const contarDias = mesesCortados[0].hasta.mes - mesesCortados[0].desde.mes + ((31 - mesesCortados[0].desde.dia) / 30)
 
@@ -445,7 +432,6 @@ const indiceInicio = meses.findIndex(mes => {
 
         if (req.body.diaSAC == 0) {
 
-
             for (let i = 0; i < mesesAguinaldo.length; i++) {
                 if (mesesAguinaldo[i].desde.anio == fipDias[0].anio && fipDias[0].mes >= mesesAguinaldo[i].desde.mes && fipDias[0].mes <= mesesAguinaldo[i].hasta.mes) {
                     mesesAguinaldo[i].desde.dia = fipDias[0].dia;
@@ -487,17 +473,11 @@ const indiceInicio = meses.findIndex(mes => {
                 }
             }
         }
-
         //Cálculo totales de aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             aguinaldoTotal = (aguinaldoTotal + nuevosMesesAguinaldo[i].haberBruto)
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
-
-         console.log(nuevosMesesAguinaldo);
-        console.log(mesesCortados);
-
-
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
     },
