@@ -304,6 +304,9 @@ const mesesAguinaldo = [
 const indiceInicio = meses.findIndex(mes => {
 
     if (fip[0].mes > 4 && fip[0].anio === 2024) {
+        if (fip[0].mes === 4 || fip[0].mes === 5) {
+            fip[0].mes = fip[0].mes;
+        }
 
          if (fip[0].mes === 7 || fip[0].mes === 8) {
             fip[0].mes = 6;
