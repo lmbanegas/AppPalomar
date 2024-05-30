@@ -301,26 +301,35 @@ const mesesAguinaldo = [
     const fip = [{ dia: dia, mes: mes, anio: anio }];
 
 
-    const indiceInicio = meses.findIndex(mes => {
+const indiceInicio = meses.findIndex(mes => {
+
+    if (fip[0].mes < 4 && fip[0].anio == 2024) {
         if (fip[0].mes === 5 || fip[0].mes === 4) {
             fip[0].mes = 3;
-        }
-
-        if (fip[0].mes === 7 || fip[0].mes === 8) {
+        } else if (fip[0].mes === 7 || fip[0].mes === 8) {
             fip[0].mes = 6;
-        }
-
-        if (fip[0].mes === 10 || fip[0].mes === 11) {
+        } else if (fip[0].mes === 10 || fip[0].mes === 11) {
             fip[0].mes = 9;
-        }
-
-        if (fip[0].mes === 1 || fip[0].mes === 2) {
+        } else if (fip[0].mes === 1 || fip[0].mes === 2) {
             fip[0].mes = 12;
-            fip[0].anio = fip[0].anio - 1
+            fip[0].anio = fip[0].anio - 1;
         }
+    } else {
+        if (fip[0].mes === 5 || fip[0].mes === 4) {
+            fip[0].mes = 3;
+        } else if (fip[0].mes === 7 || fip[0].mes === 8) {
+            fip[0].mes = 6;
+        } else if (fip[0].mes === 10 || fip[0].mes === 11) {
+            fip[0].mes = 9;
+        } else if (fip[0].mes === 1 || fip[0].mes === 2) {
+            fip[0].mes = 12;
+            fip[0].anio = fip[0].anio - 1;
+        }
+    }
 
-        return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
-    });
+    return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
+});
+
 
     // Cortar el array desde el índice encontrado
     const mesesCortados = indiceInicio !== -1 ? meses.slice(indiceInicio) : [];
