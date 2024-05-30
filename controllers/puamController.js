@@ -157,8 +157,8 @@ const meses = [
     },
         {
         "desde": { dia: 1, mes: 3, anio: 2024 },
-        "hasta": { dia: 30, mes: 4, anio: 2024 },
-        "proporcionalMeses": 2,
+        "hasta": { dia: 31, mes: 3, anio: 2024 },
+        "proporcionalMeses": 1,
         "haber": 107556.24,
         "os": 4033.36,
         "devOs": 806.67,
@@ -166,6 +166,40 @@ const meses = [
         "retroOs": 0,
         "retroDevOs": 0,
     },
+            {
+        "desde": { dia: 1, mes: 4, anio: 2024 },
+        "hasta": { dia: 30, mes: 4, anio: 2024 },
+        "proporcionalMeses": 1,
+        "haber": 137026.65,
+        "os": 5138.50,
+        "devOs": 1027.7,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
+    },
+    {
+        "desde": { dia: 1, mes: 5, anio: 2024 },
+        "hasta": { dia: 31, mes: 5, anio: 2024 },
+        "proporcionalMeses": 1,
+        "haber": 152113.28,
+        "os": 5704.25,
+        "devOs": 1140.85,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
+    },
+        {
+        "desde": { dia: 1, mes: 6, anio: 2024 },
+        "hasta": { dia: 30, mes: 6, anio: 2024 },
+        "proporcionalMeses": 1,
+        "haber": 165544.88,
+        "os": 6207.93,
+        "devOs": 1241.58,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
+    },
+    
 ];
 
 const mesesAguinaldo = [
@@ -227,6 +261,18 @@ const mesesAguinaldo = [
     {
         "desde": { dia: 1, mes: 7, anio: 2023 },
         "hasta": { dia: 31, mes: 12, anio: 2023 },
+        "tiempo": 0.5,
+        "haber": 0,
+        "os": 0,
+        "devOs": 0,
+        "retroHaber": 0,
+        "retroOs": 0,
+        "retroDevOs": 0,
+    }
+    ,
+        {
+        "desde": { dia: 1, mes: 1, anio: 2024 },
+        "hasta": { dia: 30, mes: 06, anio: 2024 },
         "tiempo": 0.5,
         "haber": 0,
         "os": 0,
