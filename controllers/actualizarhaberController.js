@@ -183,7 +183,6 @@ const actualizarhaberController = {
             },
         ];
 
-                console.log("----- INICIO " + mesesAguinaldo + "------");
 
 
         const datos = {
@@ -486,6 +485,7 @@ const indiceInicio = meses.findIndex(mes => {
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
 
+        console.log(JSON.stringify(nuevosMesesAguinaldo));
 
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
