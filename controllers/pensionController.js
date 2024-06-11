@@ -197,26 +197,34 @@ const pensionController = {
         const fip = [{ dia: dia, mes: mes, anio: anio }];
 
         //Formulas para crear nuevo array que comience desde la Fecha Inicial de Pago
-        const indiceInicio = meses.findIndex(mes => {
-            if (fip[0].mes === 5 || fip[0].mes === 4) {
-                fip[0].mes = 3;
-            }
+const indiceInicio = meses.findIndex(mes => {
 
-            if (fip[0].mes === 7 || fip[0].mes === 8) {
-                fip[0].mes = 6;
-            }
+    if (fip[0].mes < 4 && fip[0].anio == 2024) {
+        if (fip[0].mes === 5 || fip[0].mes === 4) {
+            fip[0].mes = 3;
+        } else if (fip[0].mes === 7 || fip[0].mes === 8) {
+            fip[0].mes = 6;
+        } else if (fip[0].mes === 10 || fip[0].mes === 11) {
+            fip[0].mes = 9;
+        } else if (fip[0].mes === 1 || fip[0].mes === 2) {
+            fip[0].mes = 12;
+            fip[0].anio = fip[0].anio - 1;
+        }
+    } else {
+        if (fip[0].mes === 5 || fip[0].mes === 4) {
+            fip[0].mes = 3;
+        } else if (fip[0].mes === 7 || fip[0].mes === 8) {
+            fip[0].mes = 6;
+        } else if (fip[0].mes === 10 || fip[0].mes === 11) {
+            fip[0].mes = 9;
+        } else if (fip[0].mes === 1 || fip[0].mes === 2) {
+            fip[0].mes = 12;
+            fip[0].anio = fip[0].anio - 1;
+        }
+    }
 
-            if (fip[0].mes === 10 || fip[0].mes === 11) {
-                fip[0].mes = 9;
-            }
-
-            if (fip[0].mes === 1 || fip[0].mes === 2) {
-                fip[0].mes = 12;
-                fip[0].anio = fip[0].anio - 1
-            }
-
-            return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
-        });
+    return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
+});
 
 
         
