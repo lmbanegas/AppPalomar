@@ -183,6 +183,9 @@ const actualizarhaberController = {
             },
         ];
 
+                console.log("----- INICIO " + mesesAguinaldo + "------");
+
+
         const datos = {
             nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio,
             fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio, causante: req.body.causante, cuilcausante: req.body.cuilcausante, fechaFallecimiento: req.body.diaF + "/" + req.body.mesF + "/" + req.body.anioF,
@@ -483,7 +486,6 @@ const indiceInicio = meses.findIndex(mes => {
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
 
-        console.log("----- ACT HABER" + nuevosMesesAguinaldo + "------");
 
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
