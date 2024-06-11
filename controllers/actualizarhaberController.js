@@ -460,7 +460,6 @@ const indiceInicio = meses.findIndex(mes => {
 
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
-                console.log("----- ACT HABER" + nuevosMesesAguinaldo + "------");
 
 
         //Acumuladores
@@ -476,11 +475,17 @@ const indiceInicio = meses.findIndex(mes => {
                 }
             }
         }
+
+        console.log("----- ACT HABER" + nuevosMesesAguinaldo + "------");
+
         //Cálculo totales de aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
             aguinaldoTotal = (aguinaldoTotal + nuevosMesesAguinaldo[i].haberBruto)
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
+
+                        console.log("----- ACT HABER22222" + nuevosMesesAguinaldo + "------");
+
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
     },
