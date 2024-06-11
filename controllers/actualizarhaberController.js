@@ -484,7 +484,7 @@ const indiceInicio = meses.findIndex(mes => {
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
 
-                        console.log("----- ACT HABER22222" + nuevosMesesAguinaldo + "------");
+                        console.log("----- ACT HABER22222" + mesesAguinaldo + "------");
 
 
         res.render('actualizacionHaberResult', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
