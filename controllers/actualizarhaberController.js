@@ -460,6 +460,9 @@ const indiceInicio = meses.findIndex(mes => {
 
         const nuevosMesesAguinaldo = mesesAguinaldo.slice(indice);
 
+                console.log("----- ACT HABER" + nuevosMesesAguinaldo + "------");
+
+
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
