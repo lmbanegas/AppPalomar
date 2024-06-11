@@ -498,6 +498,9 @@ const indiceInicio = meses.findIndex(mes => {
                 } 
                 }
         }        
+        console.log(JSON.stringify(nuevosMesesAguinaldo));
+
+        console.log(" +++--+++");
 
 
         //Cálculo totales de aguinaldo
@@ -507,6 +510,7 @@ const indiceInicio = meses.findIndex(mes => {
         }
 
 
+        console.log(JSON.stringify(nuevosMesesAguinaldo));
 
         
 
