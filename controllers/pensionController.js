@@ -143,6 +143,15 @@ const pensionController = {
                 "minima": 206931.10,
                 "os": 6207.93,
             },
+
+            {
+                "desde": { dia: 1, mes: 7, anio: 2024 },
+                "hasta": { dia: 31, mes: 7, anio: 2024 },
+                "proporcionalMeses": 1,
+                "aumento": 1,
+                "minima": 206931.10,
+                "os": 6207.93,
+            },
         ];
 
         const mesesAguinaldo = [
