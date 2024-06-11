@@ -199,9 +199,9 @@ const pensionController = {
         //Formulas para crear nuevo array que comience desde la Fecha Inicial de Pago
 const indiceInicio = meses.findIndex(mes => {
 
-    if (fip[0].mes < 4 && fip[0].anio == 2024) {
+    if (fip[0].mes >= 4 && fip[0].anio == 2024) {
         if (fip[0].mes === 5 || fip[0].mes === 4) {
-            fip[0].mes = 3;
+            fip[0].mes = fip[0].mes;
         } else if (fip[0].mes === 7 || fip[0].mes === 8) {
             fip[0].mes = 6;
         } else if (fip[0].mes === 10 || fip[0].mes === 11) {
