@@ -188,17 +188,17 @@ const pensionController = {
             nombre: req.body.titular, cuil: req.body.cuil, expediente: req.body.expediente, beneficio: req.body.beneficio,
             fechaInicial: req.body.dia + "/" + req.body.mes + "/" + req.body.anio, causante: req.body.causante, cuilcausante: req.body.cuilcausante, fechaFallecimiento: req.body.diaF + "/" + req.body.mesF + "/" + req.body.anioF,
         }
-        const dia = parseInt(req.body.dia);
-        const mes = parseInt(req.body.mes);
-        const anio = parseInt(req.body.anio);
-        let diaF = parseInt(req.body.diaF);
-
-        const fipDias = [{ dia: dia, mes: mes, anio: anio }];
-        const fip = [{ dia: dia, mes: mes, anio: anio }];
+    const dia = parseInt(req.body.dia);
+    const mes = parseInt(req.body.mes);
+    const anio = parseInt(req.body.anio);
+    let diaF = parseInt(req.body.diaF);
+    
+    const fipDias = [{ dia: dia, mes: mes, anio: anio }];
+    const fip = [{ dia: dia, mes: mes, anio: anio }];
 
         //Formulas para crear nuevo array que comience desde la Fecha Inicial de Pago
-const indiceInicio = meses.findIndex(mes => {
-
+    const indiceInicio = meses.findIndex(mes => {
+    
     if (fip[0].mes >= 4 && fip[0].anio == 2024) {
         if (fip[0].mes === 5 || fip[0].mes === 4) {
             fip[0].mes = fip[0].mes;
@@ -224,24 +224,16 @@ const indiceInicio = meses.findIndex(mes => {
     }
 
     return (mes.desde.anio === fip[0].anio) && (mes.desde.mes === fip[0].mes);
-});
-
-
-        
+    });
+     
 
         // Cortar el array desde el índice encontrado
         const mesesCortados = indiceInicio !== -1 ? meses.slice(indiceInicio) : [];
-
-
-
         mesesCortados[0].desde.dia = fipDias[0].dia;
         mesesCortados[0].desde.mes = fipDias[0].mes;
         mesesCortados[0].desde.anio = fipDias[0].anio;
 
-
-
         const contarDias = mesesCortados[0].hasta.mes - mesesCortados[0].desde.mes + ((31 - mesesCortados[0].desde.dia) / 30)
-
         mesesCortados[0].proporcionalMeses = contarDias;
 
         if (mesesCortados[0].desde.mes === 12) {
@@ -252,7 +244,6 @@ const indiceInicio = meses.findIndex(mes => {
 //            mesesCortados[0].proporcionalMeses = 3 + ((31 - mesesCortados[0].desde.dia) / 30)
 //        };
     
-
         const datosHaberDevengado = {
             'PBU': parseFloat(req.body.PBU.replace(',', '.')),
             'PBUSentencia': parseFloat(req.body.PBUS.replace(',', '.')),
@@ -288,48 +279,43 @@ const indiceInicio = meses.findIndex(mes => {
         //Asignación descuentos del haber
         let descuentoCausante = parseFloat(req.body.os.replace(',', '.'));
 
-
         let diaFA = 0;
 
+       //Devengados
 
-        
-        //Devengados
+if (req.body.devengados) {
+    if (req.body.mesF == 12 || req.body.mesF == 6) {
+        brutoCausante = ((brutoCausante / 30) * diaF) + (brutoCausante / 360) * (150 + diaF);
+        descuentoCausante = (descuentoCausante / 30) * diaF + (descuentoCausante / 360) * (150 + diaF);
+    } else {
+        let diaFA;
+        switch (req.body.mesF) {
+            case 2:
+            case 8:
+                diaFA = 30;
+                break;
+            case 3:
+            case 9:
+                diaFA = 60;
+                break;
+            case 4:
+            case 10:
+                diaFA = 90;
+                break;
+            case 5:
+            case 11:
+                diaFA = 120;
+                break;
+            default:
+                diaFA = 0;
+                break;
+        }
 
-        if (req.body.devengados) {
-
-            if (req.body.mesF == 12 || req.body.mesF == 6) {
-
-                brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante / 360) * (150 + diaF);
-                descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante / 360) * (150 + diaF);
-            } else {           
-                    
-            if (req.body.mesF == 2 || req.body.mesF == 8) {
-              diaFA = 30;
-            } 
-            
-            if (req.body.mesF == 3 || req.body.mesF == 9) {
-              diaFA = 60;
-            } 
-            
-             if (req.body.mesF == 4 || req.body.mesF == 10) {
-              diaFA = 90;
-            } 
-            
-            if (req.body.mesF == 5 || req.body.mesF == 11) {
-              diaFA = 120;
-            }
-        
-            brutoCausante = ((brutoCausante / 30) * (diaF)) + (brutoCausante * ((diaFA+diaF)/30/12))
-            descuentoCausante = (descuentoCausante / 30) * (diaF) + (descuentoCausante * (diaFA+diaF)/30/12)
-            
-            }
-        
+        brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30 / 12));
+        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30 / 12);
+    }
 }
-    
-
-        
-        
-        
+         
         //Indebidos
 
         let indebidosCausante = 0;
@@ -482,7 +468,6 @@ const indiceInicio = meses.findIndex(mes => {
 
         console.log("-----" + nuevosMesesAguinaldo + "------");
         
-
         //Acumuladores
         let aguinaldoTotal = 0;
         let aguinaldoOsTotal = 0;
@@ -498,10 +483,6 @@ const indiceInicio = meses.findIndex(mes => {
                 } 
                 }
         }        
-        console.log(JSON.stringify(nuevosMesesAguinaldo));
-
-        console.log(" +++--+++");
-
 
         //Cálculo totales de aguinaldo
         for (let i = 0; i < nuevosMesesAguinaldo.length; i++) {
@@ -509,11 +490,7 @@ const indiceInicio = meses.findIndex(mes => {
             aguinaldoOsTotal = (aguinaldoOsTotal + nuevosMesesAguinaldo[i].ObraSocial)
         }
 
-
-        console.log(JSON.stringify(nuevosMesesAguinaldo));
-
         
-
         res.render('pension', { datosIngresados, brutoCausante, descuentoCausante, pmr, indebidosCausante, scf, ultimoHaber, haberReal, nuevosMesesAguinaldo, mesesCortados, datos, aguinaldoTotal, aguinaldoOsTotal, sumatoriasRetroactivos, req });
     },
 }
