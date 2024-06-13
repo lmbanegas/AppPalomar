@@ -282,13 +282,16 @@ const pensionController = {
         let diaFA = 0;
 
        //Devengados
-
-if (req.body.devengados) {
-    if (req.body.mesF == 12 || req.body.mesF == 6) {
+    
+        if (req.body.devengados) {
+    if (req.body.mesF == 12 || req.body.mes.F == 6) {
         brutoCausante = ((brutoCausante / 30) * diaF) + (brutoCausante / 360) * (150 + diaF);
         descuentoCausante = (descuentoCausante / 30) * diaF + (descuentoCausante / 360) * (150 + diaF);
     } else {
-        let diaFA;
+        brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30));
+        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30);   
+    }
+}   else {
         switch (req.body.mesF) {
             case 2:
             case 8:
@@ -306,15 +309,17 @@ if (req.body.devengados) {
             case 11:
                 diaFA = 120;
                 break;
+            case 6:
+            case 12:
+                diaFA = 150;
+                break;
             default:
                 diaFA = 0;
                 break;
         }
-
         brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30 / 12));
         descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30 / 12);
     }
-}
          
         //Indebidos
 
