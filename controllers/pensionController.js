@@ -292,6 +292,7 @@ const pensionController = {
         descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30);   
     }
 }   else {
+        console.log("ENTRA AL ELSE DEL SWITCH");
         switch (req.body.mesF) {
             case 2:
             case 8:
