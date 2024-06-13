@@ -290,7 +290,7 @@ const pensionController = {
 
     if (req.body.mesF == 12 || req.body.mesF == 6) {
         aguinaldoBrutoDevengado =  (brutoCausante / 360) * (150 + diaF);
-        aguinaldoOSDevengado =  diaF + (descuentoCausante / 360) * (150 + diaF);
+        aguinaldoOSDevengado =   (descuentoCausante / 360) * (150 + diaF);
     } else {
             switch (req.body.mesF) {
             case 2:
@@ -317,8 +317,8 @@ const pensionController = {
                 diaFA = 0;
                 break;
         }
-        brutoCausante =  (aguinaldoBrutoDevengado * ((diaFA + diaF) / 30/12));
-        descuentoCausante =  (aguinaldoOSDevengado * (diaFA + diaF) / 30/12);   
+        brutoCausante =  (aguinaldoBrutoDevengado + ((diaFA + diaF) / 30/12));
+        descuentoCausante =  (aguinaldoOSDevengado + (diaFA + diaF) / 30/12);   
         }
 
         //Proporcional mensual en caso de req.body.devengados = on
