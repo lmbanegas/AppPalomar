@@ -318,10 +318,15 @@ const pensionController = {
                 diaFA = 0;
                 break;
         }
-        brutoCausante =  645454654654654654654;
-        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30 / 12);
+    if (req.body.mesF == 12 || req.body.mes.F == 6) {
+        brutoCausante = ((brutoCausante / 30) * diaF) + (brutoCausante / 360) * (150 + diaF);
+        descuentoCausante = (descuentoCausante / 30) * diaF + (descuentoCausante / 360) * (150 + diaF);
+    } else {
+        brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30));
+        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30);   
     }
-         
+    }
+
         //Indebidos
 
         let indebidosCausante = 0;
