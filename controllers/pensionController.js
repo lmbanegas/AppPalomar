@@ -281,19 +281,18 @@ const pensionController = {
 
         let diaFA = 0;
 
-       //Devengados
-    
-        if (req.body.devengados) {
-    if (req.body.mesF == 12 || req.body.mes.F == 6) {
-        brutoCausante = ((brutoCausante / 30) * diaF) + (brutoCausante / 360) * (150 + diaF);
-        descuentoCausante = (descuentoCausante / 30) * diaF + (descuentoCausante / 360) * (150 + diaF);
+        //Devengados
+
+        //Proporcional aguinaldo que siempre se paga al alta
+
+        let aguinaldoBrutoDevengado = 0;
+        let aguinaldoOSDevengado = 0;
+
+    if (req.body.mesF == 12 || req.body.mesF == 6) {
+        aguinaldoBrutoDevengado =  (brutoCausante / 360) * (150 + diaF);
+        aguinaldoOSDevengado =  diaF + (descuentoCausante / 360) * (150 + diaF);
     } else {
-        brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30));
-        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30);   
-    }
-}   else {
-        console.log("ENTRA AL ELSE DEL SWITCH");
-        switch (req.body.mesF) {
+            switch (req.body.mesF) {
             case 2:
             case 8:
                 diaFA = 30;
@@ -318,14 +317,16 @@ const pensionController = {
                 diaFA = 0;
                 break;
         }
-    if (req.body.mesF == 12 || req.body.mes.F == 6) {
-        brutoCausante = ((brutoCausante / 30) * diaF) + (brutoCausante / 360) * (150 + diaF);
-        descuentoCausante = (descuentoCausante / 30) * diaF + (descuentoCausante / 360) * (150 + diaF);
-    } else {
-        brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30));
-        descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30);   
-    }
-    }
+        brutoCausante =  (aguinaldoBrutoDevengado * ((diaFA + diaF) / 30/12));
+        descuentoCausante =  (aguinaldoOSDevengado * (diaFA + diaF) / 30/12);   
+        }
+
+        //Proporcional mensual en caso de req.body.devengados = on
+        
+        if (req.body.devengados == "on") {
+            brutoCausante =  (brutoCausante * ((diaFA + diaF) / 30)) + aguinaldoBrutoDevengado;
+            descuentoCausante =  (descuentoCausante * (diaFA + diaF) / 30) + aguinaldoOSDevengado;
+        }
 
         //Indebidos
 
