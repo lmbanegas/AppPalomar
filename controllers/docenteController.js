@@ -11,128 +11,167 @@ const docenteController = {
                 "desde": { dia: 1, mes: 1, anio: 2021 },
                 "hasta": { dia: 31, mes: 3, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1037,
+                "aumento": 1,
                 "minima": 19035.29,
                 "os": 571.06,
-                "Z": 421.81
+                "Z": 387.82,
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2021 },
                 "hasta": { dia: 31, mes: 5, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.0000,
+                "aumento": 1.1037,
                 "minima": 20571.44,
                 "os": 617.14,
-                "Z": -1140.55
+                "Z": 421.81,
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2021 },
                 "hasta": { dia: 31, mes: 8, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1906,
+                "aumento": 1,
                 "minima": 23064.70,
                 "os": 691.94,
-                "Z": 703.75
+                "Z": -1140.55,
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2021 },
                 "hasta": { dia: 30, mes: 11, anio: 2021 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1461,
+                "aumento": 1.1906,
                 "minima": 25922.42,
                 "os": 777.67,
-                "Z": 296.46
+                "Z": 703.75,
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2021 },
                 "hasta": { dia: 28, mes: 2, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.0938,
+                "aumento": 1.1461,
                 "minima": 29061.63,
                 "os": 871.85,
-                "Z": -385.54
+                "Z": 296.46,
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2022 },
                 "hasta": { dia: 31, mes: 5, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.0000,
+                "aumento": 1.0938,
                 "minima": 32630.40,
                 "os": 978.91,
-                "Z": -2239.04
+                "Z":  -385.54,
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2022 },
                 "hasta": { dia: 31, mes: 8, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.4005,
+                "aumento": 1,
                 "minima": 37524.96,
                 "os": 1125.75,
-                "Z": 4209.10
+                "Z": -2239.04,
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2022 },
                 "hasta": { dia: 30, mes: 11, anio: 2022 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2015,
+                "aumento": 1.4005,
                 "minima": 43352.59,
                 "os": 1300.58,
-                "Z": 898.38
+                "Z": 4209.10,
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2022 },
                 "hasta": { dia: 28, mes: 2, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.1869,
+                "aumento": 1.2015,
                 "minima": 50124.26,
                 "os": 1503.73,
-                "Z": 378.33
+                "Z": 898.38,
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2023 },
                 "hasta": { dia: 31, mes: 5, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2733,
+                "aumento": 1.1869,
                 "minima": 58665.43,
                 "os": 1759.97,
-                "Z": 1720.24
+                "Z": 378.33,
             },
             {
                 "desde": { dia: 1, mes: 6, anio: 2023 },
                 "hasta": { dia: 31, mes: 8, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2701,
+                "aumento": 1.2733,
                 "minima": 70938.24,
                 "os": 2128.15,
-                "Z": 1207.18
+                "Z": 1720.24,
             },
             {
                 "desde": { dia: 1, mes: 9, anio: 2023 },
                 "hasta": { dia: 30, mes: 11, anio: 2023 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2844,
+                "aumento": 1.2701,
                 "minima": 87459.76,
                 "os": 2623.80,
-                "Z": 3028.67
+                "Z": 1207.18,
             },
             {
                 "desde": { dia: 1, mes: 12, anio: 2023 },
                 "hasta": { dia: 28, mes: 2, anio: 2024 },
                 "proporcionalMeses": 3,
-                "aumento": 1.2757,
+                "aumento": 1.2844,
                 "minima": 105712.61,
                 "os": 3171.38,
-                "Z": 188.6
+                "Z": 3028.67,
             },
             {
                 "desde": { dia: 1, mes: 3, anio: 2024 },
-                "hasta": { dia: 31, mes: 4, anio: 2024 },
-                "proporcionalMeses": 2,
-                "aumento": 1.2718,
+                "hasta": { dia: 31, mes: 3, anio: 2024 },
+                "proporcionalMeses": 1,
+                "aumento": 1.2757,
                 "minima": 134445.30,
                 "os": 4033.36,
                 "Z": 188.60,
-            }
+            },
+            {
+                "desde": { dia: 1, mes: 4, anio: 2024 },
+                "hasta": { dia: 30, mes: 4, anio: 2024 },
+                "proporcionalMeses": 1,
+                "aumento": 1,
+                "minima": 171283.31,
+                "os": 5138.50,
+                "Z": 0,
+            },
+            {
+                "desde": { dia: 1, mes: 5, anio: 2024 },
+                "hasta": { dia: 31, mes: 5, anio: 2024 },
+                "proporcionalMeses": 1,
+                "aumento": 1,
+                "minima": 190141.60,
+                "os": 5704.25,
+                "Z": -25478.52,
+            },
+            
+            {
+                "desde": { dia: 1, mes: 6, anio: 2024 },
+                "hasta": { dia: 30, mes: 6, anio: 2024 },
+                "proporcionalMeses": 1,
+                "aumento": 1.4062,
+                "minima": 206931.10,
+                "os": 6207.93,
+                "Z": 27651.30,
+            },
+
+            {
+                "desde": { dia: 1, mes: 7, anio: 2024 },
+                "hasta": { dia: 31, mes: 8, anio: 2024 },
+                "proporcionalMeses": 2,
+                "aumento": 1,
+                "minima": 215580.82,
+                "os": 6467.42,
+                "Z": 3956.85 ,
+            },
+
         ];
         
 
@@ -166,7 +205,12 @@ const docenteController = {
                 "desde": { dia: 1, mes: 7, anio: 2023 },
                 "hasta": { dia: 31, mes: 12, anio: 2023 },
                 "tiempo": 0.5,
-            }
+            },
+            {
+                "desde": { dia: 1, mes: 1, anio: 2024 },
+                "hasta": { dia: 30, mes: 6, anio: 2024 },
+                "tiempo": 0.5,
+            },
         ];
 
         const datos = {
